@@ -9,6 +9,6 @@ public class HomeController {
 	@GetMapping("/")
 	@ResponseBody
 	public String home(){
-		return "This will be the main landing page placeholder!";
+		return "This will be the main landing/Home page placeholder!";
 	}
 }
