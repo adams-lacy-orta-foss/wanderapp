@@ -3,6 +3,7 @@ package com.example.wanderapp.model;
 
 import org.hibernate.annotations.Type;
 import org.hibernate.type.descriptor.sql.TinyIntTypeDescriptor;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 import java.sql.Date;
