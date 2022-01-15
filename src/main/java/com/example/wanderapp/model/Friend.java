@@ -4,22 +4,22 @@ package com.example.wanderapp.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "trailMap")
-public class Map {
+@Table(name = "friends")
+public class Friend {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column
-    private boolean isPublic;
+    private String username;
 
-    public boolean isPublic() {
-        return isPublic;
+    public String getUsername() {
+        return username;
     }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public long getId() {
