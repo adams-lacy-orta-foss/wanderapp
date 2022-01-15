@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HomeController {
-	@GetMapping("/")
-	@ResponseBody
-	public String home(){
-		return "This is the home page";
-	}
+//	@GetMapping("/")
+//	@ResponseBody
+//	public String home(){
+//		return "This is the home page";
+//	}
 
 	@GetMapping("/index")
 	public String welcome(){

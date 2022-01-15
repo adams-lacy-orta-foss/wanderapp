@@ -41,5 +41,5 @@ src/main/resources/application.properties
 
 ### Ignore Keys for API###
 
-src/main/resources/static/js/keys.js
+src/main/resources/public/js/keys.js
 
