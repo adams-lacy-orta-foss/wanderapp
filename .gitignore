@@ -40,3 +40,4 @@ src/main/resources/application.properties
 ### Ignore Keys for API###
 
 src/main/resources/static/js/keys.js
+
