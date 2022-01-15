@@ -26,7 +26,7 @@ public class Trail {
     @Column
     private int trailRating;
 
-    @Column(length = 10000)
+    @Column(length = 50000)
     private String trailDataPoints;
 
     @Column(length = 1000)
