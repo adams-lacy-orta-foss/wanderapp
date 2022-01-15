@@ -32,10 +32,12 @@ build/
 ### VS Code ###
 .vscode/
 
-
 ### properties ###
 
 src/main/resources/application.properties
+
+
+
 
 ### Ignore Keys for API###
 

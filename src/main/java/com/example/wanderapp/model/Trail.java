@@ -1,5 +1,7 @@
 package com.example.wanderapp.model;
 
+
+
 import javax.persistence.*;
 
 @Entity
@@ -94,4 +96,5 @@ public class Trail {
 	public void setId(long id) {
 		this.id = id;
 	}
+
 }
