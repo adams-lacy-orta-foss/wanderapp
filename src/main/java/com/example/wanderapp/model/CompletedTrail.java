@@ -39,7 +39,17 @@ public class CompletedTrail {
     @ManyToMany(mappedBy = "completedTrail")
     private List<Trail> trails;
 
-    
+    @ManyToMany(mappedBy = "completedTrail")
+    private List<User> users;
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
     public void setSaved(boolean saved) {
         isSaved = saved;
     }

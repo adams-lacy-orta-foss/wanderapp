@@ -2,6 +2,7 @@ package com.example.wanderapp.model;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "trailMap")
@@ -13,6 +14,17 @@ public class Map {
 
     @Column
     private boolean isPublic;
+
+    @ManyToMany(mappedBy = "trailMap")
+    private List<Trail> trails;
+
+    public List<Trail> getTrails() {
+        return trails;
+    }
+
+    public void setTrails(List<Trail> trails) {
+        this.trails = trails;
+    }
 
     public boolean isPublic() {
         return isPublic;

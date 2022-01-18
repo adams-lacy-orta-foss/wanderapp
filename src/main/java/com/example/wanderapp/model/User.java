@@ -47,22 +47,22 @@ public class User {
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     private boolean isAdmin;
 
-    public List<Trail> getTrails() {
-        return trails;
-    }
-
-    public void setTrails(List<Trail> trails) {
-        this.trails = trails;
-    }
-
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name="users_trails_bridge",
+            name="users_trails",
             joinColumns = {@JoinColumn(name = "users_id")},
             inverseJoinColumns = {@JoinColumn(name = "trails_id")}
     )
-
     private List<Trail> trails;
+
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "users_saved_trails_bridge",
+            joinColumns = {@JoinColumn(name = "users_id")},
+            inverseJoinColumns = {@JoinColumn(name = "saved_trails_id")}
+    )
+    private List<CompletedTrail> completedTrail;
 
     public long getId() {
         return id;
