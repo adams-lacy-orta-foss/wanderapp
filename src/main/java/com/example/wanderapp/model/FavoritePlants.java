@@ -14,6 +14,23 @@ public class FavoritePlants {
 
     private String url;
 
+    @ManyToMany(mappedBy = "favoritePlants")
+    private List<Trail> trails;
+
+    @ManyToMany(mappedBy = "favoritePlants")
+    private List<User> user;
+
+    @ManyToMany(mappedBy = "favoritePlants")
+    private List<Friend> friends;
+
+    public List<Friend> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(List<Friend> friends) {
+        this.friends = friends;
+    }
+
     public List<User> getUser() {
         return user;
     }
@@ -29,12 +46,6 @@ public class FavoritePlants {
     public void setTrails(List<Trail> trails) {
         this.trails = trails;
     }
-
-    @ManyToMany(mappedBy = "favoritePlants")
-    private List<Trail> trails;
-
-    @ManyToMany(mappedBy = "favoritePlants")
-    private List<User> user;
 
     public String getUrl() {
         return url;
