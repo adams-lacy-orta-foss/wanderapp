@@ -14,8 +14,27 @@ public class FavoritePlants {
 
     private String url;
 
+    public List<User> getUser() {
+        return user;
+    }
+
+    public void setUser(List<User> user) {
+        this.user = user;
+    }
+
+    public List<Trail> getTrails() {
+        return trails;
+    }
+
+    public void setTrails(List<Trail> trails) {
+        this.trails = trails;
+    }
+
     @ManyToMany(mappedBy = "favoritePlants")
     private List<Trail> trails;
+
+    @ManyToMany(mappedBy = "favoritePlants")
+    private List<User> user;
 
     public String getUrl() {
         return url;

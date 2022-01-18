@@ -17,6 +17,25 @@ public class FavoriteAnimals {
     @ManyToMany(mappedBy = "favoriteAnimals")
     private List<Trail> trails;
 
+    public List<User> getUser() {
+        return user;
+    }
+
+    public void setUser(List<User> user) {
+        this.user = user;
+    }
+
+    public List<Trail> getTrails() {
+        return trails;
+    }
+
+    public void setTrails(List<Trail> trails) {
+        this.trails = trails;
+    }
+
+    @ManyToMany(mappedBy = "favoriteAnimals")
+    private List<User> user;
+
     public String getImageUrl() {
         return imageUrl;
     }
