@@ -7,9 +7,10 @@ import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
 
     @Id
@@ -45,6 +46,23 @@ public class User {
 
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     private boolean isAdmin;
+
+    public List<Trail> getTrails() {
+        return trails;
+    }
+
+    public void setTrails(List<Trail> trails) {
+        this.trails = trails;
+    }
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="users_trails_bridge",
+            joinColumns = {@JoinColumn(name = "users_id")},
+            inverseJoinColumns = {@JoinColumn(name = "trails_id")}
+    )
+
+    private List<Trail> trails;
 
     public long getId() {
         return id;

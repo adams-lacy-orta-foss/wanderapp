@@ -3,6 +3,7 @@ package com.example.wanderapp.model;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "trails")
@@ -32,6 +33,25 @@ public class Trail {
 
 	@Column(length = 1000)
 	private String trailHeadLocation;
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
+	@ManyToMany(mappedBy = "trails")
+	private List<User> users;
+
+	@ManyToMany
+	@JoinTable(
+			name="trails_saved_trails_bridge",
+			joinColumns = {@JoinColumn(name = "trails_id")},
+			inverseJoinColumns = {@JoinColumn(name = "saved_trails_id")}
+	)
+	private List<CompletedTrail> completedTrail;
 
 	public String getTrailHeadLocation() {
 		return trailHeadLocation;
