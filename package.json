@@ -1,0 +1,22 @@
+{
+  "name": "wanderapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "tailwind build src/main/resources/public/css/tailwind.css -o src/main/resources/public/css/style.css"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adams-lacy-orta-foss/wanderapp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adams-lacy-orta-foss/wanderapp/issues"
+  },
+  "homepage": "https://github.com/adams-lacy-orta-foss/wanderapp#readme"
+}
