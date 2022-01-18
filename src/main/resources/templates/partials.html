@@ -1,0 +1,19 @@
+<head th:fragment="site-head">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>page</title>
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<header th:fragment="site-header">
+	<div th:replace="partials.html :: site-nav"></div>
+	<h1>Title</h1>
+</header>
+
+<nav th:fragment="site-nav">
+	<p>This is the navbar.</p>
+</nav>
+
+<footer th:fragment="site-footer">
+	<p>This site was made by the team at WANDER.</p>
+</footer>
