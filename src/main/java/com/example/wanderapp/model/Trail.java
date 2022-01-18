@@ -85,6 +85,30 @@ public class Trail {
 	)
 	private List<FavoriteAnimals> favoriteAnimals;
 
+	public List<FavoriteAnimals> getFavoriteAnimals() {
+		return favoriteAnimals;
+	}
+
+	public void setFavoriteAnimals(List<FavoriteAnimals> favoriteAnimals) {
+		this.favoriteAnimals = favoriteAnimals;
+	}
+
+	public List<FavoritePlants> getFavoritePlants() {
+		return favoritePlants;
+	}
+
+	public void setFavoritePlants(List<FavoritePlants> favoritePlants) {
+		this.favoritePlants = favoritePlants;
+	}
+
+	public List<Map> getTrailMap() {
+		return trailMap;
+	}
+
+	public void setTrailMap(List<Map> trailMap) {
+		this.trailMap = trailMap;
+	}
+
 	public List<CompletedTrail> getCompletedTrail() {
 		return completedTrail;
 	}
