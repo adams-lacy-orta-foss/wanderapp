@@ -1,3 +1,15 @@
+body {
+    font-family: Poppins, sans-serif;
+    margin: auto;
+    height: 100vh;
+    text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6, .app-name {
+    font-family: Yeseva One, serif;
+    letter-spacing: .5px;
+}
+
 #map {
     width: 750px;
     height: 500px;
