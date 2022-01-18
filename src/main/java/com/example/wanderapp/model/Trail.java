@@ -53,6 +53,46 @@ public class Trail {
 	)
 	private List<CompletedTrail> completedTrail;
 
+	@ManyToMany
+	@JoinTable(
+			name = "trails_trail_picture_bridge",
+			joinColumns = {@JoinColumn(name = "trails_id")},
+			inverseJoinColumns = {@JoinColumn(name = "trail_picture_id")}
+	)
+	private List<TrailPicture> trailPicture;
+
+	@ManyToMany
+	@JoinTable(
+			name = "trails_trail_map_bridge",
+			joinColumns = {@JoinColumn(name = "trails_id")},
+			inverseJoinColumns = {@JoinColumn(name = "trail_map_id")}
+	)
+	private List<Map> trailMap;
+
+	@ManyToMany
+	@JoinTable(
+			name = "trails_favorite_plants_bridge",
+			joinColumns = {@JoinColumn(name = "trails_id")},
+			inverseJoinColumns = {@JoinColumn(name = "favorite_plants_id")}
+	)
+	private List<FavoritePlants> favoritePlants;
+
+	@ManyToMany
+	@JoinTable(
+			name = "trails_favorite_animals_bridge",
+			joinColumns = {@JoinColumn(name = "trails_id")},
+			inverseJoinColumns = {@JoinColumn(name = "favorite_animals_id")}
+	)
+	private List<FavoriteAnimals> favoriteAnimals;
+
+	public List<CompletedTrail> getCompletedTrail() {
+		return completedTrail;
+	}
+
+	public void setCompletedTrail(List<CompletedTrail> completedTrail) {
+		this.completedTrail = completedTrail;
+	}
+
 	public String getTrailHeadLocation() {
 		return trailHeadLocation;
 	}
@@ -117,4 +157,19 @@ public class Trail {
 		this.id = id;
 	}
 
+	public List<Map> getMap() {
+		return trailMap;
+	}
+
+	public void setMap(List<Map> map) {
+		this.trailMap = map;
+	}
+
+	public List<TrailPicture> getTrailPicture() {
+		return trailPicture;
+	}
+
+	public void setTrailPicture(List<TrailPicture> trailPicture) {
+		this.trailPicture = trailPicture;
+	}
 }

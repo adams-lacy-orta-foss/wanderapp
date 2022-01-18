@@ -2,9 +2,10 @@ package com.example.wanderapp.model;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "FavoriteAnimals")
+@Table(name = "favoriteAnimals")
 public class FavoriteAnimals {
 
     @Id
@@ -12,6 +13,9 @@ public class FavoriteAnimals {
     private long id;
 
     private String imageUrl;
+
+    @ManyToMany(mappedBy = "favoriteAnimals")
+    private List<Trail> trails;
 
     public String getImageUrl() {
         return imageUrl;

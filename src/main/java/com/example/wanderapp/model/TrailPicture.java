@@ -1,9 +1,10 @@
 package com.example.wanderapp.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "TrailPictures")
+@Table(name = "trailPicture")
 public class TrailPicture {
 
     @Id
@@ -15,6 +16,17 @@ public class TrailPicture {
 
     public String getUrl() {
         return url;
+    }
+
+    @ManyToMany(mappedBy = "trailPicture")
+    private List<Trail> trails;
+
+    public List<Trail> getTrails() {
+        return trails;
+    }
+
+    public void setTrails(List<Trail> trails) {
+        this.trails = trails;
     }
 
     public void setUrl(String url) {
