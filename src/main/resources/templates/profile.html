@@ -5,9 +5,15 @@
 <div th:replace="partials.html :: site-header"></div>
 <div>
 	<p>This is the user's profile page for </p>
-	<div th:each="user : ${viewUsername}">
-		<span th:text="${user.getFirstName()}"></span>
+	<div th:each="user : ${viewProfile}">
+		<p> Name: <span  th:text="${user.getFirstName()}"></span>
+		<span th:text="${user.getLastName()}"></span>
+		<br>
+		Email: <span th:text="${user.getEmail()}"></span>
+		<br>
+		DOB:  <span th:text="${user.getDOB()}"></span></p>
 	</div>
+
 </div>
 <div th:replace="partials.html :: site-footer"></div>
 <script src=""></script>
