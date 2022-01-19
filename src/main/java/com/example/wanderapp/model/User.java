@@ -55,7 +55,6 @@ public class User {
     )
     private List<Trail> trails;
 
-
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "users_saved_trails_bridge",
