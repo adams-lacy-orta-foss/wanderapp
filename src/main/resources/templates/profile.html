@@ -3,8 +3,12 @@
 <div th:replace="partials.html :: site-head"></div>
 <body>
 <div th:replace="partials.html :: site-header"></div>
-
-<p>This is the user's profile page.</p>
+<div>
+	<p>This is the user's profile page for </p>
+	<div th:each="user : ${viewUsername}">
+		<span th:text="${user.getFirstName()}"></span>
+	</div>
+</div>
 <div th:replace="partials.html :: site-footer"></div>
 <script src=""></script>
 </body>
