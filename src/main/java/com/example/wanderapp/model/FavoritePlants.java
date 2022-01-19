@@ -12,7 +12,7 @@ public class FavoritePlants {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String url;
+    private String imageUrl;
 
     @ManyToMany(mappedBy = "favoritePlants")
     private List<Trail> trails;
@@ -47,12 +47,12 @@ public class FavoritePlants {
         this.trails = trails;
     }
 
-    public String getUrl() {
-        return url;
+    public String getimageUrl() {
+        return imageUrl;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setimageUrl(String url) {
+        this.imageUrl = url;
     }
 
     public long getId() {
