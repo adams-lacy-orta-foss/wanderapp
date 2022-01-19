@@ -20,7 +20,9 @@ public class ProfileController {
 	@GetMapping("/profile/{username}")
 	public String profile(@PathVariable String username, Model model) {
 
-		model.addAttribute("viewUsername", userDao.findByUserName(username));
+		model.addAttribute("viewProfile", userDao.findByUserName(username));
+
+
 		return "profile";
 	}
 
