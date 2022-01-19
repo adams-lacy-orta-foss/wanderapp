@@ -14,4 +14,5 @@ public class ProfileController {
 		model.addAttribute("viewUsername", username);
 		return "profile";
 	}
+
 }

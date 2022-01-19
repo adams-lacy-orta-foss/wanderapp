@@ -7,9 +7,10 @@ import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
 
     @Id
@@ -45,6 +46,86 @@ public class User {
 
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     private boolean isAdmin;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="users_trails_bridge",
+            joinColumns = {@JoinColumn(name = "users_id")},
+            inverseJoinColumns = {@JoinColumn(name = "trails_id")}
+    )
+    private List<Trail> trails;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "users_saved_trails_bridge",
+            joinColumns = {@JoinColumn(name = "users_id")},
+            inverseJoinColumns = {@JoinColumn(name = "saved_trails_id")}
+    )
+    private List<CompletedTrail> completedTrail;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "users_friend_bridge",
+            joinColumns = {@JoinColumn(name = "users_id")},
+            inverseJoinColumns = {@JoinColumn(name = "friend_id")}
+    )
+    private List<Friend> friends;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "users_favorite_plants_bridge",
+            joinColumns = {@JoinColumn(name = "users_id")},
+            inverseJoinColumns = {@JoinColumn(name = "favorite_plants_id")}
+    )
+    private List<FavoritePlants> favoritePlants;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "users_favorite_animals_bridge",
+            joinColumns = {@JoinColumn(name = "users_id")},
+            inverseJoinColumns = {@JoinColumn(name = "favorite_animals_id")}
+    )
+    private List<FavoriteAnimals> favoriteAnimals;
+
+    public List<FavoriteAnimals> getFavoriteAnimals() {
+        return favoriteAnimals;
+    }
+
+    public void setFavoriteAnimals(List<FavoriteAnimals> favoriteAnimals) {
+        this.favoriteAnimals = favoriteAnimals;
+    }
+
+    public List<FavoritePlants> getFavoritePlants() {
+        return favoritePlants;
+    }
+
+    public void setFavoritePlants(List<FavoritePlants> favoritePlants) {
+        this.favoritePlants = favoritePlants;
+    }
+
+    public List<Friend> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(List<Friend> friends) {
+        this.friends = friends;
+    }
+
+    public List<CompletedTrail> getCompletedTrail() {
+        return completedTrail;
+    }
+
+    public void setCompletedTrail(List<CompletedTrail> completedTrail) {
+        this.completedTrail = completedTrail;
+    }
+
+    public List<Trail> getTrails() {
+        return trails;
+    }
+
+    public void setTrails(List<Trail> trails) {
+        this.trails = trails;
+    }
 
     public long getId() {
         return id;
