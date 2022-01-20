@@ -19,7 +19,7 @@ document.querySelector('button').onclick = function sendIdentification() {
             api_key: plantIDAPI,
             images: base64files,
             // modifiers docs: https://github.com/flowerchecker/Plant-id-API/wiki/Modifiers
-            modifiers: ["crops_fast", "similar_images", "health_all"],
+            modifiers: ["crops_fast", "similar_images"],
             plant_language: "en",
             // plant details docs: https://github.com/flowerchecker/Plant-id-API/wiki/Plant-details
             plant_details: ["common_names",
@@ -27,9 +27,9 @@ document.querySelector('button').onclick = function sendIdentification() {
                 "name_authority",
                 "wiki_description",
                 "taxonomy",
-                "synonyms"],
+                "synonyms"]
             // disease details docs: https://github.com/flowerchecker/Plant-id-API/wiki/Disease-details
-            disease_details: ["common_names", "url", "description"]
+            //disease_details: ["common_names", "url", "description"]
         };
 
         fetch('https://api.plant.id/v2/identify', {
