@@ -4,9 +4,6 @@
 <body>
 <div th:replace="partials.html :: site-header"></div>
 
-
-
-
 <form id="sign-up" th:action="@{/sign-up}" th:method="post" th:object="${user}">
 
   <div class="row">
@@ -35,10 +32,6 @@
   <div class="form-group">
     <label for="password">password</label>
     <input type="text" th:field="*{password}" id="password" placeholder="password">
-  </div>
-  <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
   </div>
   <input type="submit" value="Add User">
 </form>
