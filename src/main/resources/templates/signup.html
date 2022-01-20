@@ -9,9 +9,8 @@
 <div th:replace="partials.html :: site-head"></div>
 <body>
 <div th:replace="partials.html :: site-header"></div>
-
-<script src=""></script>
 <form id="sign-up" th:action="@{/user/create}" th:method="post" th:object="${user}">
+
   <div class="row">
     <div class="col">
       <input type="text" class="form-control" placeholder="First name">

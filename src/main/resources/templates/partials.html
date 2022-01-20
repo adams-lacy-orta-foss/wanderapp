@@ -20,8 +20,15 @@
 	<h1>Title</h1>
 </header>
 
-<nav th:fragment="site-nav">
-	<p>This is the navbar.</p>
+<nav th:fragment="site-nav" class="d-flex justify-content-around">
+	<div id="nav-first-half">
+		<a href="#">Home</a>
+		<a href="#">Trails</a>
+	</div>
+	<div id="nav-last-half">
+		<p>placeholderasdf</p>
+<!--		This is where we will dynamically display login or logout/user profile/user settings links-->
+	</div>
 </nav>
 
 <footer th:fragment="site-footer">
