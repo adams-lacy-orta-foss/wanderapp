@@ -6,6 +6,12 @@
 <h1>My Trails</h1>
 
 <div th:replace="partials.html :: site-footer"></div>
+<div th:each="trail : ${trails}">
+    <h1 th:text="${trail.getTrailName()}"></h1>
+    <p th:text="${trail.getTrailElevation()}"></p>
+    <p th:text="${trail.getTrailHeadLocation()}"></p>
+
+</div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
