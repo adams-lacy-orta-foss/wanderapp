@@ -1,10 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 
+=======
+<div th:replace="partials.html :: site-head"></div>
+<body>
+<div th:replace="partials.html :: site-header"></div>
+<div>
+	<p>This is the user's profile page for </p>
+	<div th:each="user : ${viewProfile}">
+		<p> Name: <span  th:text="${user.getFirstName()}"></span>
+		<span th:text="${user.getLastName()}"></span>
+		<br>
+		Email: <span th:text="${user.getEmail()}"></span>
+		<br>
+		DOB:  <span th:text="${user.getDOB()}"></span></p>
+	</div>
+
+</div>
+<div th:replace="partials.html :: site-footer"></div>
+<script src=""></script>
+>>>>>>> ad910e6afb3c0c7a9ff045aedd2d1a49df807225
 </body>
 </html>

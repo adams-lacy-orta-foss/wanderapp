@@ -34,14 +34,6 @@ public class Trail {
 	@Column(length = 1000)
 	private String trailHeadLocation;
 
-	public List<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
-
 	@ManyToMany(mappedBy = "trails")
 	private List<User> users;
 
@@ -84,6 +76,38 @@ public class Trail {
 			inverseJoinColumns = {@JoinColumn(name = "favorite_animals_id")}
 	)
 	private List<FavoriteAnimals> favoriteAnimals;
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
+	public List<FavoriteAnimals> getFavoriteAnimals() {
+		return favoriteAnimals;
+	}
+
+	public void setFavoriteAnimals(List<FavoriteAnimals> favoriteAnimals) {
+		this.favoriteAnimals = favoriteAnimals;
+	}
+
+	public List<FavoritePlants> getFavoritePlants() {
+		return favoritePlants;
+	}
+
+	public void setFavoritePlants(List<FavoritePlants> favoritePlants) {
+		this.favoritePlants = favoritePlants;
+	}
+
+	public List<Map> getTrailMap() {
+		return trailMap;
+	}
+
+	public void setTrailMap(List<Map> trailMap) {
+		this.trailMap = trailMap;
+	}
 
 	public List<CompletedTrail> getCompletedTrail() {
 		return completedTrail;

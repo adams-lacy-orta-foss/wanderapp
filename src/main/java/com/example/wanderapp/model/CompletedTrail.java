@@ -13,9 +13,6 @@ public class CompletedTrail {
     private long id;
 
     @Column
-    private String completedTrail;
-
-    @Column
     private boolean isCompleted;
 
     @Column
@@ -23,6 +20,12 @@ public class CompletedTrail {
 
     @Column
     private boolean isSaved;
+
+    @ManyToMany(mappedBy = "completedTrail")
+    private List<Trail> trails;
+
+    @ManyToMany(mappedBy = "completedTrail")
+    private List<User> users;
 
     public boolean isSaved() {
         return isSaved;
@@ -35,12 +38,6 @@ public class CompletedTrail {
     public void setTrails(List<Trail> trails) {
         this.trails = trails;
     }
-
-    @ManyToMany(mappedBy = "completedTrail")
-    private List<Trail> trails;
-
-    @ManyToMany(mappedBy = "completedTrail")
-    private List<User> users;
 
     public List<User> getUsers() {
         return users;
@@ -68,14 +65,6 @@ public class CompletedTrail {
 
     public void setCompleted(boolean completed) {
         isCompleted = completed;
-    }
-
-    public String getCompletedTrail() {
-        return completedTrail;
-    }
-
-    public void setCompletedTrail(String completedTrail) {
-        this.completedTrail = completedTrail;
     }
 
     public long getId() {
