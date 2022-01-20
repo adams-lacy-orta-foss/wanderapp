@@ -21,3 +21,8 @@ INSERT INTO friends(username)
 VALUES ('test username 1'),
        ('test username 2'),
        ('test username 3');
+
+INSERT INTO favorite_plants(image_url)
+VALUES('someTestURL1'),
+       ('someTestURL2'),
+       ('someTestURL3');
