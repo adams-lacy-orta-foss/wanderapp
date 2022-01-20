@@ -16,13 +16,13 @@ public class UserController {
 		this.userDao = userDao;
 	}
 
-	@GetMapping("/sign-up")
+	@GetMapping("/signup")
 	public String showSignupForm(Model model){
 		model.addAttribute("user", new User());
-		return "users/sign-up";
+		return "/signup";
 	}
 
-	@PostMapping("/sign-up")
+	@PostMapping("/signup")
 	public String saveUser(@ModelAttribute User user){
 		userDao.save(user);
 		return "redirect:/login";

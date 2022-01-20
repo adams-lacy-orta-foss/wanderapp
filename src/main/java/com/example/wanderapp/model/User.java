@@ -24,7 +24,7 @@ public class User {
     private String lastName;
 
     @Column(unique = true, nullable = false, length = 50)
-    private String userName;
+    private String username;
 
     @Column(unique = true, nullable = false, length = 50)
     private String email;
@@ -46,6 +46,23 @@ public class User {
 
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     private boolean isAdmin;
+
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+        lastName = copy.lastName;
+        firstName = copy.firstName;
+        phoneNumber = copy.phoneNumber;
+        DOB = copy.DOB;
+        profilePicUrl = copy.profilePicUrl;
+        bio = copy.bio;
+        isAdmin = copy.isAdmin;
+    }
+
+    public User() {}
+
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -86,6 +103,8 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "favorite_animals_id")}
     )
     private List<FavoriteAnimals> favoriteAnimals;
+
+
 
     public List<FavoriteAnimals> getFavoriteAnimals() {
         return favoriteAnimals;
@@ -151,12 +170,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String userName) {
+        this.username = userName;
     }
 
     public String getEmail() {
