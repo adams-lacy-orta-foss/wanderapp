@@ -16,6 +16,6 @@ public class TrailController {
 	public String trailIndex (Model model) {
 		model.addAttribute("trails", trailDao.findAll());
 
-		return "trails";
+		return "my-trails";
 	}
 }
