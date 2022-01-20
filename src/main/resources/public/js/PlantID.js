@@ -19,7 +19,7 @@ document.querySelector('button').onclick = function sendIdentification() {
             api_key: plantIDAPI,
             images: base64files,
             // modifiers docs: https://github.com/flowerchecker/Plant-id-API/wiki/Modifiers
-            modifiers: ["crops_fast", "similar_images", "health_all", "disease_similar_images"],
+            modifiers: ["crops_fast", "similar_images", "health_all"],
             plant_language: "en",
             // plant details docs: https://github.com/flowerchecker/Plant-id-API/wiki/Plant-details
             plant_details: ["common_names",
