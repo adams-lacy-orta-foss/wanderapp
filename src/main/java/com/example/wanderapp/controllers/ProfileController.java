@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class ProfileController {
 	private final UserRepository userDao;
 
-	public ProfileController(UserRepository userDao) {
-		this.userDao = userDao;
-	}
+    public ProfileController(UserRepository userDao) {
+        this.userDao = userDao;
+    }
 
 	@GetMapping("/profile/{username}")
 	public String profile(@PathVariable String username, Model model) {
