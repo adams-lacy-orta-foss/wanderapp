@@ -39,9 +39,9 @@ document.querySelector('button').onclick = function sendIdentification() {
             },
             body: JSON.stringify(data),
         })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
+            .then(response => response.text())
+            .then(text => {
+                console.log('Success:', text);
             })
             .catch((error) => {
                 console.error('Error:', error);
