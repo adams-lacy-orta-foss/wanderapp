@@ -15,8 +15,16 @@
 	<h1>Title</h1>
 </header>
 
-<nav th:fragment="site-nav">
-	<p>This is the navbar.</p>
+<nav th:fragment="site-nav" class="d-flex">
+	<div id="nav-first-half">
+		<img src="#" alt="wander logo" style="display: none;">
+		<a href="#">Home</a>
+		<a href="#">All Trails</a>
+	</div>
+	<div id="nav-last-half">
+		<p>Placeholder</p>
+<!--		dynamic display... if not logged in display login button. if logged in display hamburger that includes links to profile, settings, my trails, my plants, my friends-->
+	</div>
 </nav>
 
 <footer th:fragment="site-footer">
