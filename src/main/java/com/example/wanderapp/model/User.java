@@ -1,10 +1,9 @@
 package com.example.wanderapp.model;
 
 
-import org.hibernate.annotations.Type;
-import org.hibernate.type.descriptor.sql.TinyIntTypeDescriptor;
-import org.springframework.beans.factory.annotation.Value;
+import org.apache.tomcat.util.codec.binary.Base64;
 
+import java.sql.Blob;
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
@@ -38,8 +37,8 @@ public class User {
     @Column
     private java.sql.Date DOB;
 
-    @Column
-    private String profilePicUrl;
+    @Lob
+    private Blob defaultimg;
 
     @Column(length = 1000)
     private String bio;
@@ -56,7 +55,7 @@ public class User {
         firstName = copy.firstName;
         phoneNumber = copy.phoneNumber;
         DOB = copy.DOB;
-        profilePicUrl = copy.profilePicUrl;
+        defaultimg = copy.defaultimg;
         bio = copy.bio;
         isAdmin = copy.isAdmin;
     }
@@ -210,13 +209,7 @@ public class User {
         this.DOB = DOB;
     }
 
-    public String getProfilePicUrl() {
-        return profilePicUrl;
-    }
 
-    public void setProfilePicUrl(String profilePicUrl) {
-        this.profilePicUrl = profilePicUrl;
-    }
 
     public String getBio() {
         return bio;
@@ -232,5 +225,14 @@ public class User {
 
     public void setAdmin(boolean admin) {
         isAdmin = admin;
+    }
+
+    public Blob getDefaultimg() {return defaultimg;}
+
+    public void setBlob(Blob defaultimg) {this.defaultimg = defaultimg;}
+
+    public String generateBase64Image()
+    {
+        return Base64.encodeBase64(this.getDefaultimg());
     }
 }

@@ -12,6 +12,9 @@
 		Email: <span th:text="*{user.email}"></span>
 		<br>
 		DOB:  <span th:text="*{user.DOB}"></span></p>
+		<br>
+
+		<img th:src="@{'data:image/jpeg;base64,'+${user.defaultimg.generateBase64Image()}}" alt="default"/>
 	</div>
 
 </div>
