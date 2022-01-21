@@ -3,6 +3,7 @@
 <div th:replace="partials.html :: site-head"></div>
 <body>
 <div th:replace="partials.html :: site-header"></div>
+
 <div class="container">
 	<form id="sign-up" th:action="@{/sign-up}" th:method="post" th:object="${user}">
 		<div class="row form-group">
@@ -15,7 +16,6 @@
 				<span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
 			</div>
 		</div>
-		
 		<div class="form-group">
 			<input type="text" class="form-control" th:field="*{username}" id="username" placeholder="Username">
 			<span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
@@ -33,6 +33,7 @@
 		</div>
 	</form>
 </div>
+
 <div th:replace="partials.html :: site-footer"></div>
 
 <div th:replace="partials.html :: site-scripts"></div>
