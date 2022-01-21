@@ -39,9 +39,12 @@ document.querySelector('button').onclick = function sendIdentification() {
             },
             body: JSON.stringify(data),
         })
-            .then(response => response.text())
-            .then(text => {
-                console.log('Success:', text);
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                document.getElementById("plant").append(
+                    data.suggestions[0].plant_details.common_names[0]
+                )
             })
             .catch((error) => {
                 console.error('Error:', error);
