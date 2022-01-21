@@ -1,23 +1,45 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<div th:replace="partials.html :: site-head"></div>
+<head th:insert="partials.html :: site-head"></head>
+
+<head>
+<style>
+	body {
+		background-color: cornsilk;
+		overflow: hidden;
+	}
+	
+	#login-box {
+		background-color: white;
+		border-radius: 3px;
+		width: 500px;
+		padding: 3px;
+		margin: 3px;
+	}
+</style>
+</head>
+
 <body>
 <div th:replace="partials.html :: site-header"></div>
-<h1>Log In</h1>
-<div th:if="${param.error}">
-	Invalid Username and Password.
-</div>
-<div th:if="${param.logout}">
-	You have been logged out.
-</div>
 
-<form th:action="@{/login}" method="post">
-	<label for="username">Username</label>
-	<input id="username" name="username" type="text" />
-	<label for="password">Password</label>
-	<input id="password" name="password" type="password" />
-	<input type="submit" value="Log In" />
-</form>
+<div class="container">
+<div id="login-box">
+	<h1>Log In</h1>
+	<div th:if="${param.error}">
+		Invalid Username and Password.
+	</div>
+	<div th:if="${param.logout}">
+		You have been logged out.
+	</div>
+	
+	<form th:action="@{/login}" method="post" class="d-flex flex-column" id="login-form">
+		<input class="border-0" id="username" name="username" type="text" placeholder="Username">
+		<input class="border-0" id="password" name="password" type="password" placeholder="Password">
+		<div></div>
+		<input class="border-0 btn btn-primary" type="submit" value="Log In">
+	</form>
+</div>
+</div>
 
 <div th:replace="partials.html :: site-footer"></div>
 
