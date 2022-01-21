@@ -1,5 +1,6 @@
-package com.example.wanderapp.services;
+package com.example.wanderapp;
 
+import com.example.wanderapp.services.UserDetailsLoader;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -51,7 +52,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.and()
 				.authorizeRequests()
 				.antMatchers(
-						"/profile/create", // only authenticated users can create ads
+						"/sign-up", // only authenticated users can create ads
 						"/profile/{id}/edit", // only authenticated users can edit ads
 						"/profile/delete/{id}")
 				.authenticated()
