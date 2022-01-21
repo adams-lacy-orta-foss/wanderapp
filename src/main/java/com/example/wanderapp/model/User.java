@@ -32,7 +32,7 @@ public class User {
     @Column(length = 15)
     private String phoneNumber;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 10000)
     private String password;
 
     @Column
