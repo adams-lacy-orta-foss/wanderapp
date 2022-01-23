@@ -5,13 +5,13 @@
 <div th:replace="partials.html :: site-header"></div>
 <div>
 	<p>This is the user's profile page for </p>
-	<div th:each="user : ${viewProfile}">
-		<p> Name: <span  th:text="${user.getFirstName()}"></span>
-		<span th:text="${user.getLastName()}"></span>
+	<div>
+		<p> Name: <span  th:text="*{user.firstName}"></span>
+		<span th:text="*{user.lastName}"></span>
 		<br>
-		Email: <span th:text="${user.getEmail()}"></span>
+		Email: <span th:text="*{user.email}"></span>
 		<br>
-		DOB:  <span th:text="${user.getDOB()}"></span></p>
+		DOB:  <span th:text="*{user.DOB}"></span></p>
 	</div>
 
 </div>
