@@ -11,184 +11,191 @@
 	      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel="stylesheet" href="/css/style.css">
 	<style> /*move this into css file*/
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-		}
-		
-		body {
-			background-color: rgb(255, 226, 192);
-			overflow: hidden;
-		}
-		
-		.welcome-box {
-			position: relative;
-			height: 100vh;
-			background-image: linear-gradient(
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	
+	body {
+		background-color: rgb(255, 226, 192);
+		overflow: hidden;
+	}
+	
+	.welcome-box {
+		position: relative;
+		height: 100vh;
+		background-image: linear-gradient(
 				to bottom, rgba(104, 139, 88, 0.8), rgba(0, 78, 100, 0.8)),
-				url("../img/wander-background-1.jpg");
-			background-size: cover;
-			background-position: center;
-			clip-path: polygon(100% 0, 100% 70%, 50% 85%, 0 70%, 0 0);
-			margin: 0 auto;
+		url("../img/wander-background-1.jpg");
+		background-size: cover;
+		background-position: center;
+		clip-path: polygon(100% 0, 100% 70%, 50% 85%, 0 70%, 0 0);
+		margin: 0 auto;
+	}
+	
+	.logo-box {
+		position: absolute;
+		top: 20px;
+		left: 20px;
+	}
+	
+	.logo {
+		height: 40px;
+		
+		animation: fadeIn .7s ease;
+		animation-fill-mode: backwards;
+		animation-delay: .5s;
+	}
+	
+	.header-box {
+		position: absolute;
+		top: 40%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: white;
+	}
+	
+	.heading-text-main {
+		display: block;
+		text-transform: lowercase;
+		letter-spacing: 15px;
+		font-size: 70px;
+		margin-bottom: 10px;
+		
+		animation: fadeInPop 1s ease-out;
+		animation-fill-mode: backwards;
+	}
+	
+	.heading-text-sub {
+		display: block;
+		text-transform: lowercase;
+		font-family: "Poppins", sans-serif;
+		font-size: 30px;
+		letter-spacing: 10px;
+		
+		animation: fadeIn 1s ease-in;
+		animation-fill-mode: backwards;
+		animation-delay: 1s;
+	}
+	
+	.btn:link,
+	.btn:visited {
+		text-decoration: none;
+		text-transform: lowercase;
+		font-family: "Poppins", sans-serif;
+		font-size: x-large;
+		letter-spacing: 0.1em;
+		
+		display: block;
+		padding: 15px 40px;
+		border-radius: 100px;
+		position: absolute;
+	}
+	
+	.btn-color {
+		background-color: #fff;
+		color: #000;
+	}
+	
+	.btn-color:hover {
+		box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
+		background-color: rgba(0, 78, 100, 0.8);
+		color: #fff;
+		border-radius: 100px;
+	}
+	
+	#login-btn {
+		top: 55%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		
+		animation: fadeUp .7s ease;
+		animation-fill-mode: backwards;
+		animation-delay: 1.3s;
+	}
+	
+	#signup-btn {
+		top: 65%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		
+		animation: fadeUp .7s ease;
+		animation-fill-mode: backwards;
+		animation-delay: 1.6s;
+	}
+	
+	.login-close {
+		position: absolute;
+		top: -30px;
+		right: 0;
+	}
+	
+	#login-box {
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		
+		background-color: rgb(0, 0, 0, 50%);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		
+		border-radius: 3px;
+		padding: 2em;
+	}
+	
+	#login-window {
+		position: relative;
+		padding: 4em 2em;
+		background-color: #fff;
+	}
+	
+	#login-box:not(:target) {
+		visibility: hidden;
+		opacity: 0;
+	}
+	
+	@keyframes fadeInPop {
+		0% {
+			opacity: .5;
+			transform: scale(.8);
 		}
 		
-		.logo-box {
-			position: absolute;
-			top: 20px;
-			left: 20px;
+		80% {
+			transform: scale(1.1);
 		}
 		
-		.logo {
-			height: 40px;
-			
-			animation: fadeIn .7s ease;
-			animation-fill-mode: backwards;
-			animation-delay: .5s;
+		100% {
+			opacity: 1;
+			transform: scale(1);
 		}
-		
-		.header-box {
-			position: absolute;
-			top: 40%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			color: white;
-		}
-		
-		.heading-text-main{
-			display: block;
-			text-transform: lowercase;
-			letter-spacing: 15px;
-			font-size: 70px;
-			margin-bottom: 10px;
-			
-			animation: fadeInPop 1s ease-out;
-			animation-fill-mode: backwards;
-		}
-		
-		.heading-text-sub{
-			display: block;
-			text-transform: lowercase;
-			font-family: "Poppins", sans-serif;
-			font-size: 30px;
-			letter-spacing: 10px;
-			
-			animation: fadeIn 1s ease-in;
-			animation-fill-mode: backwards;
-			animation-delay: 1s;
-		}
-		
-		.btn:link,
-		.btn:visited {
-			text-decoration: none;
-			text-transform: lowercase;
-			font-family: "Poppins", sans-serif;
-			font-size: x-large;
-			letter-spacing: 0.1em;
-			
-			display: block;
-			padding: 15px 40px;
-			border-radius: 100px;
-			position: absolute;
-		}
-		
-		#login-btn {
-			top: 55%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			
-			animation: fadeUp .7s ease;
-			animation-fill-mode: backwards;
-			animation-delay: 1.3s;
-		}
-		
-		#signup-btn {
-			top: 65%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			
-			animation: fadeUp .7s ease;
-			animation-fill-mode: backwards;
-			animation-delay: 1.6s;
-		}
-		
-		.btn-test {
-			background-color: #fff;
-			color: #000;
-		}
-		
-		.login-close {
-			position: absolute;
-			top: -30px;
-			right: 0;
-		}
-		
-		#login-box {
-			position: fixed;
-			top: 0;
-			left: 0;
-			height: 100%;
-			width: 100%;
-			
-			background-color: rgb(0, 0, 0, 50%);
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			
-			border-radius: 3px;
-			padding: 2em;
-		}
-		
-		#login-window {
-			position: relative;
-			background-color: #fff;
-			padding: 4em 2em;
-		}
-		
-		#login-box:not(:target) {
-			visibility: hidden;
+	}
+	
+	@keyframes fadeIn {
+		0% {
 			opacity: 0;
 		}
 		
-		@keyframes fadeInPop {
-			0% {
-				opacity: .5;
-				transform: scale(.8);
-			}
-			
-			80% {
-				transform: scale(1.1);
-			}
-			
-			100% {
-				opacity: 1;
-				transform: scale(1);
-			}
+		100% {
+			opacity: 1;
+		}
+	}
+	
+	@keyframes fadeUp {
+		0% {
+			opacity: 0;
+			transform: translate(0 100px);
 		}
 		
-		@keyframes fadeIn {
-			0% {
-				opacity: 0;
-			}
-			
-			100% {
-				opacity: 1;
-			}
+		100% {
+			opacity: 1;
+			transform: translate(0 0);
 		}
-		
-		@keyframes fadeUp {
-			0% {
-				opacity: 0;
-				transform: translate(0 100px);
-			}
-			
-			100% {
-				opacity: 1;
-				transform: translate(0 0);
-			}
-		}
+	}
 	</style>
 </head>
 <body>
@@ -203,13 +210,13 @@
 		<h2 class="heading-text-sub">into the wild.</h2>
 	</div>
 	
-	<a href="#login-box" id="login-btn" class="btn btn-test">Login</a>
-	<a href="/sign-up" id="signup-btn" class="btn btn-test">Sign Up</a>
+	<a href="#login-box" id="login-btn" class="btn btn-color">Login</a>
+	<a href="/sign-up" id="signup-btn" class="btn btn-color">Sign Up</a>
 	
 	<div id="login-box">
 		<div id="login-window">
 			<a href="#" class="login-close">close</a>
-			<h1>Log In</h1>
+			<h1>Hello Wanderer 👋</h1>
 			<div th:if="${param.error}">
 				Invalid Username and Password.
 			</div>
@@ -221,7 +228,7 @@
 				<input class="border-0" id="username" name="username" type="text" placeholder="Username">
 				<input class="border-0" id="password" name="password" type="password" placeholder="Password">
 				<div></div>
-				<input class="border-0 btn btn-primary" type="submit" value="Log In">
+				<input class="border-0 btn-color" type="submit" value="Log In">
 			</form>
 		</div>
 	</div>
