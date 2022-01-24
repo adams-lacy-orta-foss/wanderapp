@@ -22,14 +22,10 @@ h1, h2, h3, h4, h5, h6, .app-name {
 /*    }*/
 /*}*/
 
-#sign-up, #login-form {
-    max-width: 400px;
-    margin: auto;
-}
-
-#sign-up>div, #login-form>input {
+#sign-up>div {
     margin-top: 1em;
     margin-bottom: 1em;
+    padding: 1em;
 }
 
 #map {
