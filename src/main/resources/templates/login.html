@@ -125,13 +125,13 @@
 		animation-delay: 1.6s;
 	}
 	
-	.login-close {
+	.close {
 		position: absolute;
 		top: -30px;
 		right: 0;
 	}
 	
-	#login-box {
+	#login-box, #signup-box{
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -148,15 +148,21 @@
 		padding: 2em;
 	}
 	
-	#login-window {
+	#login-box:not(:target), #signup-box:not(:target) {
+		visibility: hidden;
+		opacity: 0;
+	}
+	
+	#login-window, #signup-window {
 		position: relative;
 		padding: 4em 2em;
 		background-color: #fff;
 	}
 	
-	#login-box:not(:target) {
-		visibility: hidden;
-		opacity: 0;
+	#login-form > input, #signup-form > input {
+		margin-top: .5em;
+		margin-bottom: .5em;
+		padding: .5em;
 	}
 	
 	@keyframes fadeInPop {
@@ -211,12 +217,13 @@
 	</div>
 	
 	<a href="#login-box" id="login-btn" class="btn btn-color">Login</a>
-	<a href="/sign-up" id="signup-btn" class="btn btn-color">Sign Up</a>
-	
-	<div id="login-box">
+	<a href="#signup-box" id="signup-btn" class="btn btn-color">Sign Up</a>
+
+</div>
+<div id="login-box">
 		<div id="login-window">
-			<a href="#" class="login-close">close</a>
-			<h1>Hello Wanderer 👋</h1>
+			<a href="#" class="close">close</a>
+			<h1>Hello Wanderer! 🥾</h1>
 			<div th:if="${param.error}">
 				Invalid Username and Password.
 			</div>
@@ -232,8 +239,36 @@
 			</form>
 		</div>
 	</div>
-
-</div>
+	
+<div id="signup-box">
+		<div id="signup-window">
+			<a href="#" class="close">close</a>
+			<h1>Welcome Wanderer! 👋</h1>
+			<div th:if="${param.error}">
+				Invalid Username and Password.
+			</div>
+			
+			<form id="signup-form" class="d-flex flex-column" th:action="@{/sign-up}" th:method="post" th:object="${user}">
+				<input class="border-0" id="first-name" name="first-name" th:field="*{firstName}" type="text" placeholder="Enter first name">
+				<span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+				
+				<input class="border-0" id="last-name" name="last-name" th:field="*{lastName}" type="text" placeholder="Enter last name">
+				<span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+				
+				<input class="border-0" id="email" name="email" th:field="*{email}" type="text" placeholder="Enter valid email">
+				<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+				<small id="emailInfo" class="form-text text-muted">We'll never share your email with anyone else.</small>
+				
+				<input class="border-0" id="signup-username" name="username" th:field="*{username}" type="text" placeholder="Choose username">
+				<span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+				
+				<input class="border-0" id="signup-password" name="password" type="password" placeholder="Choose password">
+				
+				<div></div>
+				<input class="border-0 btn-color" type="submit" value="Sign Up">
+			</form>
+		</div>
+	</div>
 
 <div th:replace="partials.html :: site-scripts"></div>
 </body>
