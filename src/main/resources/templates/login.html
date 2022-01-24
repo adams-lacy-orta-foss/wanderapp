@@ -42,6 +42,10 @@
 		
 		.logo {
 			height: 40px;
+			
+			animation: fadeIn .7s ease;
+			animation-fill-mode: backwards;
+			animation-delay: .5s;
 		}
 		
 		.header-box {
@@ -93,12 +97,20 @@
 			top: 55%;
 			left: 50%;
 			transform: translate(-50%, -50%);
+			
+			animation: fadeUp .7s ease;
+			animation-fill-mode: backwards;
+			animation-delay: 1.3s;
 		}
 		
 		#signup-btn {
 			top: 65%;
 			left: 50%;
 			transform: translate(-50%, -50%);
+			
+			animation: fadeUp .7s ease;
+			animation-fill-mode: backwards;
+			animation-delay: 1.6s;
 		}
 		
 		.btn-test {
@@ -163,6 +175,18 @@
 			
 			100% {
 				opacity: 1;
+			}
+		}
+		
+		@keyframes fadeUp {
+			0% {
+				opacity: 0;
+				transform: translate(0 100px);
+			}
+			
+			100% {
+				opacity: 1;
+				transform: translate(0 0);
 			}
 		}
 	</style>
