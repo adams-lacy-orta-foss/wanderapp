@@ -16,13 +16,21 @@ $(document).ready(() => {
 
 //INIT MAPBOX
 mapboxgl.accessToken = mapBoxAPIkey;
+const bounds = [
+    [-106.320405, 25.404477, -90.664887, 33.257889]
+];
+
+const bound2 = [
+    [-100.433890,28.344755],[-96.478812,30.310532]
+];
 let map = new mapboxgl.Map(
     {
         container: "map",
         style: 'mapbox://styles/mapbox/outdoors-v11',
         center: [-98.4861, 29.4252],
-        zoom: 12
-    });
+        zoom: 12,
+        bbox: bound2
+        });
 
 document.getElementById('state-city-btn').addEventListener('click', function (e) {
         e.preventDefault();
