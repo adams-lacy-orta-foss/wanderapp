@@ -37,8 +37,8 @@ public class User {
     @Column
     private java.sql.Date DOB;
 
-    @Lob
-    private byte[] defaultimg;
+    @Column(nullable = true, length = 200)
+    private String defaultimg;
 
     @Column(length = 1000)
     private String bio;
@@ -227,12 +227,11 @@ public class User {
         isAdmin = admin;
     }
 
-    public byte[] getDefaultimg() {return defaultimg;}
+    public String getDefaultimg() {
+        return defaultimg;
+    }
 
-    public void setBlob(byte[] defaultimg) {this.defaultimg = defaultimg;}
-
-    public String generateBase64Image()
-    {
-        return Base64.encodeBase64String(this.getDefaultimg());
+    public void setDefaultimg(String defaultimg) {
+        this.defaultimg = defaultimg;
     }
 }
