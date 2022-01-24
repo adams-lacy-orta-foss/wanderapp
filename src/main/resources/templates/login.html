@@ -1,32 +1,175 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>page</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins&family=Yeseva+One&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/style.css">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		
+		body {
+			background-color: cornsilk;
+			overflow: hidden;
+		}
+		
+		.welcome-box {
+			position: relative;
+			height: 100vh;
+			background-image: linear-gradient(
+				to bottom, rgba(104, 139, 88, 0.8), rgba(0, 78, 100, 0.8)),
+				url("../img/wander-background-1.jpg");
+			background-size: cover;
+			background-position: center;
+			clip-path: polygon(100% 0, 100% 70%, 50% 85%, 0 70%, 0 0);
+			margin: 0 auto;
+		}
+		
+		.logo-box {
+			position: absolute;
+			top: 20px;
+			left: 20px;
+		}
+		
+		.logo {
+			height: 40px;
+		}
+		
+		.header-box {
+			position: absolute;
+			top: 40%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			color: white;
+		}
+		
+		.heading-text-main{
+			display: block;
+			text-transform: lowercase;
+			letter-spacing: 15px;
+			font-size: 70px;
+			margin-bottom: 10px;
+		}
+		
+		.heading-text-sub{
+			display: block;
+			text-transform: lowercase;
+			font-family: "Poppins", sans-serif;
+			font-size: 30px;
+			letter-spacing: 10px;
+		}
+		
+		.btn:link,
+		.btn:visited {
+			text-decoration: none;
+			text-transform: lowercase;
+			font-family: "Poppins", sans-serif;
+			font-size: x-large;
+			letter-spacing: 0.1em;
+			
+			display: block;
+			padding: 15px 40px;
+			border-radius: 100px;
+			position: absolute;
+		}
+		
+		#login-btn {
+			top: 55%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		
+		#signup-btn {
+			top: 65%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		
+		.btn-test {
+			background-color: #fff;
+			color: #000;
+		}
+		
+		.login-close {
+			position: absolute;
+			top: -30px;
+			right: 0;
+		}
+		
+		#login-box {
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+			
+			background-color: rgb(0, 0, 0, 50%);
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			
+			border-radius: 3px;
+			padding: 2em;
+		}
+		
+		#login-window {
+			position: relative;
+			background-color: #fff;
+			padding: 4em 2em;
+		}
+		
+		#login-box:not(:target) {
+			visibility: hidden;
+			opacity: 0;
+		}
+	</style>
 </head>
 <body>
 
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<div th:replace="partials.html :: site-head"></div>
-<body>
-<div th:replace="partials.html :: site-header"></div>
-<h1>Log In</h1>
-<div th:if="${param.error}">
-	Invalid Username and Password.
-</div>
-<div th:if="${param.logout}">
-	You have been logged out.
-</div>
+<div class="welcome-box">
+	<div class="logo-box">
+		<img src="../img/logoipsum-logo-13.svg" alt="wander logo" class="logo">
+	</div>
+	
+	<div class="header-box">
+		<h1 class="heading-text-main">Wander</h1>
+		<h2 class="heading-text-sub">into the wild</h2>
+	</div>
+	
+	<a href="#login-box" id="login-btn" class="btn btn-test">Login</a>
+	<a href="/sign-up" id="signup-btn" class="btn btn-test">Sign Up</a>
+	
+	<div id="login-box">
+		<div id="login-window">
+			<a href="#" class="login-close">close</a>
+			<h1>Log In</h1>
+			<div th:if="${param.error}">
+				Invalid Username and Password.
+			</div>
+			<div th:if="${param.logout}">
+				You have been logged out.
+			</div>
+			
+			<form th:action="@{/login}" method="post" class="d-flex flex-column" id="login-form">
+				<input class="border-0" id="username" name="username" type="text" placeholder="Username">
+				<input class="border-0" id="password" name="password" type="password" placeholder="Password">
+				<div></div>
+				<input class="border-0 btn btn-primary" type="submit" value="Log In">
+			</form>
+		</div>
+	</div>
 
-<form th:action="@{/login}" method="post">
-	<label for="username">Username</label>
-	<input id="username" name="username" type="text" />
-	<label for="password">Password</label>
-	<input id="password" name="password" type="password" />
-	<input type="submit" value="Log In" />
-</form>
-
-<div th:replace="partials.html :: site-footer"></div>
+</div>
 
 <div th:replace="partials.html :: site-scripts"></div>
 </body>
