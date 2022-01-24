@@ -75,9 +75,15 @@
 			position: absolute;
 			height: 30vh;
 			width: 50vw;
-			bottom: 0;
-			left: 0;
 			clip-path: polygon(0 0, 100% 50%, 100% 100%, 0% 100%);
+		}
+		
+		.btn-test {
+			background-color: black;
+			color: white;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
 		
 		#login-box {
@@ -120,7 +126,7 @@
 	
 </div>
 
-<a href="#login" id="login-btn" class="">Login</a>
+<a href="#login" id="login-btn" class="btn-test">Login</a>
 <a href="#sign-up" class="btn btn-white btn-animation">Sign Up</a>
 
 <div th:replace="partials.html :: site-scripts"></div>
