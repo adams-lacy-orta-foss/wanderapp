@@ -18,4 +18,5 @@ public class TrailController {
 
 		return "my-trails";
 	}
+
 }
