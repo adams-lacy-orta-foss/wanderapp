@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+	<div th:replace="partials.html :: site-head"></div>
+
+	<script src="/public/keys.js"></script>
+
+<body class="profile-bg-image">
+<div class="black-trans-bg" style="height: 100vh">
+<!--	<div th:replace="partials.html :: site-header"></div>-->
+	<div id="inline" class="card sand-bg offset-1 col-10 mt-5 p-5">
+		<form id="image" th:action="@{/profile}" >
+			<label for="fileupload">Select a file to upload</label>
+			<input type="hidden" id="fileupload">
+			<button class=" btn btn-green" id="picker" type="button">Pick file</button>
+			<div id="thumbnail-container"></div>
+			<input class="btn btn-green" type="submit" value="Submit">
+		</form>
+	</div>
+</div>
+<script th:inline="javascript">
+	/*<![CDATA[*/
+	const file = /*[[${fsKey}]]*/ 'default';
+	const client = filestack.init(file);
+	const options = {
+		onUploadDone: updateForm,
+		onUploadDone: (res) =>
+			$('#image').append(`<input type="hidden" name="profile_img" value="https://cdn.filestackcontent.com/${res.filesUploaded[0].handle}">`),
+		maxSize: 10 * 1024 * 1024,
+		accept: 'image/*',
+		uploadInBackground: false,
+	};
+	const picker = client.picker(options);
+
+	// Get references to the DOM elements
+
+	const form = document.getElementById('pick-form');
+	const fileInput = document.getElementById('fileupload');
+	const btn = document.getElementById('picker');
+	const nameBox = document.getElementById('nameBox');
+	const urlBox = document.getElementById('urlBox');
+
+	// Add our event listeners
+
+	btn.addEventListener('click', function (e) {
+		e.preventDefault();
+		picker.open();
+	});
+
+	form.addEventListener('submit', function (e) {
+		e.preventDefault();
+		alert('Submitting: ' + fileInput.value);
+	});
+
+	// Helper to overwrite the field input value
+
+	function updateForm (result) {
+		const fileData = result.filesUploaded[0];
+		fileInput.value = fileData.url;
+
+		// If file is resizable image, resize and embed it as a thumbnail preview
+		if (['jpeg', 'png'].indexOf(fileData.mimetype.split('/')[1]) !== -1) {
+			const container = document.getElementById('thumbnail-container');
+			const thumbnail = document.getElementById('thumbnail') || new Image();
+			thumbnail.id = 'thumbnail';
+			thumbnail.src = client.transform(fileData.handle, {
+				resize: {
+					width: 200
+				}
+			});
+
+			if (!container.contains(thumbnail)) {
+				container.appendChild(thumbnail);
+			}
+		}
+
+		// Some ugly DOM code to show some data.
+		const name = document.createTextNode('Selected: ' + fileData.filename);
+		const url = document.createElement('a');
+		url.href = fileData.url;
+		url.appendChild(document.createTextNode(fileData.url));
+		nameBox.appendChild(name);
+		urlBox.appendChild(document.createTextNode('Uploaded to: '));
+		urlBox.appendChild(url);
+	}
+	/*]]>*/
+</script>
+</body>
+</html>
