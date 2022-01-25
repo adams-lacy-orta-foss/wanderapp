@@ -1,26 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --light: rgb(255, 226, 192);
+    --gold: #EFC88B;
+    --dark-teal-o: rgba(0, 78, 100, 0.8);
+    --green-o: rgba(104, 139, 88, 0.8);
+    --brown: #60463B;
+    --light-blue: #A0CED9;
+    --dark-teal: rgba(0, 78, 100);
+    --green: rgba(104, 139, 88);
+}
+
 body {
     font-family: Poppins, sans-serif;
     text-align: center;
-    background-color: cornsilk;
-    min-height: 100vh;
+    background-color: var(--light);
+    min-height: 90vh;
 }
 
-h1, h2, h3, h4, h5, h6, .app-name {
+nav {
+    background-color: var(--dark-teal);
+    color: #fff;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav-item:hover {
+    background-color: var(--dark-teal);
+    color: #fff;
+    border-radius: 100px;
+    padding: .3em 1em;
+}
+
+h1, h2, h3, h4, h5, h6 {
     font-family: Yeseva One, serif;
     letter-spacing: .5px;
+    margin-top: 1em;
 }
 
-@media screen and (max-width: 760px){
-    #is-mobile-container {
-        display: none;
-    }
+.logo {
+    height: 30px;
+    margin: 0 2em;
+
+    animation: fadeIn .7s ease;
+    animation-fill-mode: backwards;
+    animation-delay: .5s;
 }
 
-/*@media screen and (max-width: 1064px){*/
-/*    * {*/
-/*        display: none;*/
-/*    }*/
-/*}*/
+.navbar-toggler-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-name {
+    font-family: Yeseva One, serif;
+    text-transform: lowercase;
+    font-size: 1.3em;
+    letter-spacing: .1em;
+    text-decoration: none;
+    color: var(--gold);
+}
+
+.app-name:hover {
+    color: var(--green);
+}
+
+#my-feed-box {
+    position: relative;
+    height: 100vh;
+    background-image: linear-gradient(
+            to bottom, var(--green), var(--dark-teal)),
+    url("../img/wander-background-1.jpg");
+    background-size: cover;
+    background-position: center;
+    clip-path: polygon(100% 0, 100% 80%, 50% 85%, 0 80%, 0 0);
+    margin: 0;
+    color: #fff;
+
+    overflow: auto;
+}
+
+#my-feed-window {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.btn:link,
+.btn:visited {
+    text-decoration: none;
+    text-transform: lowercase;
+    font-family: "Poppins", sans-serif;
+    font-size: x-large;
+    letter-spacing: 0.1em;
+
+    display: block;
+    padding: 15px 40px;
+    border-radius: 100px;
+    position: relative;
+}
+
+.btn-small:link,
+.btn-small:visited {
+    text-decoration: none;
+    text-transform: lowercase;
+    font-family: "Poppins", sans-serif;
+    font-size: x-small;
+
+    border-radius: 100px;
+    padding: 5px 10px;
+}
+
+.btn-color {
+    background-color: #fff;
+    color: #000;
+}
+
+.btn-color:hover {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
+    background-color: var(--dark-teal);
+    color: #fff;
+    border-radius: 100px;
+    transform: translateY(-4px);
+}
 
 #sign-up>div {
     margin-top: 1em;
@@ -29,11 +141,12 @@ h1, h2, h3, h4, h5, h6, .app-name {
 }
 
 #map {
-    width: 750px;
-    height: 500px;
-    margin: auto;
-    margin-top: 20px;
-    border: solid 5px #80ED99;
+    width: 90%;
+    height: 40vh;
+
+    border: 1px solid var(--gold);
+    border-radius: 20px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .5);
 }
 
 .container {
@@ -42,7 +155,205 @@ h1, h2, h3, h4, h5, h6, .app-name {
 }
 
 footer {
-    border-top: 1px solid black;
-    margin-top: 4em;
-    padding: 4em;
+    padding: .1em;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+/* LOGIN PAGE STYLING */
+.welcome-box {
+    position: relative;
+    height: 85vh;
+    background-image: linear-gradient(
+            to bottom, var(--green-o), var(--dark-teal-o)),
+    url("../img/wander-background-1.jpg");
+    background-size: cover;
+    background-position: center;
+    clip-path: polygon(100% 0, 100% 85%, 50% 100%, 0 85%, 0 0);
+
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-box {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.header-box {
+    color: white;
+}
+
+.heading-text-main {
+    display: block;
+    margin-bottom: 10px;
+
+    text-transform: lowercase;
+    letter-spacing: 15px;
+    font-size: 70px;
+    color: var(--light);
+
+    animation: fadeInPop 1s ease-out;
+    animation-fill-mode: backwards;
+}
+
+.heading-text-sub {
+    display: block;
+    text-transform: lowercase;
+    font-family: "Poppins", sans-serif;
+    font-size: 30px;
+    letter-spacing: 10px;
+
+    animation: fadeIn 1s ease-in;
+    animation-fill-mode: backwards;
+    animation-delay: 1s;
+}
+
+.btn-black-white {
+    background-color: #fff;
+    color: #000;
+}
+
+.btn-green {
+    border-radius: 100px;
+
+    background-color: var(--green);
+    color: #fff;
+}
+
+.btn:hover {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
+    background-color: var(--dark-teal);
+    color: #fff;
+    border-radius: 100px;
+}
+
+#login-btn {
+    margin: .5em;
+
+    animation: fadeUp .7s ease;
+    animation-fill-mode: backwards;
+    animation-delay: 1.3s;
+}
+
+#signup-btn {
+    margin: .5em;
+
+    animation: fadeUp .7s ease;
+    animation-fill-mode: backwards;
+    animation-delay: 1.6s;
+}
+
+#saved-trails-btn {
+    padding: .3em 1em;
+    margin: 1em;
+}
+
+.close {
+    position: absolute;
+    top: -30px;
+    right: 0;
+}
+
+#login-box, #signup-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+    background-color: rgb(0, 0, 0, 50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 2em;
+}
+
+#login-box:not(:target), #signup-box:not(:target) {
+    visibility: hidden;
+    opacity: 0;
+}
+
+#login-window, #signup-window {
+    position: relative;
+    padding: 4em 2em;
+    background-color: #fff;
+
+    border-radius: 20px;
+}
+
+#login-form > input, #signup-form > input {
+    margin-top: .5em;
+    margin-bottom: .5em;
+    padding: .5em;
+}
+
+#emailInfo {
+    color: var(--green);
+}
+
+#recommended-trails-box, #friend-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.trail-box, .friend-box {
+    height: 100px;
+    width: 100px;
+    background-color: var(--gold);
+    border: 1px solid var(--green);
+    margin: 1em;
+}
+
+#spacer {
+    height: 20%;
+}
+
+@keyframes fadeInPop {
+    0% {
+        opacity: .5;
+        transform: scale(.8);
+    }
+
+    80% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translate(0 100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0 0);
+    }
 }
