@@ -23,7 +23,7 @@ public class Trail {
 	private float trailDifficulty;
 
 	@Column
-	private float trailElevation;
+	private int trailElevation;
 
 	@Column
 	private int trailRating;
@@ -145,7 +145,7 @@ public class Trail {
 		return trailElevation;
 	}
 
-	public void setTrailElevation(float trailElevation) {
+	public void setTrailElevation(int trailElevation) {
 		this.trailElevation = trailElevation;
 	}
 
