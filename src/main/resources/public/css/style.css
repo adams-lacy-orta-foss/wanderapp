@@ -1,6 +1,8 @@
 body {
     font-family: Poppins, sans-serif;
     text-align: center;
+    background-color: cornsilk;
+    min-height: 100vh;
 }
 
 h1, h2, h3, h4, h5, h6, .app-name {
@@ -20,12 +22,12 @@ h1, h2, h3, h4, h5, h6, .app-name {
 /*    }*/
 /*}*/
 
-#sign-up {
-    max-width: 500px;
+#sign-up, #login-form {
+    max-width: 400px;
     margin: auto;
 }
 
-#sign-up>div {
+#sign-up>div, #login-form>input {
     margin-top: 1em;
     margin-bottom: 1em;
 }
@@ -39,7 +41,8 @@ h1, h2, h3, h4, h5, h6, .app-name {
 }
 
 .container {
-    min-height: 100vh;
+    display: flex;
+    justify-content: center;
 }
 
 footer {

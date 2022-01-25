@@ -2,6 +2,7 @@ package com.example.wanderapp.controllers;
 
 import com.example.wanderapp.model.User;
 import com.example.wanderapp.respository.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +23,7 @@ public class UserController {
 	@GetMapping("/sign-up")
 	public String showSignupForm(Model model){
 		model.addAttribute("user", new User());
-		return "signup";
+		return "login";
 	}
 
 	@PostMapping("/sign-up")
