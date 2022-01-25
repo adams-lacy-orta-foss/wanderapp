@@ -38,7 +38,7 @@ public class User {
     private java.sql.Date DOB;
 
     @Column(nullable = true, length = 200)
-    private String defaultimg;
+    private String defaultimg = "https://cdn.filestackcontent.com/lWRNY1W7R2ub85dJca2s";
 
     @Column(length = 1000)
     private String bio;
