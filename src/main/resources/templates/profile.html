@@ -3,8 +3,9 @@
 <div th:replace="partials.html :: site-head"></div>
 <body>
 <div th:replace="partials.html :: site-header"></div>
-<div>
+<img>
 	<p>This is the user's profile page for </p>
+	<img th:src="${user.getDefaultimg()}" alt="Profile picture"/>
 	<div>
 		<p> Name: <span  th:text="*{user.firstName}"></span>
 		<span th:text="*{user.lastName}"></span>
