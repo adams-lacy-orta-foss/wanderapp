@@ -20,7 +20,7 @@ public class Trail {
 	private double trailLength;
 
 	@Column
-	private float trailDifficulty;
+	private int trailDifficulty;
 
 	@Column
 	private int trailElevation;
@@ -36,6 +36,19 @@ public class Trail {
 
 	@ManyToMany(mappedBy = "trails")
 	private List<User> users;
+
+	public Trail(Trail copy) {
+		id = copy.id;
+		trailName = copy.trailName;
+		trailLength = copy.trailLength;
+		trailDifficulty = copy.trailDifficulty;
+		trailElevation = copy.trailElevation;
+		trailRating = copy.trailRating;
+		trailDataPoints = copy.trailDataPoints;
+		trailHeadLocation = copy.trailHeadLocation;
+	}
+
+	public Trail() {}
 
 	@ManyToMany
 	@JoinTable(
@@ -141,7 +154,7 @@ public class Trail {
 		this.trailRating = trailRating;
 	}
 
-	public float getTrailElevation() {
+	public int getTrailElevation() {
 		return trailElevation;
 	}
 
@@ -153,7 +166,7 @@ public class Trail {
 		return trailDifficulty;
 	}
 
-	public void setTrailDifficulty(float trailDifficulty) {
+	public void setTrailDifficulty(int trailDifficulty) {
 		this.trailDifficulty = trailDifficulty;
 	}
 
