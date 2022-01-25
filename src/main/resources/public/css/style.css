@@ -20,6 +20,8 @@ body {
     text-align: center;
     background-color: var(--light);
     min-height: 90vh;
+
+    overflow: hidden;
 }
 
 nav {
@@ -160,7 +162,11 @@ footer {
 
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+}
+
+footer p {
+    position: fixed;
+    bottom: 0;
 }
 
 /* LOGIN PAGE STYLING */
