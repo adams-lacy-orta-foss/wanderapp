@@ -11,87 +11,8 @@
 	      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel="stylesheet" href="/css/style.css">
 	<style>
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-		}
-		
 		body {
-			background-color: cornsilk;
 			overflow: hidden;
-		}
-		
-		.welcome-box {
-			position: relative;
-			height: 100vh;
-			background-image: linear-gradient(
-				to bottom, rgba(104, 139, 88, 0.8), rgba(0, 78, 100, 0.8)),
-				url("../img/wander-background-1.jpg");
-			background-size: cover;
-			background-position: center;
-			clip-path: polygon(100% 0, 100% 70%, 50% 85%, 0 70%, 0 0);
-			margin: 0 auto;
-		}
-		
-		.logo-box {
-			position: absolute;
-			top: 20px;
-			left: 20px;
-		}
-		
-		.logo {
-			height: 40px;
-		}
-		
-		.header-box {
-			position: absolute;
-			top: 40%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			color: white;
-		}
-		
-		.heading-text-main{
-			display: block;
-			text-transform: lowercase;
-			letter-spacing: 15px;
-			font-size: 70px;
-			margin-bottom: 10px;
-		}
-		
-		.heading-text-sub{
-			display: block;
-			text-transform: lowercase;
-			font-family: "Poppins", sans-serif;
-			font-size: 30px;
-			letter-spacing: 10px;
-		}
-		
-		#login-btn:link,
-		#login-btn:visited {
-			text-decoration: none;
-			text-transform: uppercase;
-			position: absolute;
-			height: 30vh;
-			width: 50vw;
-			clip-path: polygon(0 0, 100% 50%, 100% 100%, 0% 100%);
-		}
-		
-		.btn-test {
-			background-color: black;
-			color: white;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-		
-		#login-box {
-			background-color: white;
-			border-radius: 3px;
-			width: 500px;
-			padding: 3px;
-			margin: 3px;
 		}
 	</style>
 </head>
@@ -99,35 +20,74 @@
 
 <div class="welcome-box">
 	<div class="logo-box">
-		<img src="../img/logoipsum-logo-13.svg" alt="wander logo" class="logo">
+		<img src="../img/leaf.png" alt="wander logo" class="logo">
 	</div>
 	
 	<div class="header-box">
 		<h1 class="heading-text-main">Wander</h1>
-		<h2 class="heading-text-sub">into the wild</h2>
+		<h2 class="heading-text-sub">into the wild.</h2>
 	</div>
 	
-	<!--	<div id="login-box">-->
-	<!--		<h1>Log In</h1>-->
-	<!--		<div th:if="${param.error}">-->
-	<!--			Invalid Username and Password.-->
-	<!--		</div>-->
-	<!--		<div th:if="${param.logout}">-->
-	<!--			You have been logged out.-->
-	<!--		</div>-->
-	<!--		-->
-	<!--		<form th:action="@{/login}" method="post" class="d-flex flex-column" id="login-form">-->
-	<!--			<input class="border-0" id="username" name="username" type="text" placeholder="Username">-->
-	<!--			<input class="border-0" id="password" name="password" type="password" placeholder="Password">-->
-	<!--			<div></div>-->
-	<!--			<input class="border-0 btn btn-primary" type="submit" value="Log In">-->
-	<!--		</form>-->
-	<!--	</div>-->
-	
+	<a href="#login-box" id="login-btn" class="btn btn-black-white">Login</a>
+	<a href="#signup-box" id="signup-btn" class="btn btn-green">Sign Up</a>
+
 </div>
 
-<a href="#login" id="login-btn" class="btn-test">Login</a>
-<a href="#sign-up" class="btn btn-white btn-animation">Sign Up</a>
+<div id="login-box">
+	<div id="login-window">
+		<a href="#" class="close btn-small btn-black-white">close</a>
+		<h1>Hello Wanderer! 🥾</h1>
+		<div th:if="${param.error}">
+			Invalid Username and Password.
+		</div>
+		<div th:if="${param.logout}">
+			You have been logged out.
+		</div>
+		
+		<form th:action="@{/login}" method="post" class="d-flex flex-column" id="login-form">
+			<input class="border-0" id="username" name="username" type="text" placeholder="Username">
+			<input class="border-0" id="password" name="password" type="password" placeholder="Password">
+			<div></div>
+			<input class="border-0 btn btn-green" type="submit" value="Log In">
+		</form>
+	</div>
+</div>
+
+<div id="signup-box">
+	<div id="signup-window">
+		<a href="#" class="close btn-small btn-black-white">close</a>
+		<h1>Welcome Wanderer! 👋</h1>
+		<div th:if="${param.error}">
+			Invalid Username and Password.
+		</div>
+		
+		<form id="signup-form" class="d-flex flex-column" th:action="@{/sign-up}" th:method="post" th:object="${user}">
+			<input class="border-0" id="first-name" name="first-name" th:field="*{firstName}" type="text"
+			       placeholder="Enter first name">
+			<span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+			
+			<input class="border-0" id="last-name" name="last-name" th:field="*{lastName}" type="text"
+			       placeholder="Enter last name">
+			<span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+			
+			<input class="border-0" id="email" name="email" th:field="*{email}" type="text"
+			       placeholder="Enter valid email">
+			<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+			<small id="emailInfo" class="form-text">We'll never share your email with anyone else.</small>
+			
+			<input class="border-0" id="signup-username" name="username" th:field="*{username}" type="text"
+			       placeholder="Choose username">
+			<span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+			
+			<input class="border-0" id="signup-password" name="password" type="password" placeholder="Choose password">
+			
+			<div></div>
+			<input class="border-0 btn btn-green" type="submit" value="Sign Up">
+		</form>
+	</div>
+</div>
+
+<div th:replace="partials.html :: site-footer"></div>
 
 <div th:replace="partials.html :: site-scripts"></div>
 </body>
