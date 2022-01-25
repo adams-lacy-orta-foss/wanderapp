@@ -79,7 +79,7 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     height: 100vh;
     background-image: linear-gradient(
-            to bottom, var(--green), var(--dark-teal)),
+            to bottom, var(--green-o), var(--dark-teal-o)),
     url("../img/wander-background-1.jpg");
     background-size: cover;
     background-position: center;
