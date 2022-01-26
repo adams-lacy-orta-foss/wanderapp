@@ -21,13 +21,17 @@
 	</div>
 </div>
 <script th:inline="javascript">
-	/*<![CDATA[*/
-	const file = /*[[${fsKey}]]*/ 'default';
+	const file = fileStackAPIkey;
 	const client = filestack.init(file);
 	const options = {
 		onUploadDone: updateForm,
 		maxSize: 10 * 1024 * 1024,
 		accept: 'image/*',
+		transformations: {
+			crop: true,
+			circle: true,
+			rotate: true
+		},
 		uploadInBackground: false,
 	};
 	const picker = client.picker(options);
@@ -84,7 +88,6 @@
 		urlBox.appendChild(document.createTextNode('Uploaded to: '));
 		urlBox.appendChild(url);
 		}
-	/*]]>*/
 </script>
 </body>
 </html>
