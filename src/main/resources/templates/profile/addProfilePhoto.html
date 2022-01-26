@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+	  lang="en">
 
 	<div th:replace="partials.html :: site-head"></div>
 
@@ -25,13 +26,12 @@
 	const client = filestack.init(file);
 	const options = {
 		onUploadDone: updateForm,
-		onUploadDone: (res) =>
-			$('#image').append(`<input type="hidden" name="profile_img" value="https://cdn.filestackcontent.com/${res.filesUploaded[0].handle}">`),
 		maxSize: 10 * 1024 * 1024,
 		accept: 'image/*',
 		uploadInBackground: false,
 	};
 	const picker = client.picker(options);
+
 
 	// Get references to the DOM elements
 
@@ -58,7 +58,7 @@
 	function updateForm (result) {
 		const fileData = result.filesUploaded[0];
 		fileInput.value = fileData.url;
-
+		console.log(fileData.url)
 		// If file is resizable image, resize and embed it as a thumbnail preview
 		if (['jpeg', 'png'].indexOf(fileData.mimetype.split('/')[1]) !== -1) {
 			const container = document.getElementById('thumbnail-container');
@@ -83,7 +83,7 @@
 		nameBox.appendChild(name);
 		urlBox.appendChild(document.createTextNode('Uploaded to: '));
 		urlBox.appendChild(url);
-	}
+		}
 	/*]]>*/
 </script>
 </body>
