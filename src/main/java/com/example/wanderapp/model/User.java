@@ -35,7 +35,7 @@ public class User {
     private String password;
 
     @Column
-    private java.sql.Date DOB;
+    private String DOB;
 
     @Column(nullable = true, length = 200)
     private String profile_img = "https://cdn.filestackcontent.com/lWRNY1W7R2ub85dJca2s";
@@ -201,11 +201,11 @@ public class User {
         this.password = password;
     }
 
-    public Date getDOB() {
+    public String getDOB() {
         return DOB;
     }
 
-    public void setDOB(Date DOB) {
+    public void setDOB(String DOB) {
         this.DOB = DOB;
     }
 
