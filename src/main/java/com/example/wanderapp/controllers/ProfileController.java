@@ -41,10 +41,10 @@ public class ProfileController {
 	}
 
 	@PostMapping("/profile/add")
-	public String savePhoto(@RequestParam(name="defaultimg") String img){
+	public String savePhoto(@RequestParam(name="profile_img") String img){
 		User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		User user = userDao.findById(loginUser.getId());
-		user.setDefaultimg(img);
+		user.setProfile_img(img);
 		userDao.save(user);
 		return "redirect:/profile";
 	}

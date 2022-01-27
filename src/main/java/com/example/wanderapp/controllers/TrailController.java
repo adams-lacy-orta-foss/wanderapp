@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class TrailController {
     private TrailRepository trailDao;
@@ -25,15 +27,20 @@ public class TrailController {
     public String trailIndex(Model model) {
         User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.findById(loginUser.getId());
-        model.addAttribute("trails", trailDao.findAll());
+        model.addAttribute("trails", user.getTrails());
         model.addAttribute("trail", new Trail());
         return "my-trails";
     }
 
     @PostMapping("/my-trails")
     public String saveTrails(@ModelAttribute Trail trail) {
-        trailDao.save(trail);
-        return "my-trails";
+        User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.findById(loginUser.getId());
+        List<Trail> trailList = user.getTrails();
+        trailList.add(trail);
+        user.setTrails(trailList);
+        userDao.save(user);
+        return "redirect:/my-trails";
     }
 
 }
