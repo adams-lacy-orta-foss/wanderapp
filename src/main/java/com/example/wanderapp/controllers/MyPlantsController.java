@@ -36,11 +36,14 @@ public class MyPlantsController {
     }
 
     @GetMapping("/plants/upload")
-    public String savePlantPic(Model model) {
+    public String uploadPlantPic(Model model) {
         return "upload-plant-pic";
     }
 
-//    @PostMapping()
+//    @PostMapping("/plants")
+//    public String savePlantPic(@ModelAttribute FavoritePlants favoritePlants){
+//
+//    }
 
     @PostMapping("/plants")
     public String savePlants(@ModelAttribute FavoritePlants favoritePlants) {
