@@ -38,7 +38,7 @@ public class User {
     private java.sql.Date DOB;
 
     @Column(nullable = true, length = 200)
-    private String defaultimg = "https://cdn.filestackcontent.com/lWRNY1W7R2ub85dJca2s";
+    private String profile_img = "https://cdn.filestackcontent.com/lWRNY1W7R2ub85dJca2s";
 
     @Column(length = 1000)
     private String bio;
@@ -55,7 +55,7 @@ public class User {
         firstName = copy.firstName;
         phoneNumber = copy.phoneNumber;
         DOB = copy.DOB;
-        defaultimg = copy.defaultimg;
+        profile_img = copy.profile_img;
         bio = copy.bio;
         isAdmin = copy.isAdmin;
     }
@@ -66,8 +66,8 @@ public class User {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name="users_trails_bridge",
-            joinColumns = {@JoinColumn(name = "users_id")},
-            inverseJoinColumns = {@JoinColumn(name = "trails_id")}
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "trail_id")}
     )
     private List<Trail> trails;
 
@@ -209,8 +209,6 @@ public class User {
         this.DOB = DOB;
     }
 
-
-
     public String getBio() {
         return bio;
     }
@@ -223,15 +221,9 @@ public class User {
         return isAdmin;
     }
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
-    }
+    public void setAdmin(boolean admin) {isAdmin = admin;}
 
-    public String getDefaultimg() {
-        return defaultimg;
-    }
+    public String getProfile_img() {return profile_img;}
 
-    public void setDefaultimg(String defaultimg) {
-        this.defaultimg = defaultimg;
-    }
+    public void setProfile_img(String profile_img) {this.profile_img = profile_img;}
 }
