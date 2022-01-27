@@ -42,7 +42,6 @@ public class MyPlantsController {
 
 //    @PostMapping("/plants")
 //    public String savePlantPic(@ModelAttribute FavoritePlants favoritePlants){
-//
 //    }
 
     @PostMapping("/plants")
@@ -55,5 +54,4 @@ public class MyPlantsController {
         userDao.save(user);
         return "redirect:/plants";
     }
-
 }
