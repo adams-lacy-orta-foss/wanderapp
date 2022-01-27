@@ -3,26 +3,31 @@
 <div th:replace="partials.html :: site-head"></div>
 <body>
 <div th:replace="partials.html :: site-header"></div>
-<h1>Hi, <span th:text="*{user.firstName}"></span>!</h1>
-	<img th:src="${user.getProfile_img()}"  alt="Profile picture"/>
-	<div class="account-details">
-		<h6>
-			<span>Account Details</span>
-			<a class="" href="/settings">Edit Account</a>
-		</h6>
-		<p>Name:
-			<span th:text="*{user.firstName}"></span>
-			<span th:text="*{user.lastName}"></span>
-		</p>
-		<p>Email:
-			<span th:text="*{user.email}"></span>
-		</p>
-		<p>DOB:
-			<span th:text="*{user.DOB}"></span>
-		</p>
-		
-<!--		<img th:src="@{'data:image/jpeg;base64,'+${user.defaultimg.generateBase64Image()}}" alt="default"/>-->
-<!--	</div>-->
+
+<div class="my-feed-box">
+	<div class="my-feed-window">
+		<h1>Hi, <span th:text="*{user.firstName}"></span>!</h1>
+		<img th:src="${user.getProfile_img()}" alt="Profile picture"/>
+		<div class="account-details">
+			<h6>
+				<span>Account Details</span>
+				<a class="" href="/settings">Edit Account</a>
+			</h6>
+			<p>Name:
+				<span th:text="*{user.firstName}"></span>
+				<span th:text="*{user.lastName}"></span>
+			</p>
+			<p>Email:
+				<span th:text="*{user.email}"></span>
+			</p>
+			<p>DOB:
+				<span th:text="*{user.DOB}"></span>
+			</p>
+		</div>
+	</div>
+	
+	<!--		<img th:src="@{'data:image/jpeg;base64,'+${user.defaultimg.generateBase64Image()}}" alt="default"/>-->
+	<!--	</div>-->
 
 </div>
 <div th:replace="partials.html :: site-footer"></div>
