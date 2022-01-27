@@ -1,10 +1,46 @@
 <!--THIS IS THE USER'S SETTINGS PAGE-->
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+	  xmlns:th="http://www.thymeleaf.org">
 <div th:replace="partials.html :: site-head"></div>
 <body>
 <div th:replace="partials.html :: site-header"></div>
 <H1>Settings</H1>
-<div th:replace="partials.html :: site-scripts"> </div>
+<div th:replace="partials.html :: site-scripts"></div>
+
+<form method="post"
+	  th:action="${'/settings'}"
+	  th:object="${user}">
+
+	<lable name="profile_img">profile image:</lable>
+	<input name="Profile_img"
+		   type="file"
+		   th:value="${user.getId()}">
+
+	<label name="FirstName">First Name:</label>
+	<input name="FirstName"
+		   th:value="${user.getFirstName()}">
+
+	<label name="LastName">Last Name:</label>
+	<input name="LastName"
+		   th:value="${user.getLastName()}">
+
+	<label name="Email">Email:</label>
+	<input name="Email"
+		   type="email"
+		   th:value="${user.getEmail()}">
+
+	<label name="DOB">Date of Birth:</label>
+	<input name="DOB"
+		   type="date"
+		   th:value="${user.getDOB()}">
+
+	<input name="Id"
+		   th:value="${user.getId()}"
+		   type="hidden">
+
+	<button type="submit">Submit edit</button>
+
+</form>
 </body>
 </html>
