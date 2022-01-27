@@ -5,6 +5,9 @@
 <div th:replace="partials.html :: site-header"></div>
 <h1>My Plants</h1>
 
+<p><a th:href="@{/plants/upload}">Upload</a></p>
+
+
 <div th:replace="partials.html :: site-footer"></div>
 <div th:each="plants: ${plants}">
     <p th:text="${plants.getimageUrl()}"></p>
@@ -28,6 +31,7 @@
 </form>
 
 
+>>>>>>> 1f24882300ac88e4cc0f4f5503590b29e4f59370
 <div th:replace="partials.html :: site-scripts"></div>
 </body>
 </html>
