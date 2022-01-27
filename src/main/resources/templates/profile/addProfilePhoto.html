@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+	  lang="en">
 
 	<div th:replace="partials.html :: site-head"></div>
 
@@ -31,6 +32,7 @@
 	};
 	const picker = client.picker(options);
 
+
 	// Get references to the DOM elements
 
 	const form = document.getElementById('pick-form');
@@ -56,7 +58,7 @@
 	function updateForm (result) {
 		const fileData = result.filesUploaded[0];
 		fileInput.value = fileData.url;
-
+		console.log(fileData.url)
 		// If file is resizable image, resize and embed it as a thumbnail preview
 		if (['jpeg', 'png'].indexOf(fileData.mimetype.split('/')[1]) !== -1) {
 			const container = document.getElementById('thumbnail-container');
@@ -81,7 +83,11 @@
 		nameBox.appendChild(name);
 		urlBox.appendChild(document.createTextNode('Uploaded to: '));
 		urlBox.appendChild(url);
-	}
+
+
+
+
+		}
 
 	/*]]>*/
 </script>
