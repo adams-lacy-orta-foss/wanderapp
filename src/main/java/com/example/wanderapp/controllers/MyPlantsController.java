@@ -6,6 +6,7 @@ import com.example.wanderapp.respository.FavoritePlantsRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class MyPlantsController {
@@ -26,5 +27,7 @@ public class MyPlantsController {
     public String savePlantPic(Model model) {
         return "upload-plant-pic";
     }
+
+    @PostMapping()
 
 }
