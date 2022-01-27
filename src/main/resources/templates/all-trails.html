@@ -10,5 +10,11 @@
 
 <div th:replace="partials.html :: site-scripts"></div>
 
+<div th:each="trail : ${trails}">
+    <h1 th:text="${trail.getTrailName()}"></h1>
+    <p th:text="${trail.getTrailElevation()}"></p>
+    <p th:text="${trail.getTrailHeadLocation()}"></p>
+</div>
+
 </body>
 </html>
