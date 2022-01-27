@@ -21,19 +21,14 @@
 	</div>
 </div>
 <script th:inline="javascript">
-	const file = fileStackAPIkey;
+	/*<![CDATA[*/
+	const file = /*[[${fsKey}]]*/ 'default';
 	const client = filestack.init(file);
 	const options = {
 		onUploadDone: updateForm,
 		maxSize: 10 * 1024 * 1024,
 		accept: 'image/*',
-		transformations: {
-			crop: true,
-			circle: true,
-			rotate: true
-		},
 		uploadInBackground: false,
-		fromSources: ["url"]
 	};
 	const picker = client.picker(options);
 
@@ -93,6 +88,7 @@
 
 
 		}
+
 	/*]]>*/
 </script>
 </body>
