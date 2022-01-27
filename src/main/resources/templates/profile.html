@@ -3,18 +3,24 @@
 <div th:replace="partials.html :: site-head"></div>
 <body>
 <div th:replace="partials.html :: site-header"></div>
-	<p>This is the user's profile page for </p>
-	<img th:src="${user.getProfile_img()}" alt="Profile picture"
-		 height="200" width="200"/>
-	<div>
-		<p> Name: <span  th:text="*{user.firstName}"></span>
-		<span th:text="*{user.lastName}"></span>
-		<br>
-		Email: <span th:text="*{user.email}"></span>
-		<br>
-		DOB:  <span th:text="*{user.DOB}"></span></p>
-		<br>
-
+<h1>Hi, <span th:text="*{user.firstName}"></span>!</h1>
+	<img th:src="${user.getProfile_img()}"  alt="Profile picture"/>
+	<div class="account-details">
+		<h6>
+			<span>Account Details</span>
+			<a class="" href="/settings">Edit Account</a>
+		</h6>
+		<p>Name:
+			<span th:text="*{user.firstName}"></span>
+			<span th:text="*{user.lastName}"></span>
+		</p>
+		<p>Email:
+			<span th:text="*{user.email}"></span>
+		</p>
+		<p>DOB:
+			<span th:text="*{user.DOB}"></span>
+		</p>
+		
 <!--		<img th:src="@{'data:image/jpeg;base64,'+${user.defaultimg.generateBase64Image()}}" alt="default"/>-->
 <!--	</div>-->
 

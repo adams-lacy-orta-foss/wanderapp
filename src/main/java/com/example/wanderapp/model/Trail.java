@@ -34,8 +34,7 @@ public class Trail {
 	@Column(length = 1000)
 	private String trailHeadLocation;
 
-	@ManyToMany(mappedBy = "trails")
-	private List<User> users;
+
 
 	public Trail(Trail copy) {
 		id = copy.id;
@@ -49,6 +48,9 @@ public class Trail {
 	}
 
 	public Trail() {}
+
+	@ManyToMany(mappedBy = "trails")
+	private List<User> users;
 
 	@ManyToMany
 	@JoinTable(
