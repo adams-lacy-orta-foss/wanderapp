@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AllFriendsController {
 
-    @GetMapping("/all-friends")
+    @GetMapping("/my-friends")
     public String allFriends() {
         return "all-friends";
     }

@@ -23,6 +23,10 @@
         </div>
     </div>
     <div class="form-group">
+        <input type="text" class="form-control" th:field="*{trailLength}" id="username" placeholder="trail length">
+        <span th:if="${#fields.hasErrors('trailLength')}" th:errors="*{trailLength}"></span>
+    </div>
+    <div class="form-group">
         <input type="text" class="form-control" th:field="*{trailHeadLocation}" id="username" placeholder="trail head location">
         <span th:if="${#fields.hasErrors('trailHeadLocation')}" th:errors="*{trailHeadLocation}"></span>
     </div>
