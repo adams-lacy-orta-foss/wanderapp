@@ -66,8 +66,8 @@ public class User {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name="users_trails_bridge",
-            joinColumns = {@JoinColumn(name = "users_id")},
-            inverseJoinColumns = {@JoinColumn(name = "trails_id")}
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "trail_id")}
     )
     private List<Trail> trails;
 
@@ -208,8 +208,6 @@ public class User {
     public void setDOB(Date DOB) {
         this.DOB = DOB;
     }
-
-
 
     public String getBio() {
         return bio;
