@@ -22,4 +22,9 @@ public class MyPlantsController {
         return "my-plants";
     }
 
+    @GetMapping("/plants/upload")
+    public String savePlantPic(Model model) {
+        return "upload-plant-pic";
+    }
+
 }
