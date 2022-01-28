@@ -35,6 +35,15 @@ public class MyPlantsController {
         return "my-plants";
     }
 
+    @GetMapping("/plants/upload")
+    public String uploadPlantPic(Model model) {
+        return "upload-plant-pic";
+    }
+
+//    @PostMapping("/plants")
+//    public String savePlantPic(@ModelAttribute FavoritePlants favoritePlants){
+//    }
+
     @PostMapping("/plants")
     public String savePlants(@ModelAttribute FavoritePlants favoritePlants) {
         User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -45,5 +54,4 @@ public class MyPlantsController {
         userDao.save(user);
         return "redirect:/plants";
     }
-
 }
