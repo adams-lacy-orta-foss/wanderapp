@@ -78,7 +78,7 @@ h1, h2, h3, h4, h5, h6 {
     display: block;
     text-decoration: none;
     color: var(--light);
-    padding: 0 1em;
+    padding: .5em;
     transition-property: color, background-color, border-color;
     transition-duration: 0.15s, 0.15s, 0.15s;
     transition-timing-function: ease-in-out, ease-in-out, ease-in-out;
@@ -88,7 +88,7 @@ h1, h2, h3, h4, h5, h6 {
 .nav-link-css:hover {
     text-decoration: none;
     color: var(--gold);
-    padding: 0 .8em;
+    padding: .5em;
     transform: scale(1.2);
 }
 
