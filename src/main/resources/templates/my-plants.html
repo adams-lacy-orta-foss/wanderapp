@@ -7,8 +7,6 @@
 
 <p><a th:href="@{/plants/upload}">Upload</a></p>
 
-
-<div th:replace="partials.html :: site-footer"></div>
 <div th:each="plants: ${plants}">
     <p th:text="${plants.getimageUrl()}"></p>
 </div>
@@ -21,17 +19,14 @@
         </div>
 
     </div>
-
-
-
-
+	
     <div class="d-flex justify-content-end">
         <input type="submit" value="Submit" class="btn btn-outline-dark">
     </div>
 </form>
 
-
->>>>>>> 1f24882300ac88e4cc0f4f5503590b29e4f59370
+<div th:replace="partials.html :: plant-button"></div>
+<div th:replace="partials.html :: site-footer"></div>
 <div th:replace="partials.html :: site-scripts"></div>
 </body>
 </html>
