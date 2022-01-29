@@ -5,8 +5,8 @@
 <div th:replace="partials.html :: site-head"></div>
 <body>
 <div th:replace="partials.html :: site-header"></div>
+
 <H1>Settings</H1>
-<div th:replace="partials.html :: site-scripts"></div>
 
 <form method="post"
 	  th:action="${'/settings'}"
@@ -42,5 +42,9 @@
 	<button type="submit">Submit</button>
 
 </form>
+
+<div th:replace="partials.html :: plant-button"></div>
+<div th:replace="partials.html :: site-footer"></div>
+<div th:replace="partials.html :: site-scripts"></div>
 </body>
 </html>
