@@ -126,12 +126,19 @@ h1, h2, h3, h4, h5, h6 {
     padding: 5px 10px;
 }
 
+.btn-small:hover {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
+    background-color: var(--dark-teal);
+    color: #fff;
+    border-radius: 100px;
+}
+
 .btn-white {
     background-color: #fff;
     color: #000;
 }
 
-.btnwhiter:hover {
+.btn-white:hover {
     box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
     background-color: var(--dark-teal);
     color: #fff;
@@ -242,13 +249,6 @@ footer p {
     color: #fff;
 }
 
-.btn:hover {
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
-    background-color: var(--dark-teal);
-    color: #fff;
-    border-radius: 100px;
-}
-
 #login-btn {
     margin: .5em;
 
@@ -345,6 +345,20 @@ footer p {
 .account-details {
     text-align: left;
     margin-bottom: 1em;
+}
+
+.plant-pic-btn {
+    height: 100px;
+    width: 100px;
+}
+
+.plant-pic-btn i {
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
 }
 
 @keyframes fadeInPop {
