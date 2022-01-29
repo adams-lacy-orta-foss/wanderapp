@@ -35,11 +35,11 @@
 		<a class="btn btn-white user-btn" th:href="@{my-trails}">Saved Trails</a>
 		<a class="btn btn-green user-btn" th:href="@{my-plants}">Saved Plants</a>
 		
-		<a href="/plants/upload" class="btn btn-blue plant-pic-btn"><i class="fas fa-camera-retro fa-inverse"></i></a>
-		
 		<div class="spacer"></div>
 	</div>
 </div>
+
+<div th:replace="partials.html :: plant-button"></div>
 
 <div th:replace="partials.html :: site-footer"></div>
 <div th:replace="partials.html :: site-scripts"></div>
