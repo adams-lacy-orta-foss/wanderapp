@@ -2,6 +2,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>page</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 	<script src="https://static.filestackapi.com/v3/filestack.js"></script>
 	<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 	<link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css}">
@@ -65,9 +66,16 @@
 	</div>
 </nav>
 
-<footer th:fragment="site-footer" class="d-flex justify-content-center">
-	<p>This site was made by the <a href="#" class="app-name">Wander Squad</a></p>
+<footer th:fragment="site-footer" class="d-flex flex-column justify-content-center">
+	<p class="d-flex flex-column w-100">This site was made by the <a href="#" class="app-name d-block">Wander Squad</a></p>
 </footer>
+
+<div class="take-a-picture">
+	<span href="/plants/upload" class="fa-stack fa-2x">
+		<i class="fas fa-circle fa-stack-2x"></i>
+		<i class="fas fa-camera-retro fa-inverse"></i>
+	</span>
+</div>
 
 <div th:fragment="site-scripts">
 	<script src="/js/keys.js"></script>

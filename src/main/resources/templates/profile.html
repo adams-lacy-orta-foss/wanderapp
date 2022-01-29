@@ -1,35 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div th:replace="partials.html :: site-head"></div>
 <body>
 <div th:replace="partials.html :: site-header"></div>
 
 <div class="my-feed-box">
 	<div class="my-feed-window">
-		<h1>Hi, <span th:text="*{user.firstName}"></span>!</h1>
-		<img th:src="*{user.getProfile_img()}" alt="Profile picture"/>
+		<h1>Hi, <span th:text="*{user.getFirstName()}"></span>!</h1>
+		<img src="https://cdn.filestackcontent.com/lWRNY1W7R2ub85dJca2s" alt="Profile picture" class="profile-pic">
 		<div class="account-details">
-			<h6>
-				<span>Account Details</span>
-				<a class="" href="/settings">Edit Account</a>
-			</h6>
+			<h3 class="m-5">
+				Account Details
+			</h3>
 			<p>Name:
-				<span th:text="*{user.firstName}"></span>
-				<span th:text="*{user.lastName}"></span>
+				<span th:text="*{user.getFirstName()}"></span>
+				<span th:text="*{user.getLastName()}"></span>
+			</p>
+			<p>Username:
+				<span th:text="*{user.getUsername()}"></span>
 			</p>
 			<p>Email:
-				<span th:text="*{user.email}"></span>
+				<span th:text="*{user.getEmail()}"></span>
 			</p>
 			<p>DOB:
-				<span th:text="*{user.DOB}"></span>
+				<span th:text="*{user.getDOB()}"></span>
 			</p>
+			<div class="d-flex justify-content-between">
+				<a class="btn-small btn-blue" href="#change-password">Change Password</a>
+				<a class="btn-small btn-blue" href="/settings">Edit</a>
+			</div>
 		</div>
+		
+		<h3>My Stuff</h3>
+		<a class="btn btn-white user-btn" th:href="@{my-trails}">Saved Trails</a>
+		<a class="btn btn-green user-btn" th:href="@{my-plants}">Saved Plants</a>
+		
+		<div class="spacer"></div>
 	</div>
-	
-	<!--		<img th:src="@{'data:image/jpeg;base64,'+${user.defaultimg.generateBase64Image()}}" alt="default"/>-->
-	<!--	</div>-->
-
 </div>
+
 <div th:replace="partials.html :: site-footer"></div>
 <div th:replace="partials.html :: site-scripts"></div>
 </body>
