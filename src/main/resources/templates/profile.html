@@ -7,7 +7,7 @@
 <div class="my-feed-box">
 	<div class="my-feed-window">
 		<h1>Hi, <span th:text="*{user.firstName}"></span>!</h1>
-		<img th:src="${user.getProfile_img()}" alt="Profile picture"/>
+		<img th:src="*{user.getProfile_img()}" alt="Profile picture"/>
 		<div class="account-details">
 			<h6>
 				<span>Account Details</span>

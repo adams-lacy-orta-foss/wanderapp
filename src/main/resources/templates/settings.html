@@ -12,7 +12,7 @@
 	  th:action="${'/settings'}"
 	  th:object="${user}">
 
-	<lable name="profile_img">profile image:</lable>
+	<label name="profile_img">profile image:</label>
 	<input name="Profile_img"
 		   type="file"
 		   th:value="${user.getId()}">
@@ -39,7 +39,7 @@
 		   th:value="${user.getId()}"
 		   type="hidden">
 
-	<button type="submit">Submit edit</button>
+	<button type="submit">Submit</button>
 
 </form>
 </body>
