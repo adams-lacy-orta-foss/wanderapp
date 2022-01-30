@@ -28,7 +28,7 @@ document.querySelector('button').onclick = function sendIdentification() {
                 "wiki_description",
                 "taxonomy",
                 "synonyms"]
-            // disease details docs: https://github.com/flowerchecker/Plant-id-API/wiki/Disease-details
+            //disease details docs: https://github.com/flowerchecker/Plant-id-API/wiki/Disease-details
             //disease_details: ["common_names", "url", "description"]
         };
 

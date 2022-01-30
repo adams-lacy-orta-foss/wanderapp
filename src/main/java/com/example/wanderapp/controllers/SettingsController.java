@@ -30,7 +30,7 @@ public class SettingsController {
         User user = userDao.findById(loginUser.getId());
         model.addAttribute("fsKey",fileStackAPIkey);
         model.addAttribute("user", user);
-        return "/settings";
+        return "settings";
     }
 
     @PostMapping("/settings")

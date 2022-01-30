@@ -30,13 +30,13 @@
         <input type="text" class="form-control" th:field="*{trailHeadLocation}" id="username" placeholder="trail head location">
         <span th:if="${#fields.hasErrors('trailHeadLocation')}" th:errors="*{trailHeadLocation}"></span>
     </div>
-
-
+	
     <div class="d-flex justify-content-end">
         <input type="submit" value="Submit" class="btn btn-outline-dark">
     </div>
 </form>
 
+<div th:replace="partials.html :: plant-button"></div>
 <div th:replace="partials.html :: site-footer"></div>
 <div th:replace="partials.html :: site-scripts"></div>
 </body>

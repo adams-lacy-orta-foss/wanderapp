@@ -2,6 +2,7 @@ package com.example.wanderapp.model;
 
 
 import org.apache.tomcat.util.codec.binary.Base64;
+import org.hibernate.annotations.ColumnDefault;
 
 import java.sql.Blob;
 import javax.persistence.*;
@@ -38,7 +39,8 @@ public class User {
     private String DOB;
 
     @Column(nullable = true, length = 200)
-    private String profile_img = "https://cdn.filestackcontent.com/lWRNY1W7R2ub85dJca2s";
+    @ColumnDefault("https://cdn.filestackcontent.com/lWRNY1W7R2ub85dJca2s")
+    private String profile_img;
 
     @Column(length = 1000)
     private String bio;
