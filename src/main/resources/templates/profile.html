@@ -35,6 +35,12 @@
 		<a class="btn btn-white user-btn" th:href="@{my-trails}">Saved Trails</a>
 		<a class="btn btn-green user-btn" th:href="@{my-plants}">Saved Plants</a>
 		
+		<form th:action="@{/profile/delete}" th:method="post" th:object="${user}">
+			<div class="d-flex justify-content-end">
+				<input type="submit" value="Delete Account" class="btn btn-danger user-btn">
+			</div>
+		</form>
+		
 		<div class="spacer"></div>
 	</div>
 </div>
