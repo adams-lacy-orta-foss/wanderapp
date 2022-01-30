@@ -1,15 +1,13 @@
 package com.example.wanderapp.controllers;
 
+import com.example.wanderapp.model.Trail;
 import com.example.wanderapp.model.User;
 import com.example.wanderapp.respository.UserRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class ProfileController {
@@ -47,5 +45,13 @@ public class ProfileController {
 		user.setProfile_img(img);
 		userDao.save(user);
 		return "redirect:/profile";
+	}
+
+	@PostMapping("/profile/delete")
+	public String saveTrails(@ModelAttribute Trail trail) {
+		User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User user = userDao.findById(loginUser.getId());
+		userDao.delete(user);
+		return "redirect:/login";
 	}
 }

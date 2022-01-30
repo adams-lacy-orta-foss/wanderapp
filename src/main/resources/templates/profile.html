@@ -4,7 +4,7 @@
 <body>
 <div th:replace="partials.html :: site-header"></div>
 <h1>Hi, <span th:text="*{user.firstName}"></span>!</h1>
-	<img th:src="${user.getProfile_img()}"  alt="Profile picture"/>
+	<img th:src="${user.getProfile_img()}"  alt="Profile picture" height="150px" width="150px"/>
 	<div class="account-details">
 		<h6>
 			<span>Account Details</span>
@@ -20,6 +20,12 @@
 		<p>DOB:
 			<span th:text="*{user.DOB}"></span>
 		</p>
+		<form th:action="@{/profile/delete}" th:method="post" th:object="${user}">
+			<div class="d-flex justify-content-end">
+				<input type="submit" value="Delete Profile" class="btn btn-outline-dark">
+			</div>
+
+		</form>
 		
 <!--		<img th:src="@{'data:image/jpeg;base64,'+${user.defaultimg.generateBase64Image()}}" alt="default"/>-->
 <!--	</div>-->
