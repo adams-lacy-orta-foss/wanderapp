@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<div th:replace="partials.html :: site-head"></div>
-
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
 <body>
 
-<div th:replace="partials.html :: site-header"></div>
-
-
-<form method="post">
+<form th:action="@{/plants}" th:method="post">
     <input type="file" multiple>
+    <input id="plantUrl" name="plantUrl" type="hidden" th:value="replaceme">
 <button type="button">Ok</button>
+    <button type="submit">Finalize Upload</button>
 </form>
-<div id="plant" name="plant" style="font-weight: bold; font-size: large; color: firebrick"></div>
-<input id="plantUrl" name="plantUrl" type="hidden">
 
-<div th:replace="partials.html :: site-footer"></div>
+
+<div id="plant" style="font-weight: bold; font-size: large; color: firebrick"></div>
+
 <div th:replace="partials.html :: site-scripts"></div>
 </body>
 </html>
