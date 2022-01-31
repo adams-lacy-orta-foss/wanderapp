@@ -6,14 +6,66 @@
 
 <div th:replace="partials.html :: site-header"></div>
 
+<video id="video" width="640px" height="480px" autoplay></video>
+<button type="submit" id="snap">Take Photo</button>
 
-<form method="post">
-    <input type="file" multiple>
-<button type="button">Ok</button>
-</form>
-<div id="plant" name="plant" style="font-weight: bold; font-size: large; color: firebrick"></div>
-<input id="plantUrl" name="plantUrl" type="hidden">
+<canvas id="canvas" width="640px" height="480px"></canvas>
 
+<button type="submit" id="save-plant-photo">Save Plant</button>
+
+<div class="spacer"></div>
+<!--<form method="post">-->
+<!--    <input type="file" multiple>-->
+<!--<button type="button">Ok</button>-->
+<!--</form>-->
+<!--<div id="plant" name="plant" style="font-weight: bold; font-size: large; color: firebrick"></div>-->
+<!--<input id="plantUrl" name="plantUrl" type="hidden">-->
+<script>
+	// navigator.mediaDevices.enumerateDevices().then(devices => {
+	// 	console.log(devices)});
+	
+	let canvas = document.querySelector("#canvas");
+	let context = canvas.getContext('2d');
+	let video = document.querySelector("#video");
+	
+	//opens users camera if they allow
+	if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
+		navigator.mediaDevices.getUserMedia({video: true, sound: false}).then(stream => {
+			video.srcObject = stream;
+			video.play();
+			});
+	}
+	
+	//captures photo and displays on the canvas
+	document.getElementById("snap").addEventListener("click", () => {
+		context.drawImage(video, 0, 0, 640, 480);
+	});
+	
+	//saves photo
+	document.getElementById("save-plant-photo").addEventListener("click", ()=>{
+		// let newCanvas = document.createElement("canvas");
+		let dataURL = canvas.toDataURL();
+		// let newContext = newCanvas.getContext("2d");
+		
+		console.log(dataURL);
+
+		// newCanvas.height = 480;
+		// newCanvas.width = 640;
+		//
+		// let imagebase64data = newCanvas.toDataURL("image/png");
+		// imagebase64data = imagebase64data.replace("data:image/png;base64,", "");
+		// $.ajax({
+		// 	type: 'post',
+		// 	url: '/HOME/UploadWebCamImage',
+		// 	data: '{ "imageData" : "' + imagebase64data + '" }',
+		// 	contentType: 'application/json; charset=utf-8',
+		// 	dataType: 'text',
+		// 	success: (out) => {
+		// 		console.log('image upload successful');
+		// 	}
+		// });
+	})
+</script>
 <div th:replace="partials.html :: site-footer"></div>
 <div th:replace="partials.html :: site-scripts"></div>
 </body>
