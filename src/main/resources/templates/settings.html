@@ -17,8 +17,8 @@
 <!--		      class="d-flex flex-column justify-content-center text-left p-2">-->
 					<form id="image" th:action="@{/profile}" th:object="${user}" >
 					<label name="profile_img">Edit Profile Photo:</label>
-			<input type="hidden" id="profile_img" name="profile_img"
-			       th:value="${user.getProfile_img()}">
+			<input type="hidden" id="img" name="profile_img"
+			       th:value="img">
 					<button class=" btn btn-green" id="picker" type="button">Pick file</button>
 						<br>
 			
@@ -71,7 +71,7 @@
 	// Get references to the DOM elements
 
 	const form = document.getElementById('pick-form');
-	const fileInput = document.getElementById('profile_img');
+	const fileInput = document.getElementById('img');
 	const btn = document.getElementById('picker');
 	const nameBox = document.getElementById('nameBox');
 	const urlBox = document.getElementById('urlBox');
@@ -104,6 +104,7 @@
 		nameBox.appendChild(name);
 		urlBox.appendChild(document.createTextNode('Uploaded to: '));
 		urlBox.appendChild(url);
+		document.getElementById("img").value=fileData.url
 
 
 
