@@ -42,17 +42,12 @@ public class MyPlantsController {
         return "upload-plant-pic";
     }
 
-//    @PostMapping("/plants")
-//    public String savePlantPic(@ModelAttribute FavoritePlants favoritePlants){
-//    }
-
     @PostMapping("/plants")
     public String savePlants(@RequestParam(name="plantUrl") String plantUrl, Model model, @ModelAttribute FavoritePlants favoritePlants) {
         User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.findById(loginUser.getId());
         List<FavoritePlants> favoritePlant = user.getFavoritePlants();
         model.addAttribute("plantUrl", plantUrl);
-        System.out.println("plantURL = " + plantUrl);//We are here < the url comes back into our controller
         favoritePlants.setimageUrl(plantUrl);
         favoritePlant.add(favoritePlants);
         user.setFavoritePlants(favoritePlant);
@@ -60,14 +55,4 @@ public class MyPlantsController {
         return "redirect:/plants";
     }
 
-//    @PostMapping("/plants")
-//    public String savePlants(@ModelAttribute FavoritePlants favoritePlants) {
-//        User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User user = userDao.findById(loginUser.getId());
-//        List<FavoritePlants> favoritePlant = user.getFavoritePlants();
-//        favoritePlant.add(favoritePlants);
-//        user.setFavoritePlants(favoritePlant);
-//        userDao.save(user);
-//        return "redirect:/plants";
-//    }
 }
