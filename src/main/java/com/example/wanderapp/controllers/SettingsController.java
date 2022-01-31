@@ -34,11 +34,12 @@ public class SettingsController {
     }
 
     @PostMapping("/settings")
-    public String saveEditPost(@RequestParam(name="FirstName") String FirstName, @RequestParam(name="LastName") String LastName, @RequestParam(name="Id") long id, @RequestParam(name="Profile_img") String img, @RequestParam(name="Email") String email, @RequestParam(name="DOB") String DOB) {
+    public String saveEditPost(@RequestParam(name="FirstName") String FirstName, @RequestParam(name="LastName") String LastName, @RequestParam(name="Id") long id, @RequestParam(name="Profile_img") String img, @RequestParam(name="Email") String email, @RequestParam(name="DOB") String DOB, Model model) {
 
         User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.findById(loginUser.getId());
-
+        model.addAttribute("Profile_img", img);
+        System.out.println("img = " + img);
 
         user.setFirstName(FirstName);
         user.setLastName(LastName);
