@@ -37,6 +37,7 @@ public class MyPlantsController {
 
     @GetMapping("/plants/upload")
     public String uploadPlantPic(Model model) {
+        model.addAttribute("plantUrl", new FavoritePlants());
         return "upload-plant-pic";
     }
 
@@ -49,6 +50,8 @@ public class MyPlantsController {
         User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.findById(loginUser.getId());
         List<FavoritePlants> favoritePlant = user.getFavoritePlants();
+//        model.addAttribute("plantUrl", favoritePlants.getimageUrl());
+        System.out.println();
         favoritePlant.add(favoritePlants);
         user.setFavoritePlants(favoritePlant);
         userDao.save(user);
