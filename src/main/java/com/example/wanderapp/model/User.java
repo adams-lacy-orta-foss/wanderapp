@@ -39,8 +39,7 @@ public class User {
     private String DOB;
 
     @Column(nullable = true, length = 200)
-    @ColumnDefault("https://cdn.filestackcontent.com/lWRNY1W7R2ub85dJca2s")
-    private String profile_img;
+    private String profile_img = "https://cdn.filestackcontent.com/lWRNY1W7R2ub85dJca2s";
 
     @Column(length = 1000)
     private String bio;
