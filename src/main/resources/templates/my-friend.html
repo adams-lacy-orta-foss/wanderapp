@@ -6,9 +6,13 @@
 <h1>Friend View</h1>
 
 <p>test</p>
-<div th:each="friend: ${friend}">
-    <h1 th:text="${friend.getUsername()}"></h1>
-</div>
+
+<form th:action="@{/all-friends/delete}" th:method="post" th:object="${friends}">
+    <div th:each="friend: ${friend}">
+        <h1 th:text="${friend.getUsername()}"></h1>
+        <input type="submit" value="Delete" name="friendId" th:value="${friend.getId()}" class="btn btn-outline-dark">
+    </div>
+</form>
 
 <form  th:action="@{/all-friends}" th:method="post" id="trail" th:object="${friends}">
     <div class="row form-group">
