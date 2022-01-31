@@ -45,4 +45,15 @@ public class FriendsController {
         return "redirect:/all-friends";
     }
 
+    @PostMapping ("/all-friends/delete")
+    public String deleteTrail(Long friendId) {
+        User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.findById(loginUser.getId());
+        List<Friend> friendsList = user.getFriends();
+        friendsList.remove(friendsDao.getById(friendId));
+        user.setFriends(friendsList);
+        userDao.save(user);
+        return "redirect:/plants";
+    }
+
 }

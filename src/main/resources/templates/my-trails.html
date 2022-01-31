@@ -4,14 +4,18 @@
 <body>
 <div th:replace="partials.html :: site-header"></div>
 <h1>My Trails</h1>
+<form th:action="@{/my-trails/delete}" th:method="post" th:object="${trail}">
+    <div th:each="trail : ${trails}">
 
-<div th:each="trail : ${trails}">
-	<h1 th:text="${trail.getTrailName()}"></h1>
-    <p th:text="${trail.getTrailElevation()}"></p>
-    <p th:text="${trail.getTrailHeadLocation()}"></p>
-</div>
+        <input type="hidden" th:field="*{id}"/>
+        <h1 th:text="${trail.getTrailName()}"></h1>
+        <p th:text="${trail.getTrailElevation()}"></p>
+        <p th:text="${trail.getTrailHeadLocation()}"></p>
+        <input type="submit" value="Delete" name="trailId" th:value="${trail.getId()}" class="btn btn-outline-dark">
+    </div>
+</form>
 
-<form  th:action="@{/my-trails}" th:method="post" id="trail" th:object="${trail}">
+<form th:action="@{/my-trails}" th:method="post" id="trail" th:object="${trail}">
     <div class="row form-group">
         <div class="col">
             <input type="text" class="form-control" th:field="*{trailName}" placeholder="Trail name">
@@ -27,16 +31,17 @@
         <span th:if="${#fields.hasErrors('trailLength')}" th:errors="*{trailLength}"></span>
     </div>
     <div class="form-group">
-        <input type="text" class="form-control" th:field="*{trailHeadLocation}" id="username" placeholder="trail head location">
+        <input type="text" class="form-control" th:field="*{trailHeadLocation}" id="username"
+               placeholder="trail head location">
         <span th:if="${#fields.hasErrors('trailHeadLocation')}" th:errors="*{trailHeadLocation}"></span>
     </div>
-
 
     <div class="d-flex justify-content-end">
         <input type="submit" value="Submit" class="btn btn-outline-dark">
     </div>
 </form>
 
+<div th:replace="partials.html :: plant-button"></div>
 <div th:replace="partials.html :: site-footer"></div>
 <div th:replace="partials.html :: site-scripts"></div>
 </body>

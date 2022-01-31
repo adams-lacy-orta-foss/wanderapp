@@ -2,6 +2,7 @@ package com.example.wanderapp.model;
 
 
 import org.apache.tomcat.util.codec.binary.Base64;
+import org.hibernate.annotations.ColumnDefault;
 
 import java.sql.Blob;
 import javax.persistence.*;

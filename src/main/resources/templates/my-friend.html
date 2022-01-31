@@ -5,11 +5,14 @@
 <div th:replace="partials.html :: site-header"></div>
 <h1>Friend View</h1>
 
-<div th:replace="partials.html :: site-footer"></div>
 <p>test</p>
-<div th:each="friend: ${friend}">
-    <h1 th:text="${friend.getUsername()}"></h1>
-</div>
+
+<form th:action="@{/all-friends/delete}" th:method="post" th:object="${friends}">
+    <div th:each="friend: ${friend}">
+        <h1 th:text="${friend.getUsername()}"></h1>
+        <input type="submit" value="Delete" name="friendId" th:value="${friend.getId()}" class="btn btn-outline-dark">
+    </div>
+</form>
 
 <form  th:action="@{/all-friends}" th:method="post" id="trail" th:object="${friends}">
     <div class="row form-group">
@@ -19,15 +22,14 @@
         </div>
 
     </div>
-
-
-
-
+	
     <div class="d-flex justify-content-end">
         <input type="submit" value="Submit" class="btn btn-outline-dark">
     </div>
 </form>
 
+<div th:replace="partials.html :: plant-button"></div>
+<div th:replace="partials.html :: site-footer"></div>
 <div th:replace="partials.html :: site-scripts"></div>
 </body>
 </html>
