@@ -54,4 +54,16 @@ public class MyPlantsController {
         userDao.save(user);
         return "redirect:/plants";
     }
+
+    @PostMapping ("/plants/delete")
+    public String deleteTrail(Long plantId) {
+        User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.findById(loginUser.getId());
+        List<FavoritePlants> plantList = user.getFavoritePlants();
+        System.out.println(plantId);
+        plantList.remove(plantsdao.getById(plantId));
+        user.setFavoritePlants(plantList);
+        userDao.save(user);
+        return "redirect:/plants";
+    }
 }
