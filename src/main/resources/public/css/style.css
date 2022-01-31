@@ -331,7 +331,8 @@ footer p {
 
 #login-box,
 #signup-box,
-#delete-box {
+#delete-box,
+#change-password-box {
     position: fixed;
     top: 0;
     left: 0;
@@ -349,14 +350,16 @@ footer p {
 
 #login-box:not(:target),
 #signup-box:not(:target),
-#delete-box:not(:target) {
+#delete-box:not(:target),
+#change-password-box:not(:target) {
     visibility: hidden;
     opacity: 0;
 }
 
 #login-window,
 #signup-window,
-#delete-window {
+#delete-window,
+#change-password-window {
     position: relative;
     padding: 4em 2em;
     background-color: #fff;
@@ -369,7 +372,8 @@ footer p {
 #login-form > input,
 #signup-form > input,
 #delete-form > input,
-#delete-form > a {
+#delete-form > a,
+#password-form > input {
     margin-top: .5em;
     margin-bottom: .5em;
     padding: .5em;
