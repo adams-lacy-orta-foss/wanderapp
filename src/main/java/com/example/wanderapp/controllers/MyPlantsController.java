@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -37,32 +38,20 @@ public class MyPlantsController {
 
     @GetMapping("/plants/upload")
     public String uploadPlantPic(Model model) {
+        model.addAttribute("plantUrl", new FavoritePlants());
         return "upload-plant-pic";
     }
 
-//    @PostMapping("/plants")
-//    public String savePlantPic(@ModelAttribute FavoritePlants favoritePlants){
-//    }
-
     @PostMapping("/plants")
-    public String savePlants(@ModelAttribute FavoritePlants favoritePlants) {
+    public String savePlants(@RequestParam(name="plantUrl") String plantUrl, Model model, @ModelAttribute FavoritePlants favoritePlants) {
         User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.findById(loginUser.getId());
         List<FavoritePlants> favoritePlant = user.getFavoritePlants();
+        model.addAttribute("plantUrl", plantUrl);
+//        System.out.println("plantUrl = " + plantUrl);
+        favoritePlants.setimageUrl(plantUrl);
         favoritePlant.add(favoritePlants);
         user.setFavoritePlants(favoritePlant);
-        userDao.save(user);
-        return "redirect:/plants";
-    }
-
-    @PostMapping ("/plants/delete")
-    public String deleteTrail(Long plantId) {
-        User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = userDao.findById(loginUser.getId());
-        List<FavoritePlants> plantList = user.getFavoritePlants();
-        System.out.println(plantId);
-        plantList.remove(plantsdao.getById(plantId));
-        user.setFavoritePlants(plantList);
         userDao.save(user);
         return "redirect:/plants";
     }
