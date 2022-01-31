@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -46,15 +47,27 @@ public class MyPlantsController {
 //    }
 
     @PostMapping("/plants")
-    public String savePlants(@ModelAttribute FavoritePlants favoritePlants) {
+    public String savePlants(@RequestParam(name="plantUrl") String plantUrl, Model model, @ModelAttribute FavoritePlants favoritePlants) {
         User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.findById(loginUser.getId());
         List<FavoritePlants> favoritePlant = user.getFavoritePlants();
-//        model.addAttribute("plantUrl", favoritePlants.getimageUrl());
-        System.out.println();
+        model.addAttribute("plantUrl", plantUrl);
+        System.out.println("plantURL = " + plantUrl);//We are here < the url comes back into our controller
+        favoritePlants.setimageUrl(plantUrl);
         favoritePlant.add(favoritePlants);
         user.setFavoritePlants(favoritePlant);
         userDao.save(user);
         return "redirect:/plants";
     }
+
+//    @PostMapping("/plants")
+//    public String savePlants(@ModelAttribute FavoritePlants favoritePlants) {
+//        User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User user = userDao.findById(loginUser.getId());
+//        List<FavoritePlants> favoritePlant = user.getFavoritePlants();
+//        favoritePlant.add(favoritePlants);
+//        user.setFavoritePlants(favoritePlant);
+//        userDao.save(user);
+//        return "redirect:/plants";
+//    }
 }

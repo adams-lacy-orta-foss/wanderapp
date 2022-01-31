@@ -45,9 +45,7 @@ document.querySelector('button').onclick = function sendIdentification() {
                 document.getElementById("plant").append(
                     data.suggestions[0].plant_details.common_names[0],
                 )
-                document.getElementById("plantUrl").append(
-                    data.images[0].url,
-                )
+                document.getElementById("plantUrl").value=data.images[0].url
             })
             .catch((error) => {
                 console.error('Error:', error);
