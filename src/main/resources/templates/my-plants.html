@@ -6,10 +6,15 @@
 <h1>My Plants</h1>
 
 <p><a th:href="@{/plants/upload}">Upload</a></p>
+<form th:action="@{/plants/delete}" th:method="post" th:object="${plant}">
+    <div th:each="plants: ${plants}">
+        <input type="hidden" th:field="*{id}"/>
+        <p th:text="${plants.getimageUrl()}"></p>
+        <input type="submit" value="Delete" name="plantId" th:value="${plants.getId()}" class="btn btn-outline-dark">
+    </div>
 
-<div th:each="plants: ${plants}">
-    <p th:text="${plants.getimageUrl()}"></p>
-</div>
+</form>
+
 
 <form  th:action="@{/plants}" th:method="post" id="trail" th:object="${plant}">
     <div class="row form-group">
