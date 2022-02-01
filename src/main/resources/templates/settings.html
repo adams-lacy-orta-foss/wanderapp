@@ -3,24 +3,24 @@
 <html lang="en"
 	  xmlns:th="http://www.thymeleaf.org">
 <div th:replace="partials.html :: site-head"></div>
-<body>
+<body class="profile-bg-image">
 <div th:replace="partials.html :: site-header"></div>
 
 <div class="my-feed-box">
 	<div class="my-feed-window">
 		<H1>Settings</H1>
-		
-		<img src="https://cdn.filestackcontent.com/lWRNY1W7R2ub85dJca2s" alt="your profile picture" class="profile-pic">
-		
-		<form method="post"
-		      th:action="@{'/settings'}"
-		      th:object="${user}"
-		      class="d-flex flex-column justify-content-center text-left p-2">
-			
-			<label name="profile_img">Edit Profile Photo:</label>
-			<input name="Profile_img"
-			       type="file"
-			       th:value="${user.getId()}">
+<!--		<img th:src="${user.getProfile_img()}"  alt="Profile picture" class="profile-pic">-->
+<!--		-->
+<!--		<form method="post"-->
+<!--		      th:action="@{'/settings'}"-->
+<!--		      th:object="${user}"-->
+<!--		      class="d-flex flex-column justify-content-center text-left p-2">-->
+					<form id="image" th:action="@{/profile}" th:object="${user}" >
+					<label name="profile_img">Edit Profile Photo:</label>
+			<input type="hidden" id="img" name="profile_img"
+			       th:value="img">
+					<button class=" btn btn-green" id="picker" type="button">Pick file</button>
+						<br>
 			
 			<label name="FirstName">First Name:</label>
 			<input name="FirstName"
@@ -54,5 +54,65 @@
 <div th:replace="partials.html :: plant-button"></div>
 <div th:replace="partials.html :: site-footer"></div>
 <div th:replace="partials.html :: site-scripts"></div>
+
+<script th:inline="javascript">
+	/*<![CDATA[*/
+	const file = /*[[${fsKey}]]*/ 'default';
+	const client = filestack.init(file);
+	const options = {
+		onUploadDone: updateForm,
+		maxSize: 10 * 1024 * 1024,
+		accept: 'image/*',
+		uploadInBackground: false,
+	};
+	const picker = client.picker(options);
+
+
+	// Get references to the DOM elements
+
+	const form = document.getElementById('pick-form');
+	const fileInput = document.getElementById('img');
+	const btn = document.getElementById('picker');
+	const nameBox = document.getElementById('nameBox');
+	const urlBox = document.getElementById('urlBox');
+
+	// Add our event listeners
+
+	btn.addEventListener('click', function (e) {
+		e.preventDefault();
+		picker.open();
+	});
+
+	form.addEventListener('submit', function (e) {
+		e.preventDefault();
+		alert('Submitting: ' + fileInput.value);
+	});
+
+	// Helper to overwrite the field input value
+
+	function updateForm (result) {
+		const fileData = result.filesUploaded[0];
+		fileInput.value = fileData.url;
+		console.log(fileData.url)
+
+
+		// Some ugly DOM code to show some data.
+		const name = document.createTextNode('Selected: ' + fileData.filename);
+		const url = document.createElement('a');
+		url.href = fileData.url;
+		url.appendChild(document.createTextNode(fileData.url));
+		nameBox.appendChild(name);
+		urlBox.appendChild(document.createTextNode('Uploaded to: '));
+		urlBox.appendChild(url);
+		document.getElementById("img").value=fileData.url
+
+
+
+
+
+	}
+
+	/*]]>*/
+</script>
 </body>
 </html>
