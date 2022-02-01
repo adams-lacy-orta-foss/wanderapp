@@ -21,32 +21,32 @@
 			       th:value="img">
 					<button class=" btn btn-green" id="picker" type="button">Pick file</button>
 						<br>
-			
+
 			<label name="FirstName">First Name:</label>
 			<input name="FirstName"
 			       th:value="${user.getFirstName()}">
-			
+
 			<label name="LastName">Last Name:</label>
 			<input name="LastName"
 			       th:value="${user.getLastName()}">
-			
+
 			<label name="Email">Email:</label>
 			<input name="Email"
 			       type="email"
 			       th:value="${user.getEmail()}">
-			
+
 			<label name="DOB">Date of Birth:</label>
 			<input name="DOB"
 			       type="date"
 			       th:value="${user.getDOB()}">
-			
+
 			<input name="Id"
 			       th:value="${user.getId()}"
 			       type="hidden">
-			
+
 			<button type="submit" class="btn-green w-25 mt-3 p-2 ml-auto">Submit</button>
 		</form>
-		
+
 		<div class="spacer"></div>
 	</div>
 </div>
