@@ -2,15 +2,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Upload Plant</title>
 </head>
 <body>
 
 <form th:action="@{/plants}" th:method="post">
     <input type="file" multiple>
     <input id="plantUrl" name="plantUrl" type="hidden" th:value="replaceme">
-<button type="button">Ok</button>
-    <button type="submit">Finalize Upload</button>
+    <input id="plantName" name="plantName" type="hidden" th:value="replacethis">
+    <input id="plantDescription" name="plantDescription" type="hidden" th:value="replacealso">
+    <button type="button">Scan Plant</button>
+    <button type="submit">Save to your Plants</button>
 </form>
 
 

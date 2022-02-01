@@ -8,6 +8,8 @@
 <a th:href="@{/plants/upload}" id="login-btn" class="btn btn-black-white">Upload</a>
 <div th:each="plants: ${plants}">
     <img th:src="${plants.getimageUrl()}"  alt="Profile picture" height="150px" width="150px"/>
+    <p th:text="${plants.getPlantname()}"></p>
+    <p th:text="${plants.getPlantDescription()}"></p>
 </div>
 
 <!--<form th:action="@{/plants/delete}" th:method="post" th:object="${plant}">-->
