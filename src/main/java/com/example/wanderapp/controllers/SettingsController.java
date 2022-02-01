@@ -20,7 +20,6 @@ public class SettingsController {
     @Value("${fileStackAPIkey}")
     private String fileStackAPIkey;
 
-
     public SettingsController(UserRepository userDao) {
         this.userDao = userDao;
     }
