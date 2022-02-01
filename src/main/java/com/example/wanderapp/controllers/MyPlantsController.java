@@ -51,13 +51,14 @@ public class MyPlantsController {
     }
 
     @PostMapping("/plants")
-    public String savePlants(@RequestParam(name="plantUrl") String plantUrl, @RequestParam(name="plantName") String plantName, @RequestParam(name="plantDescription") String plantDescription, Model model, @ModelAttribute FavoritePlants favoritePlants) {
+    public String savePlants(@RequestParam(name="plantUrl") String plantUrl, @RequestParam(name="plantName") String plantName, @RequestParam(name="plantDescription") String plantDescription, Model model, @ModelAttribute FavoritePlants favoritePlants, @ModelAttribute String plantAPIKey) {
         User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.findById(loginUser.getId());
         List<FavoritePlants> favoritePlant = user.getFavoritePlants();
         model.addAttribute("plantUrl", plantUrl);
         model.addAttribute("plantName", plantName);
         model.addAttribute("plantDescription", plantDescription);
+        model.addAttribute("plantAPIKey", plantAPIKey);
 //        System.out.println("plantUrl = " + plantUrl);
         favoritePlants.setimageUrl(plantUrl);
         favoritePlants.setPlantname(plantName);

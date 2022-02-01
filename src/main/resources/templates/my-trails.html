@@ -18,26 +18,30 @@
 <form th:action="@{/my-trails}" th:method="post" id="trail" th:object="${trail}">
     <div class="row form-group">
         <div class="col">
-            <input type="text" class="form-control" th:field="*{trailName}" placeholder="Trail name">
+            <label for="trailName">Trail Name:</label>
+            <input type="text" id="trailName" class="form-control" th:field="*{trailName}" placeholder="Trail name">
             <span th:if="${#fields.hasErrors('trailName')}" th:errors="*{trailName}"></span>
         </div>
         <div class="col">
-            <input type="text" th:field="*{trailElevation}" class="form-control" placeholder="Trail Elevation">
+            <label for="trailElevation">Trail Elevation:</label>
+            <input type="text" id="trailElevation" th:field="*{trailElevation}" class="form-control" placeholder="Trail Elevation">
             <span th:if="${#fields.hasErrors('trailElevation')}" th:errors="*{trailElevation}"></span>
         </div>
     </div>
     <div class="form-group">
-        <input type="text" class="form-control" th:field="*{trailLength}" id="username" placeholder="trail length">
+        <label for="trailLength">Trail Length:</label>
+        <input type="text" id="trailLength" class="form-control" th:field="*{trailLength}" placeholder="trail length">
         <span th:if="${#fields.hasErrors('trailLength')}" th:errors="*{trailLength}"></span>
     </div>
     <div class="form-group">
-        <input type="text" class="form-control" th:field="*{trailHeadLocation}" id="username"
+        <label for="trailheadLocation">Trailhead Location:</label>
+        <input type="text" class="form-control" th:field="*{trailHeadLocation}" id="trailheadLocation"
                placeholder="trail head location">
         <span th:if="${#fields.hasErrors('trailHeadLocation')}" th:errors="*{trailHeadLocation}"></span>
     </div>
 
     <div class="d-flex justify-content-end">
-        <input type="submit" value="Submit" class="btn btn-outline-dark">
+        <input type="submit" value="Submit" class="btn btn-white user-btn">
     </div>
 </form>
 
