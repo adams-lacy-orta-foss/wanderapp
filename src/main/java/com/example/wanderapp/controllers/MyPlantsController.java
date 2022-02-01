@@ -48,11 +48,22 @@ public class MyPlantsController {
         User user = userDao.findById(loginUser.getId());
         List<FavoritePlants> favoritePlant = user.getFavoritePlants();
         model.addAttribute("plantUrl", plantUrl);
-//        System.out.println("plantUrl = " + plantUrl);
         favoritePlants.setimageUrl(plantUrl);
         favoritePlant.add(favoritePlants);
         user.setFavoritePlants(favoritePlant);
         userDao.save(user);
         return "redirect:/plants";
     }
+
+    @PostMapping("/plants/delete")
+    public String deletePlant(Long plantId) {
+        User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.findById(loginUser.getId());
+        List<FavoritePlants> plantList = user.getFavoritePlants();
+        plantList.remove(plantsdao.getById(plantId));
+        user.setFavoritePlants(plantList);
+        userDao.save(user);
+        return "redirect:/plants";
+    }
+
 }
