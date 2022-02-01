@@ -25,6 +25,7 @@ body {
     url("../img/wander-background-1.jpg");
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     min-height: 100vh;
     overflow: visible;
 }
@@ -114,6 +115,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 100vh;
     width: 100%;
     color: #fff;
+    overflow: visible;
 }
 
 .my-feed-window {
@@ -122,6 +124,8 @@ h1, h2, h3, h4, h5, h6 {
 
     justify-content: center;
     align-items: center;
+  
+    overflow: visible;
 }
 
 .btn:link,
@@ -134,8 +138,13 @@ h1, h2, h3, h4, h5, h6 {
 
     display: block;
     padding: 15px 40px;
-    border-radius: 1em;
+    border-radius: 100px;
     position: relative;
+}
+
+.btn:hover {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
+    transform: translateY(-4px);
 }
 
 .btn-small:link,
@@ -151,9 +160,29 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-small:hover {
     box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
+    transform: translateY(-4px);
+
     background-color: var(--dark-teal);
     color: #fff;
+}
+
+.btn-medium:link,
+.btn-medium:visited {
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+    font-size: medium;
+
     border-radius: 100px;
+    padding: 5px 10px;
+    margin: auto;
+}
+
+.btn-medium:hover {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
+    transform: translateY(-4px);
+
+    background-color: var(--gold);
+    color: #000;
 }
 
 .btn-white {
@@ -162,24 +191,40 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-white:hover {
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
     background-color: var(--dark-teal);
     color: #fff;
-    border-radius: 100px;
-    transform: translateY(-4px);
 }
 
 .btn-blue {
     background-color: var(--dark-teal);
-    color: #fff;
+    color: #fff;!important
+    border-radius: 100px;
 }
 
 .btn-blue:hover {
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
     background-color: var(--gold);
     color: #000;
+}
+
+.btn-green {
+    background-color: var(--green);
+    color: #fff;
+}
+
+.btn-green:hover {
+    background-color: var(--brown);
+    color: var(--gold);
+}
+
+.btn-red {
+    background-color: #f00;
+    color: #fff;
     border-radius: 100px;
-    transform: translateY(-4px);
+}
+
+.user-btn {
+    padding: .3em 1em;
+    margin: 1em;
 }
 
 #sign-up>div {
@@ -265,13 +310,6 @@ footer p {
     animation-delay: 1s;
 }
 
-.btn-green {
-    border-radius: 100px;
-
-    background-color: var(--green);
-    color: #fff;
-}
-
 #login-btn {
     margin: .5em;
 
@@ -288,18 +326,16 @@ footer p {
     animation-delay: 1.6s;
 }
 
-.user-btn {
-    padding: .3em 1em;
-    margin: 1em;
-}
-
-.close {
+.btn-close {
     position: absolute;
     top: -30px;
     right: 0;
 }
 
-#login-box, #signup-box {
+#login-box,
+#signup-box,
+#delete-box,
+#change-password-box {
     position: fixed;
     top: 0;
     left: 0;
@@ -315,21 +351,32 @@ footer p {
     padding: 2em;
 }
 
-#login-box:not(:target), #signup-box:not(:target) {
+#login-box:not(:target),
+#signup-box:not(:target),
+#delete-box:not(:target),
+#change-password-box:not(:target) {
     visibility: hidden;
     opacity: 0;
 }
 
-#login-window, #signup-window {
+#login-window,
+#signup-window,
+#delete-window,
+#change-password-window {
     position: relative;
     padding: 4em 2em;
     background-color: #fff;
     color: #000;
 
     border-radius: 20px;
+    max-width: 400px;
 }
 
-#login-form > input, #signup-form > input {
+#login-form > input,
+#signup-form > input,
+#delete-form > input,
+#delete-form > a,
+#password-form > input {
     margin-top: .5em;
     margin-bottom: .5em;
     padding: .5em;

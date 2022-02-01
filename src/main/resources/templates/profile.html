@@ -26,20 +26,50 @@
 				<span th:text="*{user.getDOB()}"></span>
 			</p>
 			<div class="d-flex justify-content-between">
-				<a class="btn-small btn-blue" href="#change-password">Change Password</a>
+				<a class="btn-small btn-blue" href="#change-password-box">Change Password</a>
 				<a class="btn-small btn-blue" href="/settings">Edit</a>
 			</div>
 		</div>
 		
 		<h3>My Stuff</h3>
-		<a class="btn btn-white user-btn" th:href="@{my-trails}">Saved Trails</a>
-		<a class="btn btn-green user-btn" th:href="@{my-plants}">Saved Plants</a>
+		<a class="btn btn-blue user-btn" th:href="@{my-trails}">Saved Trails</a>
+		<a class="btn btn-green user-btn" th:href="@{plants}">Saved Plants</a>
+		<a class="btn btn-red user-btn" href="#delete-box">Delete Account</a>
 		
-		<form th:action="@{/profile/delete}" th:method="post" th:object="${user}">
-			<div class="d-flex justify-content-end">
-				<input type="submit" value="Delete Account" class="btn btn-danger user-btn">
+		<div id="change-password-box">
+			<div id="change-password-window">
+				<a href="#" class="btn-close btn-small btn-white"></a>
+				<h1>🔐</h1>
+				<h1>Change Password</h1>
+				
+				<form th:action="@{/profile/password}" method="post" th:object="${user}" id="password-form"
+				      class="d-flex flex-column m-2 justify-content-center text-left">
+					<label for="current-password">Current Password:</label>
+					<input class="border-0" id="current-password" name="current-password" type="text" placeholder="Enter current password here.">
+					
+					<label for="new-password">New Password:</label>
+					<input class="border-0" id="new-password" name="new-password" type="text" placeholder="Enter new password here.">
+					
+					<input type="submit" value="Submit" class="btn-medium btn-blue user-btn">
+				</form>
 			</div>
-		</form>
+		</div>
+		
+		<div id="delete-box">
+			<div id="delete-window">
+				<a href="#" class="btn-close btn-small btn-white"></a>
+				<h1>🥺</h1>
+				<h1>Are you sure?</h1>
+				<p>This will remove all data saved to your account. This
+					action cannot be undone. Are you sure you want to delete your account?</p>
+				
+				<form th:action="@{/profile/delete}" method="post" th:object="${user}" id="delete-form"
+				      class="d-flex justify-content-between">
+					<a href="#" class="btn-medium btn-blue user-btn">Nevermind!</a>
+					<input type="submit" value="Yes, delete it." class="btn-medium btn-red user-btn">
+				</form>
+			</div>
+		</div>
 		
 		<div class="spacer"></div>
     
