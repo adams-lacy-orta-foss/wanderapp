@@ -16,4 +16,10 @@ public class HomeController {
 		model.addAttribute("mapboxAPIkey", mapboxAPIkey);
 		return "index";
 	}
+
+	@GetMapping("/")
+	public String welcomeNoUrl(Model model){
+		model.addAttribute("mapboxAPIkey", mapboxAPIkey);
+		return "index";
+	}
 }

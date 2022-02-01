@@ -28,6 +28,7 @@ function setupMap(center) {
     map.addControl(nav, "bottom-right");
 
     let geolocate = new mapboxgl.GeolocateControl({
+        accessToken: mapBoxAPIkey,
         positionOption: {
             enableHighAccuracy: true
         },
