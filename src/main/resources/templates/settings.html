@@ -15,10 +15,10 @@
 <!--		      th:action="@{'/settings'}"-->
 <!--		      th:object="${user}"-->
 <!--		      class="d-flex flex-column justify-content-center text-left p-2">-->
-					<form id="image" th:action="@{/profile}" th:object="${user}" >
+					<form  id="image" th:action="@{/profile}" th:object="${user}" >
 					<label name="profile_img">Edit Profile Photo:</label>
 			<input type="hidden" id="img" name="profile_img"
-			       th:value="img">
+			       th:src="img">
 					<button class=" btn btn-green" id="picker" type="button">Pick file</button>
 						<br>
 
@@ -65,6 +65,8 @@
 		accept: 'image/*',
 		uploadInBackground: false,
 	};
+
+
 	const picker = client.picker(options);
 
 
@@ -97,16 +99,8 @@
 
 
 		// Some ugly DOM code to show some data.
-		const name = document.createTextNode('Selected: ' + fileData.filename);
-		const url = document.createElement('a');
-		url.href = fileData.url;
-		url.appendChild(document.createTextNode(fileData.url));
-		nameBox.appendChild(name);
-		urlBox.appendChild(document.createTextNode('Uploaded to: '));
-		urlBox.appendChild(url);
-		document.getElementById("img").value=fileData.url
 
-
+$("#img").append(fileData.url);
 
 
 
