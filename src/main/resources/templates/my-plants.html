@@ -10,13 +10,13 @@
     <img th:src="${plants.getimageUrl()}"  alt="Profile picture" height="150px" width="150px"/>
 </div>
 
-<!--<form th:action="@{/plants/delete}" th:method="post" th:object="${plant}">-->
-<!--    <div th:each="plants: ${plants}">-->
-<!--        <input type="hidden" th:field="*{id}"/>-->
-<!--        <img th:src="${plants.getimageUrl()}"  alt="Profile picture" height="150px" width="150px"/>-->
-<!--        <input type="submit" value="Delete" name="plantId" th:value="${plants.getId()}" class="btn btn-outline-dark">-->
-<!--    </div>-->
-<!--</form>-->
+<form th:action="@{/plants/delete}" th:method="post" th:object="${plant}">
+    <div th:each="plants: ${plants}">
+        <input type="hidden" th:field="*{id}"/>
+        <img th:src="${plants.getimageUrl()}"  alt="Profile picture" height="150px" width="150px"/>
+        <input type="submit" value="Delete" name="plantId" th:value="${plants.getId()}" class="btn btn-outline-dark">
+    </div>
+</form>
 
 
 
