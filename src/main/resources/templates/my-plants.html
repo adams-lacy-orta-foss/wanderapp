@@ -6,19 +6,16 @@
 <h1>My Plants</h1>
 
 <a th:href="@{/plants/upload}" id="login-btn" class="btn btn-black-white">Upload</a>
-<div th:each="plants: ${plants}">
-    <img th:src="${plants.getimageUrl()}"  alt="Profile picture" height="150px" width="150px"/>
-    <p th:text="${plants.getPlantname()}"></p>
-    <p th:text="${plants.getPlantDescription()}"></p>
-</div>
 
-<!--<form th:action="@{/plants/delete}" th:method="post" th:object="${plant}">-->
-<!--    <div th:each="plants: ${plants}">-->
-<!--        <input type="hidden" th:field="*{id}"/>-->
-<!--        <img th:src="${plants.getimageUrl()}"  alt="Profile picture" height="150px" width="150px"/>-->
-<!--        <input type="submit" value="Delete" name="plantId" th:value="${plants.getId()}" class="btn btn-outline-dark">-->
-<!--    </div>-->
-<!--</form>-->
+<form th:action="@{/plants/delete}" th:method="post" th:object="${plant}">
+    <div th:each="plants: ${plants}">
+        <input type="hidden" th:field="*{id}"/>
+        <img th:src="${plants.getimageUrl()}"  alt="Profile picture" height="150px" width="150px"/>
+        <p th:text="${plants.getPlantname()}"></p>
+        <p th:text="${plants.getPlantDescription()}"></p>
+        <input type="submit" value="Delete" name="plantId" th:value="${plants.getId()}" class="btn btn-outline-dark">
+    </div>
+</form>
 
 
 

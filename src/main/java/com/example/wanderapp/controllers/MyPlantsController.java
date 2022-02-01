@@ -53,7 +53,6 @@ public class MyPlantsController {
         model.addAttribute("plantName", plantName);
         model.addAttribute("plantDescription", plantDescription);
 //        System.out.println("plantUrl = " + plantUrl);
-
         favoritePlants.setimageUrl(plantUrl);
         favoritePlants.setPlantname(plantName);
         favoritePlants.setPlantDescription(plantDescription);
@@ -62,4 +61,16 @@ public class MyPlantsController {
         userDao.save(user);
         return "redirect:/plants";
     }
+
+    @PostMapping("/plants/delete")
+    public String deletePlant(Long plantId) {
+        User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.findById(loginUser.getId());
+        List<FavoritePlants> plantList = user.getFavoritePlants();
+        plantList.remove(plantsdao.getById(plantId));
+        user.setFavoritePlants(plantList);
+        userDao.save(user);
+        return "redirect:/plants";
+    }
+
 }
