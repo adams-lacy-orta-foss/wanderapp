@@ -11,6 +11,9 @@
         <h1 th:text="${trail.getTrailName()}"></h1>
         <p th:text="${trail.getTrailElevation()}"></p>
         <p th:text="${trail.getTrailHeadLocation()}"></p>
+        <p th:text="${trail.getTrailDescription()}"></p>
+        <p th:text="${trail.getTrailLat()}"></p>
+        <p th:text="${trail.getTrailLong()}"></p>
         <input type="submit" value="Delete" name="trailId" th:value="${trail.getId()}" class="btn btn-outline-dark">
     </div>
 </form>
@@ -35,16 +38,41 @@
     </div>
     <div class="form-group">
         <label for="trailheadLocation">Trailhead Location:</label>
-        <input type="text" class="form-control" th:field="*{trailHeadLocation}" id="trailheadLocation"
+        <input type="text" class="form-control" th:field="*{trailHeadLocation}" id="trail"
                placeholder="trail head location">
         <span th:if="${#fields.hasErrors('trailHeadLocation')}" th:errors="*{trailHeadLocation}"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="trailheadLocation">Trail Description:</label>
+        <input type="text" class="form-control" th:field="*{trailDescription}" id="trail"
+               placeholder="trail head location">
+        <span th:if="${#fields.hasErrors('trailDescription')}" th:errors="*{trailDescription}"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="trailheadLocation">Trail Latitude:</label>
+        <input type="text" class="form-control" th:field="*{trailLat}" id="trailheadLocation"
+               placeholder="trail head location">
+        <span th:if="${#fields.hasErrors('trailLat')}" th:errors="*{trailLat}"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="trailheadLocation">Trail Description:</label>
+        <input type="text" class="form-control" th:field="*{trailLong}" id="trail"
+               placeholder="trail head location">
+        <span th:if="${#fields.hasErrors('trailLong')}" th:errors="*{trailLong}"></span>
     </div>
 
     <div class="d-flex justify-content-end">
         <input type="submit" value="Submit" class="btn btn-white user-btn">
     </div>
 </form>
-
+<br>
+<br>
+<br>
+<br>
+<br>
 <div th:replace="partials.html :: plant-button"></div>
 <div th:replace="partials.html :: site-footer"></div>
 <div th:replace="partials.html :: site-scripts"></div>
