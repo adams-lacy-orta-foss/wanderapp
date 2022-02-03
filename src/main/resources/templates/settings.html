@@ -9,12 +9,6 @@
 <div class="my-feed-box">
 	<div class="my-feed-window">
 		<H1>Settings</H1>
-		<!--		<img th:src="${user.getProfile_img()}"  alt="Profile picture" class="profile-pic">-->
-		<!--		-->
-		<!--		<form method="post"-->
-		<!--		      th:action="@{'/settings'}"-->
-		<!--		      th:object="${user}"-->
-		<!--		      class="d-flex flex-column justify-content-center text-left p-2">-->
 		<form id="image"
 			  method="post"
 			  th:action="@{/settings}"
@@ -42,10 +36,6 @@
 			<input name="Email"
 				   th:value="${user.getEmail()}"
 				   type="email">
-
-			<!--            <label name="DOB">Date of Birth:</label>    -->
-			<!--            <input name="DOB"-->
-			<!--                   th:value="${user.getDOB()}">-->
 
 			<input name="id"
 				   th:value="${user.getId()}"
