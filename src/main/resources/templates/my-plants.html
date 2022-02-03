@@ -22,16 +22,25 @@
         <img th:src="${plants.getimageUrl()}" alt="Plant Picture" height="150px" width="150px"/>
         <p>
             <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
-                    aria-expanded="false" aria-controls="collapseExample" th:text="${plants.getPlantname()}">
+                    aria-expanded="false" aria-controls="collapseExample" th:text="${plants.getPlantname()}" th:value="${plants.getId()}">
             </button>
         </p>
-        <div class="collapse" id="collapseExample" th:text="${plants.getPlantDescription()}">
+        <div class="collapse" th:field="*{id}" th:text="${plants.getPlantDescription()}">
             <div class="card card-body">
             </div>
         </div>
         <input type="submit" value="Delete" name="plantId" th:value="${plants.getId()}" class="btn btn-outline-dark">
     </div>
     </form>
+<form>
+<div class="card" style="width: 18rem;">
+    <img th:src="${plants.getimageUrl()}" class="card-img-top" alt="Plant Picture">
+    <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div>
+</form>
 <div class="spacer"></div>
 <div th:replace="partials.html :: plant-button"></div>
 <div th:replace="partials.html :: site-footer"></div>
