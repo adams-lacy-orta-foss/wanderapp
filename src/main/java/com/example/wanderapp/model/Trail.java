@@ -20,7 +20,7 @@ public class Trail {
 	private double trailLength;
 
 	@Column
-	private int trailDifficulty;
+	private String trailDifficulty;
 
 	@Column
 	private int trailElevation;
@@ -28,7 +28,7 @@ public class Trail {
 	@Column
 	private int trailRating;
 
-	@Column(length = 10000)
+	@Column(length = 1000)
 	private String trailDataPoints;
 
 	@Column(length = 1000)
@@ -40,7 +40,7 @@ public class Trail {
 	@Column(length = 1000)
 	private double trailLong;
 
-	@Column(length = 1000)
+	@Column(length = 10000)
 	private String trailDescription;
 
 
@@ -177,11 +177,11 @@ public class Trail {
 		this.trailElevation = trailElevation;
 	}
 
-	public float getTrailDifficulty() {
+	public String getTrailDifficulty() {
 		return trailDifficulty;
 	}
 
-	public void setTrailDifficulty(int trailDifficulty) {
+	public void setTrailDifficulty(String trailDifficulty) {
 		this.trailDifficulty = trailDifficulty;
 	}
 
