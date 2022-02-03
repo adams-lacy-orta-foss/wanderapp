@@ -5,23 +5,28 @@
 <div th:replace="partials.html :: site-header"></div>
 <h1>My Plants</h1>
 
-<a th:href="@{/plants/upload}" id="login-btn" class="btn btn-black-white">Upload</a>
 
+<a th:href="@{/plants/upload}" id="login-btn" class="btn btn-black-white">Upload</a>
 <form th:action="@{/plants/delete}" th:method="post" th:object="${plant}">
+
     <div th:each="plants: ${plants}">
         <input type="hidden" th:field="*{id}"/>
         <img th:src="${plants.getimageUrl()}"  alt="Profile picture" height="150px" width="150px"/>
         <p th:text="${plants.getPlantname()}"></p>
         <p th:text="${plants.getPlantDescription()}"></p>
         <button type="submit" name="plantId" th:value="${plants.getId()}" class="btn btn-outline-dark">Delete</button>
+
+
     </div>
 </form>
+
+<div class="spacer"></div>
 <div th:replace="partials.html :: plant-button"></div>
 <div th:replace="partials.html :: site-footer"></div>
 <script th:inline="javascript">
-	/*<![CDATA[*/
-	const plantIDAPI = /*[[${plantAPIKey}]]*/ '';
-	/*]]>*/
+    /*<![CDATA[*/
+    const plantIDAPI = /*[[${plantAPIKey}]]*/ '';
+    /*]]>*/
 </script>
 <script src="/js/plantID.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"
