@@ -13,7 +13,7 @@
         <img th:src="${plants.getimageUrl()}"  alt="Profile picture" height="150px" width="150px"/>
         <p th:text="${plants.getPlantname()}"></p>
         <p th:text="${plants.getPlantDescription()}"></p>
-        <button type="submit" value="Delete" name="plantId" th:value="${plants.getId()}" class="btn btn-outline-dark">Delete</button>
+        <button type="submit" name="plantId" th:value="${plants.getId()}" class="btn btn-outline-dark">Delete</button>
     </div>
 </form>
 <div th:replace="partials.html :: plant-button"></div>

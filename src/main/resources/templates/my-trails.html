@@ -14,7 +14,7 @@
         <p th:text="${trail.getTrailDescription()}"></p>
         <p th:text="${trail.getTrailLat()}"></p>
         <p th:text="${trail.getTrailLong()}"></p>
-        <input type="submit" value="Delete" name="trailId" th:value="${trail.getId()}" class="btn btn-outline-dark">
+        <button type="submit" value="Delete" name="trailId" th:value="${trail.getId()}" class="btn btn-outline-dark">Delete</button>
     </div>
 </form>
 
