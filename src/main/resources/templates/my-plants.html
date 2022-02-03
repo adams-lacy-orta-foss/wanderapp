@@ -13,12 +13,12 @@
             <input type="hidden" th:field="*{id}"/>
             <img th:src="${plants.getimageUrl()}" alt="Plant Picture" height="150px" width="150px"/>
             <p>
-                <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                <button class="btn btn-primary mt-2" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseExample"
                         aria-expanded="false" aria-controls="collapseExample" th:text="${plants.getPlantname()}">
                 </button>
             </p>
-            <div class="collapse" id="collapseExample" th:text="${plants.getPlantDescription()}">
+            <div class="collapse mt-3" id="collapseExample" th:text="${plants.getPlantDescription()}">
                 <div class="card card-body" style="width: 150px;">
                 </div>
             </div>
