@@ -7,15 +7,32 @@
 
 <a th:href="@{/plants/upload}" id="login-btn" class="btn btn-black-white">Upload</a>
 
-<form th:action="@{/plants/delete}" th:method="post" th:object="${plant}">
+<!--<form th:action="@{/plants/delete}" th:method="post" th:object="${plant}">-->
+<!--    <div th:each="plants: ${plants}">-->
+<!--        <input type="hidden" th:field="*{id}"/>-->
+<!--        <img th:src="${plants.getimageUrl()}" alt="Plant Picture" height="150px" width="150px"/>-->
+<!--        <p th:text="${plants.getPlantname()}"></p>-->
+<!--        <p th:text="${plants.getPlantDescription()}"></p>-->
+<!--        <input type="submit" value="Delete" name="plantId" th:value="${plants.getId()}" class="btn btn-outline-dark">-->
+<!--    </div>-->
+<!--</form>-->
+    <form th:action="@{/plants/delete}" th:method="post" th:object="${plant}">
     <div th:each="plants: ${plants}">
         <input type="hidden" th:field="*{id}"/>
-        <img th:src="${plants.getimageUrl()}"  alt="Profile picture" height="150px" width="150px"/>
-        <p th:text="${plants.getPlantname()}"></p>
-        <p th:text="${plants.getPlantDescription()}"></p>
+        <img th:src="${plants.getimageUrl()}" alt="Plant Picture" height="150px" width="150px"/>
+        <p>
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+                    aria-expanded="false" aria-controls="collapseExample" th:text="${plants.getPlantname()}">
+            </button>
+        </p>
+        <div class="collapse" id="collapseExample" th:text="${plants.getPlantDescription()}">
+            <div class="card card-body">
+            </div>
+        </div>
         <input type="submit" value="Delete" name="plantId" th:value="${plants.getId()}" class="btn btn-outline-dark">
     </div>
-</form>
+    </form>
+<div class="spacer"></div>
 <div th:replace="partials.html :: plant-button"></div>
 <div th:replace="partials.html :: site-footer"></div>
 <div th:replace="partials.html :: site-scripts"></div>
