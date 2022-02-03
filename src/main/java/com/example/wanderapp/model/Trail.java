@@ -20,7 +20,7 @@ public class Trail {
 	private double trailLength;
 
 	@Column
-	private int trailDifficulty;
+	private String trailDifficulty;
 
 	@Column
 	private int trailElevation;
@@ -28,11 +28,21 @@ public class Trail {
 	@Column
 	private int trailRating;
 
-	@Column(length = 10000)
+	@Column(length = 1000)
 	private String trailDataPoints;
 
 	@Column(length = 1000)
 	private String trailHeadLocation;
+
+	@Column(length = 1000)
+	private double trailLat;
+
+	@Column(length = 1000)
+	private double trailLong;
+
+	@Column(length = 10000)
+	private String trailDescription;
+
 
 
 
@@ -45,6 +55,9 @@ public class Trail {
 		trailRating = copy.trailRating;
 		trailDataPoints = copy.trailDataPoints;
 		trailHeadLocation = copy.trailHeadLocation;
+		trailLat = copy.trailLat;
+		trailLong = copy.trailLong;
+		trailDescription = copy.trailDescription;
 	}
 
 	public Trail() {}
@@ -164,11 +177,11 @@ public class Trail {
 		this.trailElevation = trailElevation;
 	}
 
-	public float getTrailDifficulty() {
+	public String getTrailDifficulty() {
 		return trailDifficulty;
 	}
 
-	public void setTrailDifficulty(int trailDifficulty) {
+	public void setTrailDifficulty(String trailDifficulty) {
 		this.trailDifficulty = trailDifficulty;
 	}
 
@@ -211,4 +224,29 @@ public class Trail {
 	public void setTrailPicture(List<TrailPicture> trailPicture) {
 		this.trailPicture = trailPicture;
 	}
+
+	public double getTrailLat() {
+		return trailLat;
+	}
+
+	public void setTrailLat(double trailLat) {
+		this.trailLat = trailLat;
+	}
+
+	public double getTrailLong() {
+		return trailLong;
+	}
+
+	public void setTrailLong(double trailLong) {
+		this.trailLong = trailLong;
+	}
+
+	public String getTrailDescription() {
+		return trailDescription;
+	}
+
+	public void setTrailDescription(String trailDescription) {
+		this.trailDescription = trailDescription;
+	}
+
 }

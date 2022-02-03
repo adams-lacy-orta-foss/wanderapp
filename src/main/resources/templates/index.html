@@ -27,11 +27,81 @@
 	</div>
 	<div class="spacer"></div>
 </div>
-</div>
 
 <div th:replace="partials.html :: plant-button"></div>
 <div th:replace="partials.html :: site-footer"></div>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    const mapBoxAPIkey = /*[[${mapboxAPIkey}]]*/ 'default';
+    // const file = /*[[${fsKey}]]*/ 'default';
+    // const client = filestack.init(file);
+    // const options = {
+    //     onUploadDone: updateForm,
+    //     maxSize: 10 * 1024 * 1024,
+    //     accept: 'image/*',
+    //     uploadInBackground: false,
+    // };
+    // const picker = client.picker(options);
+	//
+	//
+    // // Get references to the DOM elements
+	//
+    // const form = document.getElementById('pick-form');
+    // const fileInput = document.getElementById('img');
+    // const btn = document.getElementById('picker');
+    // const nameBox = document.getElementById('nameBox');
+    // const urlBox = document.getElementById('urlBox');
+	//
+    // // Add our event listeners
+	//
+    // btn.addEventListener('click', function (e) {
+    //     e.preventDefault();
+    //     picker.open();
+    // });
+	//
+    // form.addEventListener('submit', function (e) {
+    //     e.preventDefault();
+    //     alert('Submitting: ' + fileInput.value);
+    // });
+	//
+    // // Helper to overwrite the field input value
+	//
+    // function updateForm(result) {
+    //     const fileData = result.filesUploaded[0];
+    //     fileInput.value = fileData.url;
+    //     console.log(fileData.url)
+	//
+	//
+    //     // Some ugly DOM code to show some data.
+    //     const name = document.createTextNode('Selected: ' + fileData.filename);
+    //     const url = document.createElement('a');
+    //     url.href = fileData.url;
+    //     url.appendChild(document.createTextNode(fileData.url));
+    //     nameBox.appendChild(name);
+    //     urlBox.appendChild(document.createTextNode('Uploaded to: '));
+    //     urlBox.appendChild(url);
+    //     document.getElementById("img").value = fileData.url
+	//
+	//
+    // }
 
-<div th:replace="partials.html :: site-scripts"></div>
+    /*]]>*/
+</script>
+<script src="/js/plantID.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.js"
+	        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/72af5d8dfa.js" crossorigin="anonymous"></script>
+	<script src="https://static.filestackapi.com/v3/filestack.js"></script>
+	<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+	<script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+	<script src="/js/mapbox-geocoder-utils.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+	        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+	        crossorigin="anonymous"></script>
+	<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
+	<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+	<script src="/js/backend.js"></script>
 </body>
 </html>
