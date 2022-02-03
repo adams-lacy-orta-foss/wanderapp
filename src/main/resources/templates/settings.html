@@ -9,10 +9,12 @@
 <div class="my-feed-box">
 	<div class="my-feed-window">
 		<H1>Settings</H1>
+
 		<form id="image"
 			  method="post"
 			  th:action="@{/settings}"
-			  th:object="${user}">
+			  th:object="${user}"
+			class="d-flex flex-column justify-content-center text-left p-2">
 			<label name="img">Edit Profile Photo:</label>
 			<input id="img"
 				   name="img"
@@ -41,9 +43,7 @@
 				   th:value="${user.getId()}"
 				   type="hidden">
 
-			<button class="btn-green w-25 mt-3 p-2 ml-auto"
-					type="submit">Submit
-			</button>
+			<button type="submit" class="btn-green w-50 mt-3 p-2 ml-auto">Submit</button>
 		</form>
 
 		<div class="spacer"></div>
