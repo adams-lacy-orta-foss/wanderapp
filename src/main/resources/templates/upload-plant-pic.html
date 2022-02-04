@@ -13,9 +13,8 @@
     <button class="delay" type="submit">Save to your Plants</button>
 </form>
 
-
 <div id="plant" style="font-weight: bold; font-size: large; color: var(--light)"></div>
-
+<div th:replace="partials.html :: site-footer"></div>
 <script th:inline="javascript">
 	/*<![CDATA[*/
 	const plantIDAPI = /*[[${plantAPIKey}]]*/ '';
