@@ -444,6 +444,8 @@ footer {
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.35);
     max-width: 20em;
+    padding: .2em;
+    margin: .5em;
 }
 .plant-photo {
     height: 200px;
