@@ -2,19 +2,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div th:replace="partials.html :: site-head"></div>
 <body>
-
+<div th:replace="partials.html :: site-header"></div>
 <h1>Plant Photo Upload</h1>
 <form th:action="@{/plants}" th:method="post">
     <input type="file" multiple>
     <input id="plantUrl" name="plantUrl" type="hidden" th:value="replaceme">
     <input id="plantName" name="plantName" type="hidden" th:value="replacethis">
     <input id="plantDescription" name="plantDescription" type="hidden" th:value="replacealso">
-    <button type="button">Scan Plant</button>
-    <button type="submit">Save to your Plants</button>
+    <button id="scanplant" type="button">Scan Plant</button>
+    <button class="delay" type="submit">Save to your Plants</button>
 </form>
 
-
-<div id="plant" style="font-weight: bold; font-size: large; color: firebrick"></div>
+<div id="plant" style="font-weight: bold; font-size: large; color: var(--light)"></div>
 <div th:replace="partials.html :: site-footer"></div>
 <script th:inline="javascript">
 	/*<![CDATA[*/
@@ -37,6 +36,5 @@
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
 <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
 <!--<script src="/js/backend.js"></script>-->
-
 </body>
 </html>
