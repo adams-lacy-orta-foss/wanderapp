@@ -28,9 +28,9 @@
 
 			<div class="d-flex justify-content-between">
 				<a class="btn-small btn-blue"
-					href="#change-password-box">Change Password</a>
+				   href="#change-password-box">Change Password</a>
 				<a class="btn-small btn-blue"
-					href="/settings">Edit</a>
+				   href="/settings">Edit</a>
 			</div>
 		</div>
 
@@ -60,6 +60,7 @@
 						   id="oldpass"
 						   name="oldpass"
 						   placeholder="Enter current password here."
+						   required
 						   type="password">
 
 					<label for="password">New Password:</label>
@@ -71,8 +72,10 @@
 						   th:field="*{password}"
 						   type="password">
 
-					<button class="btn-medium btn-blue user-btn" type="submit">Change
-						Password</button>
+					<button class="btn-medium btn-blue user-btn"
+							type="submit">Change
+						Password
+					</button>
 
 				</form>
 			</div>
@@ -81,7 +84,7 @@
 		<div id="delete-box">
 			<div id="delete-window">
 				<a class="btn-close btn-small btn-white"
-					href="#"></a>
+				   href="#"></a>
 				<h1>🥺</h1>
 				<h1>Are you sure?</h1>
 				<p>This will remove all data saved to your account. This
@@ -100,7 +103,7 @@
 				</form>
 			</div>
 		</div>
-		
+
 		<div th:replace="partials.html :: site-footer"></div>
 	</div>
 </div>
