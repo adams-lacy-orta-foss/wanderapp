@@ -7,7 +7,7 @@
 
 <div class="my-feed-box">
 	<div class="my-feed-window">
-		<h1>Hi, <span th:text="*{user.getFirstName()}"></span>!</h1>
+		<h1>HI, <span th:text="*{user.getFirstName().toUpperCase()}"></span>!</h1>
 		<img alt="Profile picture"
 			 class="profile-pic"
 			 th:src="${user.getProfile_img()}">
@@ -28,9 +28,9 @@
 
 			<div class="d-flex justify-content-between">
 				<a class="btn-small btn-blue"
-				   href="#change-password-box">Change Password</a>
+					href="#change-password-box">Change Password</a>
 				<a class="btn-small btn-blue"
-				   href="/settings">Edit</a>
+					href="/settings">Edit</a>
 			</div>
 		</div>
 
@@ -81,7 +81,7 @@
 		<div id="delete-box">
 			<div id="delete-window">
 				<a class="btn-close btn-small btn-white"
-				   href="#"></a>
+					href="#"></a>
 				<h1>🥺</h1>
 				<h1>Are you sure?</h1>
 				<p>This will remove all data saved to your account. This
@@ -100,15 +100,12 @@
 				</form>
 			</div>
 		</div>
-
-		<div class="spacer"></div>
-
+		
+		<div th:replace="partials.html :: site-footer"></div>
 	</div>
 </div>
 
 <div th:replace="partials.html :: plant-button"></div>
-
-<div th:replace="partials.html :: site-footer"></div>
 <div th:replace="partials.html :: site-scripts"></div>
 </body>
 </html>

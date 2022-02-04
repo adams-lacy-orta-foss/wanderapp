@@ -43,9 +43,12 @@ public class MyPlantsController {
 
     @GetMapping("/plants/upload")
     public String uploadPlantPic(Model model) {
+        User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.findById(loginUser.getId());
         model.addAttribute("plantUrl", new FavoritePlants());
         model.addAttribute("plantName", new FavoritePlants());
         model.addAttribute("plantDescription", new FavoritePlants());
+        model.addAttribute("userPlant", user.getFavoritePlants());
         model.addAttribute("plantAPIKey", plantAPIKey);
         return "upload-plant-pic";
     }
@@ -79,5 +82,4 @@ public class MyPlantsController {
         userDao.save(user);
         return "redirect:/plants";
     }
-
 }

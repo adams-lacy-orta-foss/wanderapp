@@ -3,23 +3,32 @@
 <div th:replace="partials.html :: site-head"></div>
 <body>
 <div th:replace="partials.html :: site-header"></div>
+
 <h1>My Plants</h1>
-
-
-<a th:href="@{/plants/upload}" id="login-btn" class="btn btn-black-white">Upload</a>
-<form th:action="@{/plants/delete}" th:method="post" th:object="${plant}">
-
-    <div th:each="plants: ${plants}">
-        <input type="hidden" th:field="*{id}"/>
-        <img th:src="${plants.getimageUrl()}"  alt="Profile picture" height="150px" width="150px"/>
-        <p th:text="${plants.getPlantname()}"></p>
-        <p th:text="${plants.getPlantDescription()}"></p>
-        <button type="submit" name="plantId" th:value="${plants.getId()}" class="btn btn-outline-dark">Delete</button>
-
-
+<div class="d-flex justify-content-center">
+	<a th:href="@{/plants/upload}" class="btn btn-white user-btn">Upload</a>
+</div>
+<div class="container">
+	<form th:action="@{/plants/delete}" th:method="post" th:object="${plant}">
+		<div th:each="plants: ${plants}">
+		<div class="card">
+            <input type="hidden" th:field="*{id}">
+            <img th:src="${plants.getimageUrl()}" alt="Plant Picture" class="plant-photo">
+            <p>
+                <button class="btn btn-primary mt-2" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseExample"
+                        aria-expanded="false" aria-controls="collapseExample" th:text="${plants.getPlantname()}" th:value="${plants.getId()}">
+                </button>
+            </p>
+            <div class="collapse mt-3" id="collapseExample" th:text="${plants.getPlantDescription()}" th:value="${plants.getId()}">
+                <div class="card card-body" style="width: 150px;">
+                </div>
+            </div>
+            <button type="submit" name="plantId" th:value="${plants.getId()}" class="btn btn-outline-dark">Delete</button>
+        </div>
     </div>
 </form>
-
+</div>
 <div class="spacer"></div>
 <div th:replace="partials.html :: plant-button"></div>
 <div th:replace="partials.html :: site-footer"></div>
