@@ -488,3 +488,13 @@ footer p {
         transform: translate(0 0);
     }
 }
+
+.delay {
+    animation: fade-me-in 10s;
+}
+
+@keyframes fade-me-in {
+    0% {opacity:0;}
+    80% {opacity:0;}
+    100% {opacity:1;}
+}

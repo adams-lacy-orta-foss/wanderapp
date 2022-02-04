@@ -43,8 +43,9 @@ document.querySelector('button').onclick = function sendIdentification() {
             .then(data => {
                 console.log('Success:', data);
                 document.getElementById("plant").append(
-                    data.suggestions[0].plant_details.common_names[0],
-                    data.suggestions[0].plant_details.wiki_description.value
+                    // data.suggestions[0].plant_details.common_names[0],
+                    // data.suggestions[0].plant_details.wiki_description.value
+                    "Your plant has successfully been scanned!"
                 )
                 document.getElementById("plantUrl").value=data.images[0].url
                 document.getElementById("plantName").value=data.suggestions[0].plant_details.common_names[0]
