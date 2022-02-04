@@ -1,1 +1,1 @@
-[Wander](https://hikewithwander.com)
+[Come Wander with us!](https://hikewithwander.com)
