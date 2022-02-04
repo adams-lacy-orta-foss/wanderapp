@@ -1,41 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-    <title>Title</title>
+	<meta charset="UTF-8">
+	<title>Title</title>
 </head>
 <body>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+	  xmlns:th="http://www.thymeleaf.org">
 <div th:replace="partials.html :: site-head"></div>
 <body>
 <div th:replace="partials.html :: site-header"></div>
 
 <div class="container">
-	<form id="sign-up" th:action="@{/sign-up}" th:method="post" th:object="${user}">
+	<form id="sign-up"
+		  th:action="@{/sign-up}"
+		  th:method="post"
+		  th:object="${user}">
 		<div class="row form-group">
 			<div class="col">
-				<input type="text" class="form-control" th:field="*{firstName}" placeholder="First name" required>
-				<span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+				<input class="form-control"
+					   placeholder="First name"
+					   required
+					   th:field="*{firstName}"
+					   type="text">
+				<span th:errors="*{firstName}"
+					  th:if="${#fields.hasErrors('firstName')}"></span>
 			</div>
 			<div class="col">
-				<input type="text" th:field="*{lastName}" class="form-control" placeholder="Last name" required>
-				<span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+				<input class="form-control"
+					   placeholder="Last name"
+					   required
+					   th:field="*{lastName}"
+					   type="text">
+				<span th:errors="*{lastName}"
+					  th:if="${#fields.hasErrors('lastName')}"></span>
 			</div>
 		</div>
 		<div class="form-group">
-			<input type="text" class="form-control" th:field="*{username}" id="username" placeholder="Username" required>
-			<span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+			<input class="form-control"
+				   id="username"
+				   placeholder="Username"
+				   required
+				   th:field="*{username}"
+				   type="text">
+			<span th:errors="*{username}"
+				  th:if="${#fields.hasErrors('username')}"></span>
 		</div>
 		<div class="form-group">
-			<input type="text" class="form-control" th:field="*{email}" id="email" placeholder="Email" required>
-			<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
-			<small id="emailInfo" class="form-text text-muted">We'll never share your email with anyone else.</small>
+			<input class="form-control"
+				   id="email"
+				   placeholder="Email"
+				   required
+				   th:field="*{email}"
+				   type="text">
+			<span th:errors="*{email}"
+				  th:if="${#fields.hasErrors('email')}"></span>
+			<small class="form-text text-muted"
+				   id="emailInfo">We'll never share your email with anyone else.</small>
 		</div>
 		<div class="form-group">
-			<input type="text" class="form-control" th:field="*{password}" id="password" placeholder="Password" required>
+			<input class="form-control"
+				   id="password"
+				   placeholder="Password"
+				   required
+				   th:field="*{password}"
+				   type="text">
 		</div>
 		<div class="d-flex justify-content-end">
-			<input type="submit" value="Sign Up" class="btn btn-outline-dark">
+			<input class="btn btn-outline-dark"
+				   type="submit"
+				   value="Sign Up">
 		</div>
 	</form>
 </div>
