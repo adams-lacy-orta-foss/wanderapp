@@ -22,10 +22,33 @@
                 <div class="card card-body" style="width: 150px;">
                 </div>
             </div>
-            <button type="submit" name="plantId" th:value="${plants.getId()}" class="btn btn-outline-dark">Delete</button>
+            <a th:value="${plants.getId()}" href="#delete-box" class="btn btn-outline-dark">Delete</a>
         </div>
     </div>
 </form>
+
+<div id="delete-box">
+    <div id="delete-window">
+        <a class="btn-close btn-small btn-white"
+           href="#"></a>
+        <h1>🥺</h1>
+        <h1>Are you sure?</h1>
+        <p>This will remove all data saved to your account. This
+            action cannot be undone. Are you sure you want to delete your account?</p>
+
+        <form class="d-flex justify-content-between"
+              id="delete-form"
+              method="post"
+              th:action="@{/plants/delete}"
+              th:object="${plant}">
+            <a class="btn-medium btn-blue user-btn"
+               href="#">Nevermind!</a>
+            <input class="btn-medium btn-red user-btn"
+                   type="submit"
+                   value="Yes, delete it." th:value="${plant.getId()}" name="plantId">
+        </form>
+    </div>
+</div>
 
 <div class="spacer"></div>
 <div th:replace="partials.html :: plant-button"></div>
