@@ -1,4 +1,4 @@
-document.querySelector('button').onclick = function sendIdentification() {
+document.getElementById('scanplant').onclick = function sendIdentification() {
     const files = [...document.querySelector('input[type=file]').files];
     const promises = files.map((file) => {
         return new Promise((resolve, reject) => {

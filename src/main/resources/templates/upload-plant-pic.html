@@ -2,14 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div th:replace="partials.html :: site-head"></div>
 <body>
-<!--<div th:replace="partials.html :: site-header"></div>-->
+<div th:replace="partials.html :: site-header"></div>
 <h1>Plant Photo Upload</h1>
 <form th:action="@{/plants}" th:method="post">
     <input type="file" multiple>
     <input id="plantUrl" name="plantUrl" type="hidden" th:value="replaceme">
     <input id="plantName" name="plantName" type="hidden" th:value="replacethis">
     <input id="plantDescription" name="plantDescription" type="hidden" th:value="replacealso">
-    <button type="button">Scan Plant</button>
+    <button id="scanplant" type="button">Scan Plant</button>
     <button class="delay" type="submit">Save to your Plants</button>
 </form>
 
