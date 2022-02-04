@@ -82,5 +82,4 @@ public class MyPlantsController {
         userDao.save(user);
         return "redirect:/plants";
     }
-
 }

@@ -7,7 +7,7 @@
 
 <div class="my-feed-box">
 	<div class="my-feed-window">
-		<h1>Hi, <span th:text="*{user.getFirstName()}"></span>!</h1>
+		<h1>HI, <span th:text="*{user.getFirstName().toUpperCase()}"></span>!</h1>
 		<img alt="Profile picture"
 			 class="profile-pic"
 			 th:src="${user.getProfile_img()}">
@@ -54,23 +54,29 @@
 					  method="post"
 					  th:action="@{/profile/password}"
 					  th:object="${user}">
-					<label for="current-password">Current Password:</label>
+
+					<label for="oldpass">Current Password:</label>
 					<input class="border-0"
-						   id="current-password"
-						   name="current-password"
+						   id="oldpass"
+						   name="oldpass"
 						   placeholder="Enter current password here."
-						   type="text">
+						   required
+						   type="password">
 
-					<label for="new-password">New Password:</label>
+					<label for="password">New Password:</label>
 					<input class="border-0"
-						   id="new-password"
-						   name="new-password"
-						   placeholder="Enter new password here."
-						   type="text">
 
-					<input class="btn-medium btn-blue user-btn"
-						   type="submit"
-						   value="Submit">
+						   id="password"
+						   name="password"
+						   placeholder="Password"
+						   th:field="*{password}"
+						   type="password">
+
+					<button class="btn-medium btn-blue user-btn"
+							type="submit">Change
+						Password
+					</button>
+
 				</form>
 			</div>
 		</div>
@@ -98,14 +104,11 @@
 			</div>
 		</div>
 
-		<div class="spacer"></div>
-
+		<div th:replace="partials.html :: site-footer"></div>
 	</div>
 </div>
 
 <div th:replace="partials.html :: plant-button"></div>
-
-<div th:replace="partials.html :: site-footer"></div>
 <div th:replace="partials.html :: site-scripts"></div>
 </body>
 </html>
