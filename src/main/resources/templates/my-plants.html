@@ -16,7 +16,7 @@
 				<input type="hidden" th:field="*{id}">
 				<img th:src="${plants.getimageUrl()}" alt="Plant Picture" class="plant-photo">
 				<p class="m-1" th:text="${plants.getPlantDescription()}" th:value="${plants.getId()}"></p>
-				<button type="submit" th:value="${plants.getId()}" class="btn btn-blue user-btn">Delete</button>
+				<button type="submit" name="plantId" th:value="${plants.getId()}" class="btn btn-blue user-btn">Delete</button>
 			</div>
 		</div>
 	</form>
