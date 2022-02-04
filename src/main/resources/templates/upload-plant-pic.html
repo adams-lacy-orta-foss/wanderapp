@@ -15,7 +15,7 @@
 
 
 <div id="plant" style="font-weight: bold; font-size: large; color: firebrick"></div>
-
+<div th:replace="partials.html :: site-footer"></div>
 <script th:inline="javascript">
 	/*<![CDATA[*/
 	const plantIDAPI = /*[[${plantAPIKey}]]*/ '';
@@ -37,5 +37,6 @@
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
 <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
 <!--<script src="/js/backend.js"></script>-->
+
 </body>
 </html>

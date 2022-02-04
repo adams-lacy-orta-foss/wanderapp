@@ -15,10 +15,10 @@
             <p>
                 <button class="btn btn-primary mt-2" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseExample"
-                        aria-expanded="false" aria-controls="collapseExample" th:text="${plants.getPlantname()}">
+                        aria-expanded="false" aria-controls="collapseExample" th:text="${plants.getPlantname()}" th:value="${plantsgetId()}">
                 </button>
             </p>
-            <div class="collapse mt-3" id="collapseExample" th:text="${plants.getPlantDescription()}">
+            <div class="collapse mt-3" id="collapseExample" th:text="${plants.getPlantDescription()}" th:value="${plants.getId()}">
                 <div class="card card-body" style="width: 150px;">
                 </div>
             </div>
