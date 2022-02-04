@@ -28,9 +28,9 @@
 
 			<div class="d-flex justify-content-between">
 				<a class="btn-small btn-blue"
-					href="#change-password-box">Change Password</a>
+				   href="#change-password-box">Change Password</a>
 				<a class="btn-small btn-blue"
-					href="/settings">Edit</a>
+				   href="/settings">Edit</a>
 			</div>
 		</div>
 
@@ -54,23 +54,29 @@
 					  method="post"
 					  th:action="@{/profile/password}"
 					  th:object="${user}">
-					<label for="current-password">Current Password:</label>
+
+					<label for="oldpass">Current Password:</label>
 					<input class="border-0"
-						   id="current-password"
-						   name="current-password"
+						   id="oldpass"
+						   name="oldpass"
 						   placeholder="Enter current password here."
-						   type="text">
+						   required
+						   type="password">
 
-					<label for="new-password">New Password:</label>
+					<label for="password">New Password:</label>
 					<input class="border-0"
-						   id="new-password"
-						   name="new-password"
-						   placeholder="Enter new password here."
-						   type="text">
 
-					<input class="btn-medium btn-blue user-btn"
-						   type="submit"
-						   value="Submit">
+						   id="password"
+						   name="password"
+						   placeholder="Password"
+						   th:field="*{password}"
+						   type="password">
+
+					<button class="btn-medium btn-blue user-btn"
+							type="submit">Change
+						Password
+					</button>
+
 				</form>
 			</div>
 		</div>
@@ -78,7 +84,7 @@
 		<div id="delete-box">
 			<div id="delete-window">
 				<a class="btn-close btn-small btn-white"
-					href="#"></a>
+				   href="#"></a>
 				<h1>🥺</h1>
 				<h1>Are you sure?</h1>
 				<p>This will remove all data saved to your account. This
