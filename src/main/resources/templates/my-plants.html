@@ -5,7 +5,6 @@
 <div th:replace="partials.html :: site-header"></div>
 <h1>My Plants</h1>
 
-
 <a th:href="@{/plants/upload}" id="login-btn" class="btn btn-black-white">Upload</a>
 <form th:action="@{/plants/delete}" th:method="post" th:object="${plant}">
     <div class="container">

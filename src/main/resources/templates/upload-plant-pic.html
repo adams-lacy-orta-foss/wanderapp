@@ -2,7 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div th:replace="partials.html :: site-head"></div>
 <body>
-
+<div class="logo d-flex justify-content-end m-3">
+	<a href="/index"><i class="fas fa-leaf"></i></a>
+</div>
 <h1>Plant Photo Upload</h1>
 <form th:action="@{/plants}" th:method="post">
     <input type="file" multiple>
@@ -15,6 +17,8 @@
 
 
 <div id="plant" style="font-weight: bold; font-size: large; color: firebrick"></div>
+
+<div th:replace="partials.html :: site-footer"></div>
 
 <script th:inline="javascript">
 	/*<![CDATA[*/

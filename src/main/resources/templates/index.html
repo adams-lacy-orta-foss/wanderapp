@@ -15,10 +15,10 @@
 		
 	</div>
 	<div class="spacer"></div>
+	<div th:replace="partials.html :: site-footer"></div>
 </div>
 
 <div th:replace="partials.html :: plant-button"></div>
-<div th:replace="partials.html :: site-footer"></div>
 <script th:inline="javascript">
     /*<![CDATA[*/
     const mapBoxAPIkey = /*[[${mapboxAPIkey}]]*/ 'default';
