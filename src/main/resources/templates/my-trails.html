@@ -29,42 +29,30 @@
                 <span th:if="${#fields.hasErrors('trailName')}" th:errors="*{trailName}"></span>
             </div>
             <div class="col">
-                <label for="trailElevation">Trail Elevation:</label>
-                <input type="text" id="trailElevation" th:field="*{trailElevation}" class="form-control" placeholder="Trail Elevation">
+                <label for="trailElevation">Elevation:</label>
+                <input type="number" id="trailElevation" th:field="*{trailElevation}" class="form-control"
+                       placeholder="Trail Elevation">
                 <span th:if="${#fields.hasErrors('trailElevation')}" th:errors="*{trailElevation}"></span>
             </div>
         </div>
         <div class="form-group">
-            <label for="trailLength">Trail Length:</label>
-            <input type="text" id="trailLength" class="form-control" th:field="*{trailLength}" placeholder="trail length">
+            <label for="trailLength">Length:</label>
+            <input type="number" id="trailLength" class="form-control" th:field="*{trailLength}"
+                   placeholder="trail length">
             <span th:if="${#fields.hasErrors('trailLength')}" th:errors="*{trailLength}"></span>
         </div>
         <div class="form-group">
-            <label for="trailheadLocation">Trailhead Location:</label>
+            <label for="trailheadLocation">Location:</label>
             <input type="text" class="form-control" th:field="*{trailHeadLocation}" id="trail"
                    placeholder="trail head location">
             <span th:if="${#fields.hasErrors('trailHeadLocation')}" th:errors="*{trailHeadLocation}"></span>
         </div>
 
         <div class="form-group">
-            <label for="trailheadLocation">Trail Description:</label>
+            <label for="trailheadLocation">Description:</label>
             <input type="text" class="form-control" th:field="*{trailDescription}" id="trail"
                    placeholder="trail description">
             <span th:if="${#fields.hasErrors('trailDescription')}" th:errors="*{trailDescription}"></span>
-        </div>
-
-        <div class="form-group">
-            <label for="trailheadLocation">Trail Latitude:</label>
-            <input type="text" class="form-control" th:field="*{trailLat}" id="trailheadLocation"
-                   placeholder="trail latitude">
-            <span th:if="${#fields.hasErrors('trailLat')}" th:errors="*{trailLat}"></span>
-        </div>
-
-        <div class="form-group">
-            <label for="trailheadLocation">Trail Longitude:</label>
-            <input type="text" class="form-control" th:field="*{trailLong}" id="trail"
-                   placeholder="trail longitude">
-            <span th:if="${#fields.hasErrors('trailLong')}" th:errors="*{trailLong}"></span>
         </div>
 
         <div class="mx-auto">
