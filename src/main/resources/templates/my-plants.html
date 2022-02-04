@@ -5,26 +5,84 @@
 <div th:replace="partials.html :: site-header"></div>
 <h1>My Plants</h1>
 
-<a th:href="@{/plants/upload}" id="login-btn" class="btn btn-black-white">Upload</a>
-<form th:action="@{/plants/delete}" th:method="post" th:object="${plant}">
-    <div class="container">
-        <div th:each="plants: ${plants}">
-            <input type="hidden" th:field="*{id}"/>
-            <img th:src="${plants.getimageUrl()}" alt="Plant Picture" height="150px" width="150px"/>
-            <p>
-                <button class="btn btn-primary mt-2" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseExample"
-                        aria-expanded="false" aria-controls="collapseExample" th:text="${plants.getPlantname()}" th:value="${plants.getId()}">
-                </button>
-            </p>
-            <div class="collapse mt-3" id="collapseExample" th:text="${plants.getPlantDescription()}" th:value="${plants.getId()}">
-                <div class="card card-body" style="width: 150px;">
-                </div>
-            </div>
-            <button type="submit" name="plantId" th:value="${plants.getId()}" class="btn btn-outline-dark">Delete</button>
-        </div>
+<div class="card-group">
+	<div th:each="plants: ${plants}">
+		<div class="card">
+<!--		<input type="hidden" th:field="*{id}">-->
+		<img th:src="${plants.getimageUrl()}" alt="Plant Picture" class="plant-photo">
+		<p>
+			<button class="btn btn-primary mt-2" type="button" data-bs-toggle="collapse"
+			        data-bs-target="#collapseExample"
+			        aria-expanded="false" aria-controls="collapseExample" th:text="${plants.getPlantname()}"
+			        th:value="${plants.getId()}">
+			</button>
+		</p>
+		<div class="collapse mt-3" id="collapseExample" th:text="${plants.getPlantDescription()}"
+		     th:value="${plants.getId()}">
+			<div class="card card-body" style="width: 150px;">
+			</div>
+		</div>
+		<button type="submit" name="plantId" th:value="${plants.getId()}" class="btn btn-outline-dark">
+			Delete
+		</button>
+	
+		<form th:action="@{/plants/delete}"
+		      th:method="post"
+		      th:object="${plant}">
+			<div class="container">
+			
+			</div>
+		</form>
+	</div>
+	<div class="card-footer">
+		<small class="text-muted">Last updated 3 mins ago</small>
+	</div>
+</div>
+<div class="card">
+	<img class="card-img-top" src="..." alt="Card image cap">
+	<div class="card-body">
+		<h5 class="card-title">Card title</h5>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
     </div>
-</form>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>
+</div>
+
+<!--<form th:action="@{/plants/delete}"-->
+<!--	th:method="post"-->
+<!--	th:object="${plant}">-->
+<!--    <div class="container">-->
+<!--        <div th:each="plants: ${plants}">-->
+<!--            <input type="hidden" th:field="*{id}">-->
+<!--            <img th:src="${plants.getimageUrl()}" alt="Plant Picture" class="plant-photo">-->
+<!--            <p>-->
+<!--                <button class="btn btn-primary mt-2" type="button" data-bs-toggle="collapse"-->
+<!--                        data-bs-target="#collapseExample"-->
+<!--                        aria-expanded="false" aria-controls="collapseExample" th:text="${plants.getPlantname()}" th:value="${plants.getId()}">-->
+<!--                </button>-->
+<!--            </p>-->
+<!--            <div class="collapse mt-3" id="collapseExample" th:text="${plants.getPlantDescription()}" th:value="${plants.getId()}">-->
+<!--                <div class="card card-body" style="width: 150px;">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <button type="submit" name="plantId" th:value="${plants.getId()}" class="btn btn-outline-dark">Delete</button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</form>-->
+
+<a th:href="@{/plants/upload}" class="btn btn-white user-btn">Upload</a>
 
 <div class="spacer"></div>
 <div th:replace="partials.html :: plant-button"></div>
