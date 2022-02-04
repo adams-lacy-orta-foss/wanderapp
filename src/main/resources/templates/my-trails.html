@@ -61,7 +61,7 @@
         </div>
 
         <div class="form-group">
-            <label for="trailheadLocation">Trail Description:</label>
+            <label for="trailheadLocation">Trail Longitude:</label>
             <input type="text" class="form-control" th:field="*{trailLong}" id="trail"
                    placeholder="trail longitude">
             <span th:if="${#fields.hasErrors('trailLong')}" th:errors="*{trailLong}"></span>
@@ -73,10 +73,6 @@
     </form>
 
 </div>
-    <div class="d-flex justify-content-end">
-        <input type="submit" value="Submit" class="btn btn-white user-btn">
-    </div>
-</form>
 <div class="spacer"></div>
 
 <div th:replace="partials.html :: plant-button"></div>
