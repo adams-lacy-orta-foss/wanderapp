@@ -3,15 +3,17 @@
 <div th:replace="partials.html :: site-head"></div>
 <body>
 <div th:replace="partials.html :: site-header"></div>
+
 <h1>My Plants</h1>
-
-
-<a th:href="@{/plants/upload}" id="login-btn" class="btn btn-black-white">Upload</a>
-<form th:action="@{/plants/delete}" th:method="post" th:object="${plant}">
-    <div class="container">
-        <div th:each="plants: ${plants}">
-            <input type="hidden" th:field="*{id}"/>
-            <img th:src="${plants.getimageUrl()}" alt="Plant Picture" height="150px" width="150px"/>
+<div class="d-flex justify-content-center">
+	<a th:href="@{/plants/upload}" class="btn btn-white user-btn">Upload</a>
+</div>
+<div class="container">
+	<form th:action="@{/plants/delete}" th:method="post" th:object="${plant}">
+		<div th:each="plants: ${plants}">
+		<div class="card">
+            <input type="hidden" th:field="*{id}">
+            <img th:src="${plants.getimageUrl()}" alt="Plant Picture" class="plant-photo">
             <p>
                 <button class="btn btn-primary mt-2" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseExample"
@@ -22,33 +24,36 @@
                 <div class="card card-body" style="width: 150px;">
                 </div>
             </div>
-            <a th:value="${plants.getId()}" href="#delete-box" class="btn btn-outline-dark">Delete</a>
+            <input type="submit" value="Delete" name="plantId" th:value="${plants.getId()}"
+                   class="btn btn-outline-dark">
+<!--            <a th:value="${plants.getId()}" href="#delete-box" class="btn btn-outline-dark">Delete</a>-->
         </div>
     </div>
 </form>
 
-<div id="delete-box">
-    <div id="delete-window">
-        <a class="btn-close btn-small btn-white"
-           href="#"></a>
-        <h1>🥺</h1>
-        <h1>Are you sure?</h1>
-        <p>This will remove all data saved to your account. This
-            action cannot be undone. Are you sure you want to delete your account?</p>
+<!--<div id="delete-box">-->
+<!--    <div id="delete-window">-->
+<!--        <a class="btn-close btn-small btn-white"-->
+<!--           href="#"></a>-->
+<!--        <h1>🥺</h1>-->
+<!--        <h1>Are you sure?</h1>-->
+<!--        <p>This will remove all data saved to your account. This-->
+<!--            action cannot be undone. Are you sure you want to delete your account?</p>-->
 
-        <form class="d-flex justify-content-between"
-              id="delete-form"
-              th:method="post"
-              th:action="@{/plants/delete}"
-              th:object="${plant}">
-            <a class="btn-medium btn-blue user-btn"
-               href="#">Nevermind!</a>
-            <button class="btn-medium btn-red user-btn"
-                   type="submit" th:value="${plant.getId()}" name="plantId">Yes, delete it.</button>
-        </form>
-    </div>
+<!--        <form class="d-flex justify-content-between"-->
+<!--              id="delete-form"-->
+<!--              th:method="post"-->
+<!--              th:action="@{/plants/delete}"-->
+<!--              th:object="${plant}">-->
+<!--            <a class="btn-medium btn-blue user-btn"-->
+<!--               href="#">Nevermind!</a>-->
+<!--            <button class="btn-medium btn-red user-btn"-->
+<!--                   type="submit" th:value="${plant.getId()}" name="plantId">Yes, delete it.</button>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
+
 </div>
-
 <div class="spacer"></div>
 <div th:replace="partials.html :: plant-button"></div>
 <div th:replace="partials.html :: site-footer"></div>
