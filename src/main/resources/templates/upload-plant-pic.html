@@ -1,175 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div th:replace="partials.html :: site-head"></div>
-
 <body>
 
-<div th:replace="partials.html :: site-header"></div>
+<h1>Plant Photo Upload</h1>
+<form th:action="@{/plants}" th:method="post">
+    <input type="file" multiple>
+    <input id="plantUrl" name="plantUrl" type="hidden" th:value="replaceme">
+    <input id="plantName" name="plantName" type="hidden" th:value="replacethis">
+    <input id="plantDescription" name="plantDescription" type="hidden" th:value="replacealso">
+    <button type="button">Scan Plant</button>
+    <button type="submit">Save to your Plants</button>
+</form>
 
-<video id="video" width="640px" height="480px" autoplay></video>
-<button type="submit" id="snap">Take Photo</button>
 
-<canvas id="canvas" width="640px" height="480px"></canvas>
+<div id="plant" style="font-weight: bold; font-size: large; color: firebrick"></div>
 
-<button type="submit" id="save-plant-photo">Save Plant</button>
-
-<div class="spacer"></div>
-<!--<form method="post">-->
-<!--    <input type="file" multiple>-->
-<!--<button type="button">Ok</button>-->
-<!--</form>-->
-<div id="plant" name="plant" style="font-weight: bold; font-size: large; color: firebrick"></div>
-<input id="plantUrl" name="plantUrl" type="hidden">
-
-<script>
-	// navigator.mediaDevices.enumerateDevices().then(devices => {
-	// 	console.log(devices)});
-	
-	let canvas = document.querySelector("#canvas");
-	let context = canvas.getContext('2d');
-	let video = document.querySelector("#video");
-	
-	//opens users camera if they allow
-	if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
-		navigator.mediaDevices.getUserMedia({video: true, sound: false}).then(stream => {
-			video.srcObject = stream;
-			video.play();
-			});
-	}
-	
-	//captures photo and displays on the canvas
-	document.getElementById("snap").addEventListener("click", () => {
-		context.drawImage(video, 0, 0, 640, 480);
-	});
-	
-	//saves photo
-	document.getElementById("save-plant-photo").addEventListener("click", ()=>{
-		// let newCanvas = document.createElement("canvas");
-		let dataURL = canvas.toDataURL('image/jpeg', 1.0);
-		// let newContext = newCanvas.getContext("2d");
-		
-		console.log(dataURL);
-		
-		
-		const promises = dataURL.map((file) => {
-			return new Promise((resolve, reject) => {
-				const reader = new FileReader();
-				reader.onload = (event) => {
-					const res = event.target.result;
-					console.log(res);
-					resolve(res);
-				}
-				reader.readAsDataURL(file)
-			})
-		})
-		
-		Promise.all(promises).then((base64files) => {
-			console.log(base64files)
-			
-			const data = {
-				api_key: plantIDAPI,
-				images: base64files,
-				modifiers: ["crops_fast", "similar_images"],
-				plant_language: "en",
-				plant_details: ["common_names",
-					"url",
-					"name_authority",
-					"wiki_description",
-					"taxonomy",
-					"synonyms"]
-			};
-			
-			fetch('https://api.plant.id/v2/identify', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(data),
-			})
-			.then(response => response.json())
-			.then(data => {
-				console.log('Success:', data);
-				document.getElementById("plant").append(
-						data.suggestions[0].plant_details.common_names[0],
-				)
-				document.getElementById("plantUrl").append(
-						data.images[0].url,
-				)
-			})
-			.catch((error) => {
-				console.error('Error:', error);
-			});
-		})
-		// newCanvas.height = 480;
-		// newCanvas.width = 640;
-		//
-		// let imagebase64data = newCanvas.toDataURL("image/png");
-		// imagebase64data = imagebase64data.replace("data:image/png;base64,", "");
-		// $.ajax({
-		// 	type: 'post',
-		// 	url: '/HOME/UploadWebCamImage',
-		// 	data: '{ "imageData" : "' + imagebase64data + '" }',
-		// 	contentType: 'application/json; charset=utf-8',
-		// 	dataType: 'text',
-		// 	success: (out) => {
-		// 		console.log('image upload successful');
-		// 	}
-		// });
-	});
-	
-	// document.getElementById('#save-plant-photo').onclick = function sendIdentification() {
-    // const files = [...document.querySelector('input[type=file]').files];
-    // const promises = files.map((file) => {
-    //     return new Promise((resolve, reject) => {
-    //         const reader = new FileReader();
-    //         reader.onload = (event) => {
-    //             const res = event.target.result;
-    //             console.log(res);
-    //             resolve(res);
-    //         }
-    //         reader.readAsDataURL(file)
-    //     })
-    // })
-	//
-    // Promise.all(promises).then((base64files) => {
-    //     console.log(base64files)
-	//
-    //     const data = {
-    //         api_key: plantIDAPI,
-    //         images: base64files,
-    //         modifiers: ["crops_fast", "similar_images"],
-    //         plant_language: "en",
-    //         plant_details: ["common_names",
-    //             "url",
-    //             "name_authority",
-    //             "wiki_description",
-    //             "taxonomy",
-    //             "synonyms"]
-    //     };
-	//
-    //     fetch('https://api.plant.id/v2/identify', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(data),
-    //     })
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             console.log('Success:', data);
-    //             document.getElementById("plant").append(
-    //                 data.suggestions[0].plant_details.common_names[0],
-    //             )
-    //             document.getElementById("plantUrl").append(
-    //                 data.images[0].url,
-    //             )
-    //         })
-    //         .catch((error) => {
-    //             console.error('Error:', error);
-    //         });
-    // })
+<script th:inline="javascript">
+	/*<![CDATA[*/
+	const plantIDAPI = /*[[${plantAPIKey}]]*/ '';
+	/*]]>*/
 </script>
-<div th:replace="partials.html :: site-footer"></div>
-<div th:replace="partials.html :: site-scripts"></div>
+<script src="/js/plantID.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/72af5d8dfa.js" crossorigin="anonymous"></script>
+<script src="https://static.filestackapi.com/v3/filestack.js"></script>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+<script src="/js/mapbox-geocoder-utils.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+<!--<script src="/js/backend.js"></script>-->
 </body>
 </html>

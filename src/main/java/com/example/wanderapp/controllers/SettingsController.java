@@ -13,42 +13,41 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class SettingsController {
-    private final UserRepository userDao;
+	private final UserRepository userDao;
 
-    @Value("${fileStackAPIkey}")
-    private String fileStackAPIkey;
+	@Value("${fileStackAPIkey}")
+	private String fileStackAPIkey;
 
-
-    public SettingsController(UserRepository userDao) {
-        this.userDao = userDao;
-    }
-
-
-    @GetMapping("/settings")
-    public String editProfile( Model model){
-        User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = userDao.findById(loginUser.getId());
-        model.addAttribute("fsKey",fileStackAPIkey);
-        model.addAttribute("user", user);
-        return "settings";
-    }
-
-    @PostMapping("/settings")
-    public String saveEditPost(@RequestParam(name="FirstName") String FirstName, @RequestParam(name="LastName") String LastName, @RequestParam(name="Id") long id, @RequestParam(name="Profile_img") String img, @RequestParam(name="Email") String email, @RequestParam(name="DOB") String DOB) {
-
-        User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = userDao.findById(loginUser.getId());
+	public SettingsController(UserRepository userDao) {
+		this.userDao = userDao;
+	}
 
 
-        user.setFirstName(FirstName);
-        user.setLastName(LastName);
-        user.setProfile_img(img);
-        user.setEmail(email);
-        user.setDOB(DOB);
+	@GetMapping("/settings")
+	public String editProfile(Model model) {
+		User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User user = userDao.findById(loginUser.getId());
+		model.addAttribute("fsKey", fileStackAPIkey);
+		model.addAttribute("user", user);
+		model.addAttribute("img", user.getProfile_img());
+		return "settings";
+	}
+
+	@PostMapping("/settings")
+	public String saveEditPost(@RequestParam(name = "FirstName") String FirstName, @RequestParam(name = "LastName") String LastName, @RequestParam(name = "id") long id, @RequestParam(name = "img") String img, @RequestParam(name = "Email") String email) {
 
 
-        userDao.save(user);
+		User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User user = userDao.findById(loginUser.getId());
 
-        return "redirect:/profile";
-    }
+		user.setFirstName(FirstName);
+		user.setLastName(LastName);
+		user.setProfile_img(img);
+		user.setEmail(email);
+
+
+		userDao.save(user);
+
+		return "redirect:/profile";
+	}
 }

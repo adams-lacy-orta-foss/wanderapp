@@ -5,7 +5,7 @@ document.querySelector('button').onclick = function sendIdentification() {
             const reader = new FileReader();
             reader.onload = (event) => {
                 const res = event.target.result;
-                console.log(res);
+                // console.log(res);
                 resolve(res);
             }
             reader.readAsDataURL(file)
@@ -13,7 +13,7 @@ document.querySelector('button').onclick = function sendIdentification() {
     })
 
     Promise.all(promises).then((base64files) => {
-        console.log(base64files)
+        // console.log(base64files)
 
         const data = {
             api_key: plantIDAPI,
@@ -44,10 +44,11 @@ document.querySelector('button').onclick = function sendIdentification() {
                 console.log('Success:', data);
                 document.getElementById("plant").append(
                     data.suggestions[0].plant_details.common_names[0],
+                    data.suggestions[0].plant_details.wiki_description.value
                 )
-                document.getElementById("plantUrl").append(
-                    data.images[0].url,
-                )
+                document.getElementById("plantUrl").value=data.images[0].url
+                document.getElementById("plantName").value=data.suggestions[0].plant_details.common_names[0]
+                document.getElementById("plantDescription").value=data.suggestions[0].plant_details.wiki_description.value
             })
             .catch((error) => {
                 console.error('Error:', error);
