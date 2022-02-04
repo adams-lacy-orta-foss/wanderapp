@@ -54,23 +54,26 @@
 					  method="post"
 					  th:action="@{/profile/password}"
 					  th:object="${user}">
-					<label for="current-password">Current Password:</label>
+
+					<label for="oldpass">Current Password:</label>
 					<input class="border-0"
-						   id="current-password"
-						   name="current-password"
+						   id="oldpass"
+						   name="oldpass"
 						   placeholder="Enter current password here."
-						   type="text">
+						   type="password">
 
-					<label for="new-password">New Password:</label>
+					<label for="password">New Password:</label>
 					<input class="border-0"
-						   id="new-password"
-						   name="new-password"
-						   placeholder="Enter new password here."
-						   type="text">
 
-					<input class="btn-medium btn-blue user-btn"
-						   type="submit"
-						   value="Submit">
+						   id="password"
+						   name="password"
+						   placeholder="Password"
+						   th:field="*{password}"
+						   type="password">
+
+					<button class="btn-medium btn-blue user-btn" type="submit">Change
+						Password</button>
+
 				</form>
 			</div>
 		</div>
