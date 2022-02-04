@@ -17,7 +17,7 @@
             <p>
                 <button class="btn btn-primary mt-2" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseExample"
-                        aria-expanded="false" aria-controls="collapseExample" th:text="${plants.getPlantname()}" th:value="${plants.getId()}">
+                        aria-expanded="false" aria-controls="collapseExample" th:text="${plants.getPlantname()}" th:value="${plants.getPlantname()}">
                 </button>
             </p>
             <div class="collapse mt-3" id="collapseExample" th:text="${plants.getPlantDescription()}" th:value="${plants.getId()}">
