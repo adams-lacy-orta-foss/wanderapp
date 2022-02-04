@@ -38,14 +38,13 @@
 
         <form class="d-flex justify-content-between"
               id="delete-form"
-              method="post"
+              th:method="post"
               th:action="@{/plants/delete}"
               th:object="${plant}">
             <a class="btn-medium btn-blue user-btn"
                href="#">Nevermind!</a>
-            <input class="btn-medium btn-red user-btn"
-                   type="submit"
-                   value="Yes, delete it." th:value="${plant.getId()}" name="plantId">
+            <button class="btn-medium btn-red user-btn"
+                   type="submit" th:value="${plant.getId()}" name="plantId">Yes, delete it.</button>
         </form>
     </div>
 </div>
