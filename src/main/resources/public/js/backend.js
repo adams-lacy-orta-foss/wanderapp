@@ -1,6 +1,9 @@
-'use strict'
-
 "use strict";
+
+// $(document).ready(()=>{
+//     setTimeout(()=>{
+//         $('.loading-screen').fadeOut()}, 3000);
+// });
 
 //INIT MAPBOX
 mapboxgl.accessToken = mapBoxAPIkey;
@@ -23,6 +26,10 @@ function setupMap(center) {
             center: center,
             zoom: 11,
         });
+
+    map.on('load', () => {
+        $('.loading-screen').fadeOut()
+    });
 
     let nav = new mapboxgl.NavigationControl();
     map.addControl(nav, "bottom-right");
