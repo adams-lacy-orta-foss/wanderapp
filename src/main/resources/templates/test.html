@@ -3,82 +3,242 @@
 <div th:replace="partials.html :: site-head"></div>
 <body>
 
-<form method="post">
-    <input type="file" multiple>
-    <input id="plantUrl" name="plantUrl" type="hidden">
-<button type="button">Ok</button>
-</form>
+<video id="video" width="400px" height="400px" autoplay></video>
+<button type="submit" id="snap" disabled>Take Photo</button>
+<button type="submit" id="stop-camera" disabled>Close</button>
+
+<canvas id="canvas" width="100vw" height="100vh"></canvas>
+<button type="submit" id="save-plant-photo">Save Plant</button>
+
+<!--<form method="post">-->
+<!--    <input type="file" multiple>-->
+<!--    <input id="plantUrl" name="plantUrl" type="hidden">-->
+<!--<button type="button">Ok</button>-->
+<!--</form>-->
 
 <div id="plant" name="plant" style="font-weight: bold; font-size: large; color: firebrick"></div>
 
 
 <script th:inline="javascript">
 	/*<![CDATA[*/
-	const
-	const file = /*[[${fsKey}]]*/ 'default';
-	const client = filestack.init(file);
-	const options = {
-		onUploadDone: updateForm,
-		maxSize: 10 * 1024 * 1024,
-		accept: 'image/*',
-		uploadInBackground: false,
-	};
-	const picker = client.picker(options);
-	
-	
-	// Get references to the DOM elements
-	
-	const form = document.getElementById('pick-form');
-	const fileInput = document.getElementById('fileupload');
-	const btn = document.getElementById('picker');
-	const nameBox = document.getElementById('nameBox');
-	const urlBox = document.getElementById('urlBox');
-	
-	// Add our event listeners
-	
-	btn.addEventListener('click', function (e) {
-		e.preventDefault();
-		picker.open();
-	});
-	
-	form.addEventListener('submit', function (e) {
-		e.preventDefault();
-		alert('Submitting: ' + fileInput.value);
-	});
-	
-	// Helper to overwrite the field input value
-	
-	function updateForm(result) {
-		const fileData = result.filesUploaded[0];
-		fileInput.value = fileData.url;
-		console.log(fileData.url)
-		// If file is resizable image, resize and embed it as a thumbnail preview
-		if (['jpeg', 'png'].indexOf(fileData.mimetype.split('/')[1]) !== -1) {
-			const container = document.getElementById('thumbnail-container');
-			const thumbnail = document.getElementById('thumbnail') || new Image();
-			thumbnail.id = 'thumbnail';
-			thumbnail.src = client.transform(fileData.handle, {
-				resize: {
-					width: 200
-				}
-			});
-			
-			if (!container.contains(thumbnail)) {
-				container.appendChild(thumbnail);
-			}
-		}
-		
-		// Some ugly DOM code to show some data.
-		const name = document.createTextNode('Selected: ' + fileData.filename);
-		const url = document.createElement('a');
-		url.href = fileData.url;
-		url.appendChild(document.createTextNode(fileData.url));
-		nameBox.appendChild(name);
-		urlBox.appendChild(document.createTextNode('Uploaded to: '));
-		urlBox.appendChild(url);
-	}
+	const plantIDAPI = /*[[${plantAPIKey}]]*/ '';
+	// const file = /*[[${fsKey}]]*/ '';
+	// const client = filestack.init(file);
+	// const options = {
+	// 	onUploadDone: updateForm,
+	// 	maxSize: 10 * 1024 * 1024,
+	// 	accept: 'image/*',
+	// 	uploadInBackground: false,
+	// };
+	// const picker = client.picker(options);
+	//
+	//
+	// // Get references to the DOM elements
+	//
+	// const form = document.getElementById('pick-form');
+	// const fileInput = document.getElementById('fileupload');
+	// const btn = document.getElementById('picker');
+	// const nameBox = document.getElementById('nameBox');
+	// const urlBox = document.getElementById('urlBox');
+	//
+	// // Add our event listeners
+	//
+	// btn.addEventListener('click', function (e) {
+	// 	e.preventDefault();
+	// 	picker.open();
+	// });
+	//
+	// form.addEventListener('submit', function (e) {
+	// 	e.preventDefault();
+	// 	alert('Submitting: ' + fileInput.value);
+	// });
+	//
+	// // Helper to overwrite the field input value
+	//
+	// function updateForm(result) {
+	// 	const fileData = result.filesUploaded[0];
+	// 	fileInput.value = fileData.url;
+	// 	console.log(fileData.url)
+	// 	// If file is resizable image, resize and embed it as a thumbnail preview
+	// 	if (['jpeg', 'png'].indexOf(fileData.mimetype.split('/')[1]) !== -1) {
+	// 		const container = document.getElementById('thumbnail-container');
+	// 		const thumbnail = document.getElementById('thumbnail') || new Image();
+	// 		thumbnail.id = 'thumbnail';
+	// 		thumbnail.src = client.transform(fileData.handle, {
+	// 			resize: {
+	// 				width: 200
+	// 			}
+	// 		});
+	//
+	// 		if (!container.contains(thumbnail)) {
+	// 			container.appendChild(thumbnail);
+	// 		}
+	// 	}
+	//
+	// 	// Some ugly DOM code to show some data.
+	// 	const name = document.createTextNode('Selected: ' + fileData.filename);
+	// 	const url = document.createElement('a');
+	// 	url.href = fileData.url;
+	// 	url.appendChild(document.createTextNode(fileData.url));
+	// 	nameBox.appendChild(name);
+	// 	urlBox.appendChild(document.createTextNode('Uploaded to: '));
+	// 	urlBox.appendChild(url);
+	// }
 	
 	/*]]>*/
+	
+	let canvas = document.querySelector("#canvas");
+	let context = canvas.getContext('2d');
+	let video = document.querySelector("#video");
+
+	//opens users camera if they allow
+	if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+		navigator.mediaDevices.getUserMedia({video: true, sound: false}).then(stream => {
+			video.srcObject = stream;
+			video.play();
+		}).then(()=>{
+			const snap = document.getElementById('snap');
+			const close = document.getElementById('stop-camera');
+			snap.disabled = false;
+			close.disabled = false;
+		});
+	}
+
+	//captures photo and displays on the canvas
+	document.getElementById("snap").addEventListener("click", () => {
+		context.drawImage(video, 0, 0, 640, 480);
+	});
+	
+	//saves photo
+	document.getElementById("save-plant-photo").addEventListener("click", ()=>{
+		let newCanvas = document.createElement("canvas");
+		let dataURL = canvas.toDataURL('image/jpeg', 1.0);
+		let newContext = newCanvas.getContext("2d");
+		
+		console.log(dataURL);
+	
+		const promises = dataURL.map((file) => {
+			return new Promise((resolve, reject) => {
+				const reader = new FileReader();
+				reader.onload = (event) => {
+					const res = event.target.result;
+					console.log(res);
+					resolve(res);
+				}
+				reader.readAsDataURL(file)
+			})
+		})
+
+		Promise.all(promises).then((base64files) => {
+			console.log(base64files)
+
+			const data = {
+				api_key: plantIDAPI,
+				images: base64files,
+				modifiers: ["crops_fast", "similar_images"],
+				plant_language: "en",
+				plant_details: ["common_names",
+					"url",
+					"name_authority",
+					"wiki_description",
+					"taxonomy",
+					"synonyms"]
+			};
+
+			fetch('https://api.plant.id/v2/identify', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data),
+			})
+			.then(response => response.json())
+			.then(data => {
+				console.log('Success:', data);
+				document.getElementById("plant").append(
+						data.suggestions[0].plant_details.common_names[0],
+				)
+				document.getElementById("plantUrl").append(
+						data.images[0].url,
+				)
+			})
+			.catch((error) => {
+				console.error('Error:', error);
+			});
+		})
+		// newCanvas.height = 480;
+		// newCanvas.width = 640;
+		//
+		// let imagebase64data = newCanvas.toDataURL("image/png");
+		// imagebase64data = imagebase64data.replace("data:image/png;base64,", "");
+		// $.ajax({
+		// 	type: 'post',
+		// 	url: '/HOME/UploadWebCamImage',
+		// 	data: '{ "imageData" : "' + imagebase64data + '" }',
+		// 	contentType: 'application/json; charset=utf-8',
+		// 	dataType: 'text',
+		// 	success: (out) => {
+		// 		console.log('image upload successful');
+		// 	}
+		// });
+	});
+	
+	//close camera
+	document.getElementById("close").addEventListener("click", ()=>{
+		video.pause();
+	});
+
+	// document.getElementById('#save-plant-photo').onclick = function sendIdentification() {
+	// const files = [...document.querySelector('input[type=file]').files];
+	// const promises = files.map((file) => {
+	//     return new Promise((resolve, reject) => {
+	//         const reader = new FileReader();
+	//         reader.onload = (event) => {
+	//             const res = event.target.result;
+	//             console.log(res);
+	//             resolve(res);
+	//         }
+	//         reader.readAsDataURL(file)
+	//     })
+	// })
+	//
+	// Promise.all(promises).then((base64files) => {
+	//     console.log(base64files)
+	//
+	//     const data = {
+	//         api_key: plantIDAPI,
+	//         images: base64files,
+	//         modifiers: ["crops_fast", "similar_images"],
+	//         plant_language: "en",
+	//         plant_details: ["common_names",
+	//             "url",
+	//             "name_authority",
+	//             "wiki_description",
+	//             "taxonomy",
+	//             "synonyms"]
+	//     };
+	//
+	//     fetch('https://api.plant.id/v2/identify', {
+	//         method: 'POST',
+	//         headers: {
+	//             'Content-Type': 'application/json',
+	//         },
+	//         body: JSON.stringify(data),
+	//     })
+	//         .then(response => response.json())
+	//         .then(data => {
+	//             console.log('Success:', data);
+	//             document.getElementById("plant").append(
+	//                 data.suggestions[0].plant_details.common_names[0],
+	//             )
+	//             document.getElementById("plantUrl").append(
+	//                 data.images[0].url,
+	//             )
+	//         })
+	//         .catch((error) => {
+	//             console.error('Error:', error);
+	//         });
+	// })
 </script>
 <div th:replace="partials.html :: site-scripts"></div>
 </body>

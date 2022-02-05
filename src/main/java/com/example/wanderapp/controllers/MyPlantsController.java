@@ -82,4 +82,16 @@ public class MyPlantsController {
         userDao.save(user);
         return "redirect:/plants";
     }
+
+    @GetMapping("/plants/camera")
+    public String plantCam(Model model) {
+        User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.findById(loginUser.getId());
+        model.addAttribute("plantUrl", new FavoritePlants());
+        model.addAttribute("plantName", new FavoritePlants());
+        model.addAttribute("plantDescription", new FavoritePlants());
+        model.addAttribute("userPlant", user.getFavoritePlants());
+        model.addAttribute("plantAPIKey", plantAPIKey);
+        return "test";
+    }
 }
