@@ -6,15 +6,14 @@
 <h1>My Trails</h1>
 <form th:action="@{/my-trails/delete}" th:method="post" th:object="${trail}">
     <div th:each="trail : ${trails}">
-
-        <input type="hidden" th:field="*{id}"/>
-        <h1 th:text="${trail.getTrailName()}"></h1>
-        <p th:text="${trail.getTrailElevation()}"></p>
-        <p th:text="${trail.getTrailHeadLocation()}"></p>
-        <p th:text="${trail.getTrailDescription()}"></p>
-        <p th:text="${trail.getTrailLat()}"></p>
-        <p th:text="${trail.getTrailLong()}"></p>
-        <button type="submit" value="Delete" name="trailId" th:value="${trail.getId()}" class="btn btn-blue user-btn">Delete</button>
+        <div class="card mx-auto">
+            <input type="hidden" th:field="*{id}"/>
+            <h1 th:text="${trail.getTrailName()}"></h1>
+            <p th:text="${trail.getTrailDescription()}" th:value="${trail.getId()}"></p>
+            <p th:text="${trail.getTrailHeadLocation()}"></p>
+            <p class="m-1" th:text="${trail.trailLength}"></p>
+            <button type="submit" value="Delete" name="trailId" th:value="${trail.getId()}" class="btn btn-blue user-btn">Delete</button>
+        </div>
     </div>
 </form>
 
