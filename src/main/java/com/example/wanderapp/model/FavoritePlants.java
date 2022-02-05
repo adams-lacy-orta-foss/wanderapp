@@ -14,6 +14,11 @@ public class FavoritePlants {
 
     private String imageUrl;
 
+    private String plantname;
+
+    @Column(length = 10000)
+    private String plantDescription;
+
     @ManyToMany(mappedBy = "favoritePlants")
     private List<Trail> trails;
 
@@ -61,5 +66,21 @@ public class FavoritePlants {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getPlantname() {
+        return plantname;
+    }
+
+    public void setPlantname(String plantname) {
+        this.plantname = plantname;
+    }
+
+    public String getPlantDescription() {
+        return plantDescription;
+    }
+
+    public void setPlantDescription(String plantDescription) {
+        this.plantDescription = plantDescription;
     }
 }

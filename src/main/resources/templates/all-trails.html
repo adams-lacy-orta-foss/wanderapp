@@ -8,8 +8,19 @@
 
 <div th:each="trail : ${trails}">
     <h1 th:text="${trail.getTrailName()}"></h1>
-    <p th:text="${trail.getTrailElevation()}"></p>
-    <p th:text="${trail.getTrailHeadLocation()}"></p>
+    <button class="btn btn-primary mt-2"
+            th:value="${trail.getId()}"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseExample"
+            aria-expanded="false" aria-controls="collapseExample">More Info
+    </button>
+    <div class="collapse mt-3" id="collapseExample">
+        <p th:text="${trail.getTrailDescription()}"></p>
+        <p th:text="${trail.getTrailElevation()}"></p>
+        <p th:text="${trail.getTrailHeadLocation()}"></p>
+    </div>
+
 </div>
 
 <div th:replace="partials.html :: plant-button"></div>

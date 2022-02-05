@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+	  xmlns:th="http://www.thymeleaf.org">
 <div th:replace="partials.html :: site-head"></div>
 <body>
 <div th:replace="partials.html :: site-header"></div>
-		
+
 <div class="my-feed-box">
 	<div class="my-feed-window">
-		<h1>Hi, <span th:text="*{user.getFirstName()}"></span>!</h1>
-		<img th:src="${user.getProfile_img()}"  alt="Profile picture" class="profile-pic">
+		<h1>HI, <span th:text="*{user.getFirstName().toUpperCase()}"></span>!</h1>
+		<img alt="Profile picture"
+			 class="profile-pic"
+			 th:src="${user.getProfile_img()}">
 		<div class="account-details">
 			<h3 class="m-5">
 				Account Details
@@ -22,64 +25,90 @@
 			<p>Email:
 				<span th:text="*{user.getEmail()}"></span>
 			</p>
-			<p>DOB:
-				<span th:text="*{user.getDOB()}"></span>
-			</p>
+
 			<div class="d-flex justify-content-between">
-				<a class="btn-small btn-blue" href="#change-password-box">Change Password</a>
-				<a class="btn-small btn-blue" href="/settings">Edit</a>
+				<a class="btn-small btn-blue"
+				   href="#change-password-box">Change Password</a>
+				<a class="btn-small btn-blue"
+				   href="/settings">Edit</a>
 			</div>
 		</div>
-		
+
 		<h3>My Stuff</h3>
-		<a class="btn btn-white user-btn" th:href="@{my-trails}">Saved Trails</a>
-		<a class="btn btn-green user-btn" th:href="@{my-plants}">Saved Plants</a>
-		<a class="btn btn-red user-btn" href="#delete-box">Delete Account</a>
-		
+		<a class="btn btn-blue user-btn"
+		   th:href="@{my-trails}">Saved Trails</a>
+		<a class="btn btn-green user-btn"
+		   th:href="@{plants}">Saved Plants</a>
+		<a class="btn-small btn-red user-btn"
+		   href="#delete-box">Delete Account</a>
+
 		<div id="change-password-box">
 			<div id="change-password-window">
-				<a href="#" class="btn-close btn-small btn-white"></a>
+				<a class="btn-close btn-small btn-white"
+				   href="#"></a>
 				<h1>🔐</h1>
 				<h1>Change Password</h1>
-				
-				<form th:action="@{/profile/password}" method="post" th:object="${user}" id="password-form"
-				      class="d-flex flex-column m-2 justify-content-center text-left">
-					<label for="current-password">Current Password:</label>
-					<input class="border-0" id="current-password" name="current-password" type="text" placeholder="Enter current password here.">
-					
-					<label for="new-password">New Password:</label>
-					<input class="border-0" id="new-password" name="new-password" type="text" placeholder="Enter new password here.">
-					
-					<input type="submit" value="Submit" class="btn-medium btn-blue user-btn">
+
+				<form class="d-flex flex-column m-2 justify-content-center text-left"
+					  id="password-form"
+					  method="post"
+					  th:action="@{/profile/password}"
+					  th:object="${user}">
+
+					<label for="oldpass">Current Password:</label>
+					<input class="border-0"
+						   id="oldpass"
+						   name="oldpass"
+						   placeholder="Enter current password here."
+						   required
+						   type="password">
+
+					<label for="password">New Password:</label>
+					<input class="border-0"
+
+						   id="password"
+						   name="password"
+						   placeholder="Password"
+						   th:field="*{password}"
+						   type="password">
+
+					<button class="btn-medium btn-blue user-btn"
+							type="submit">Change
+						Password
+					</button>
+
 				</form>
 			</div>
 		</div>
-		
+
 		<div id="delete-box">
 			<div id="delete-window">
-				<a href="#" class="btn-close btn-small btn-white"></a>
+				<a class="btn-close btn-small btn-white"
+				   href="#"></a>
 				<h1>🥺</h1>
 				<h1>Are you sure?</h1>
 				<p>This will remove all data saved to your account. This
 					action cannot be undone. Are you sure you want to delete your account?</p>
-				
-				<form th:action="@{/profile/delete}" method="post" th:object="${user}" id="delete-form"
-				      class="d-flex justify-content-between">
-					<a href="#" class="btn-medium btn-blue user-btn">Nevermind!</a>
-					<input type="submit" value="Yes, delete it." class="btn-medium btn-red user-btn">
+
+				<form class="d-flex justify-content-between"
+					  id="delete-form"
+					  method="post"
+					  th:action="@{/profile/delete}"
+					  th:object="${user}">
+					<a class="btn-medium btn-blue user-btn"
+					   href="#">Nevermind!</a>
+					<input class="btn-medium btn-red user-btn"
+						   type="submit"
+						   value="Yes, delete it.">
 				</form>
 			</div>
 		</div>
-		
 		<div class="spacer"></div>
-    
-    <!--<img th:src="@{'data:image/jpeg;base64,'+${user.defaultimg.generateBase64Image()}}" alt="default"/>-->
-    
+		<div th:replace="partials.html :: site-footer"></div>
 	</div>
 </div>
 
 <div th:replace="partials.html :: plant-button"></div>
-<div th:replace="partials.html :: site-footer"></div>
 <div th:replace="partials.html :: site-scripts"></div>
 </body>
 </html>

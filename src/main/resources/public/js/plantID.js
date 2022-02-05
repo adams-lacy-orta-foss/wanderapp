@@ -1,4 +1,4 @@
-document.querySelector('button').onclick = function sendIdentification() {
+document.getElementById('scanplant').onclick = function sendIdentification() {
     const files = [...document.querySelector('input[type=file]').files];
     const promises = files.map((file) => {
         return new Promise((resolve, reject) => {
@@ -41,11 +41,13 @@ document.querySelector('button').onclick = function sendIdentification() {
         })
             .then(response => response.json())
             .then(data => {
-                console.log('Success:', data.images[0].url);
+                console.log('Success:', data);
                 document.getElementById("plant").append(
-                    data.suggestions[0].plant_details.common_names[0],
+                    "Your plant has successfully been scanned!"
                 )
                 document.getElementById("plantUrl").value=data.images[0].url
+                document.getElementById("plantName").value=data.suggestions[0].plant_details.common_names[0]
+                document.getElementById("plantDescription").value=data.suggestions[0].plant_details.wiki_description.value
             })
             .catch((error) => {
                 console.error('Error:', error);

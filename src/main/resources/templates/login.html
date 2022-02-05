@@ -16,6 +16,12 @@
 	</div>
 	
 	<a href="#login-box" id="login-btn" class="btn btn-white">Login</a>
+	<div th:if="${param.error}">
+		Invalid Username and Password.
+	</div>
+	<div th:if="${param.logout}">
+		You have been logged out.
+	</div>
 	<a href="#signup-box" id="signup-btn" class="btn btn-green">Sign Up</a>
 
 </div>
@@ -25,12 +31,6 @@
 		<a href="#" class="btn-close btn-small btn-white"></a>
 		<h1>🥾</h1>
 		<h1>Hello Wanderer!</h1>
-		<div th:if="${param.error}">
-			Invalid Username and Password.
-		</div>
-		<div th:if="${param.logout}">
-			You have been logged out.
-		</div>
 		
 		<form th:action="@{/login}" method="post" class="d-flex flex-column" id="login-form">
 			<input class="border-0" id="username" name="username" type="text" placeholder="Username">
@@ -46,9 +46,6 @@
 		<a href="#" class="btn-close btn-small btn-black-white"></a>
 		<h1>👋</h1>
 		<h1>Welcome Wanderer!</h1>
-		<div th:if="${param.error}">
-			Invalid Username and Password.
-		</div>
 		
 		<form id="signup-form" class="d-flex flex-column" th:action="@{/sign-up}" th:method="post" th:object="${user}">
 			<input class="border-0" id="first-name" name="first-name" th:field="*{firstName}" type="text"
@@ -74,6 +71,8 @@
 			<input class="border-0 btn btn-green" type="submit" value="Sign Up">
 		</form>
 	</div>
+	
+	<div th:replace="partials.html :: site-footer"></div>
 </div>
 
 <div th:replace="partials.html :: site-scripts"></div>

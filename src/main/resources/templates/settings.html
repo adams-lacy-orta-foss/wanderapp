@@ -9,50 +9,49 @@
 <div class="my-feed-box">
 	<div class="my-feed-window">
 		<H1>Settings</H1>
-<!--		<img th:src="${user.getProfile_img()}"  alt="Profile picture" class="profile-pic">-->
-<!--		-->
-<!--		<form method="post"-->
-<!--		      th:action="@{'/settings'}"-->
-<!--		      th:object="${user}"-->
-<!--		      class="d-flex flex-column justify-content-center text-left p-2">-->
-					<form id="image" th:action="@{/profile}" th:object="${user}" >
-					<label name="profile_img">Edit Profile Photo:</label>
-			<input type="hidden" id="img" name="profile_img"
-			       th:value="img">
-					<button class=" btn btn-green" id="picker" type="button">Pick file</button>
-						<br>
-			
+
+		<form id="image"
+			  method="post"
+			  th:action="@{/settings}"
+			  th:object="${user}"
+			class="d-flex flex-column justify-content-center text-left p-2">
+			<label name="img">Edit Profile Photo:</label>
+			<input id="img"
+				   name="img"
+				   th:value="img"
+				   type="hidden">
+			<button class=" btn btn-green"
+					id="picker"
+					type="button">Pick file
+			</button>
+			<br>
+
 			<label name="FirstName">First Name:</label>
 			<input name="FirstName"
-			       th:value="${user.getFirstName()}">
-			
+				   th:value="${user.getFirstName()}">
+
 			<label name="LastName">Last Name:</label>
 			<input name="LastName"
-			       th:value="${user.getLastName()}">
-			
+				   th:value="${user.getLastName()}">
+
 			<label name="Email">Email:</label>
 			<input name="Email"
-			       type="email"
-			       th:value="${user.getEmail()}">
-			
-			<label name="DOB">Date of Birth:</label>
-			<input name="DOB"
-			       type="date"
-			       th:value="${user.getDOB()}">
-			
-			<input name="Id"
-			       th:value="${user.getId()}"
-			       type="hidden">
-			
-			<button type="submit" class="btn-green w-25 mt-3 p-2 ml-auto">Submit</button>
+				   th:value="${user.getEmail()}"
+				   type="email">
+
+			<input name="id"
+				   th:value="${user.getId()}"
+				   type="hidden">
+
+			<button type="submit" class="btn-green w-50 mt-3 p-2 ml-auto">Submit</button>
 		</form>
-		
+
 		<div class="spacer"></div>
 	</div>
+	<div th:replace="partials.html :: site-footer"></div>
 </div>
 
 <div th:replace="partials.html :: plant-button"></div>
-<div th:replace="partials.html :: site-footer"></div>
 <div th:replace="partials.html :: site-scripts"></div>
 
 <script th:inline="javascript">
@@ -90,7 +89,7 @@
 
 	// Helper to overwrite the field input value
 
-	function updateForm (result) {
+	function updateForm(result) {
 		const fileData = result.filesUploaded[0];
 		fileInput.value = fileData.url;
 		console.log(fileData.url)
@@ -104,10 +103,7 @@
 		nameBox.appendChild(name);
 		urlBox.appendChild(document.createTextNode('Uploaded to: '));
 		urlBox.appendChild(url);
-		document.getElementById("img").value=fileData.url
-
-
-
+		document.getElementById("img").value = fileData.url
 
 
 	}
