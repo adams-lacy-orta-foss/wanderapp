@@ -13,7 +13,7 @@
   </div>
 </th:block>
 
-<h1>Something went wrong! Please log in</h1>
+<h1>You must be logged in to view this page!</h1>
 
   <iframe
           width="420"
@@ -27,6 +27,7 @@
 
 
 <a th:href="@{/login}" class="btn btn-white user-btn">Login</a>
+<div th:replace="partials.html :: site-footer"></div>
 
 </body>
 </html>
