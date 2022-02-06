@@ -63,18 +63,6 @@ function setupMap(center) {
                 }
             });
         }
-
-        // const instructions = document.getElementById('instructions');
-        // const steps = data.legs[0].steps;
-        //
-        // let tripInstructions = '';
-        // for (const step of steps) {
-        //     tripInstructions += `<li>${step.maneuver.instruction}</li>`;
-        // }
-        //
-        // instructions.innerHTML = `<h3>Trip duration: ${Math.floor(
-        //     data.duration / 60
-        // )} min 🚶🏽 </h3><ol>${tripInstructions}</ol>`;
     }
 
     async function getRouteWithInstructions(end) {
@@ -99,13 +87,15 @@ function setupMap(center) {
         }
 
         else {
+            map.addSource('LineString', {
+                'type': 'geojson',
+                'data': geojson
+            });
+
             map.addLayer({
                 id: 'route',
                 type: 'line',
-                source: {
-                    type: 'geojson',
-                    data: geojson
-                },
+                source: 'LineString',
                 layout: {
                     'line-join': 'round',
                     'line-cap': 'round'
@@ -113,7 +103,7 @@ function setupMap(center) {
                 paint: {
                     'line-color': '#3887be',
                     'line-width': 5,
-                    'line-opacity': 0.75
+                    'line-opacity': 0.65
                 }
             });
         }
@@ -188,16 +178,14 @@ function setupMap(center) {
                         type: 'geojson',
                         data: {
                             type: 'FeatureCollection',
-                            features: [
-                                {
+                            features: [{
                                     type: 'Feature',
                                     properties: {},
                                     geometry: {
                                         type: 'Point',
                                         coordinates: coords
                                     }
-                                }
-                            ]
+                                }]
                         }
                     },
                     paint: {
@@ -211,9 +199,11 @@ function setupMap(center) {
 
     });
 
+    //zoom controls
     let nav = new mapboxgl.NavigationControl();
     map.addControl(nav, "bottom-right");
 
+    //zoom current location control
     let geolocate = new mapboxgl.GeolocateControl({
         accessToken: mapBoxAPIkey,
         positionOption: {
@@ -223,18 +213,7 @@ function setupMap(center) {
     })
     map.addControl(geolocate, "bottom-right");
 
-    //UNCOMMENT THIS FOR DIRECTION BOX TO DISPLAY IN UPPER LEFT HAND CORNER OF MAP
-    // let directions = new MapboxDirections({
-    //     accessToken: mapBoxAPIkey,
-    //     profile: 'mapbox/walking',
-    //     bbox: [-124.74291874132005, 25.101945677241105, -65.56472363838606, 48.98432947209429],
-    //     proximity: {
-    //         center
-    //     }
-    // });
-    //
-    // map.addControl(directions, "top-left");
-
+    //search bar
     let geocoder = new MapboxGeocoder({
         accessToken: mapBoxAPIkey,
         mapboxgl: mapboxgl,
