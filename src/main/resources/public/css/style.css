@@ -456,6 +456,10 @@ footer {
     padding: .2em;
     margin: .5em;
 }
+
+.card-name {
+    height: 1.75em;
+}
 .plant-photo {
     height: 200px;
     width: 200px;
