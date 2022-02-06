@@ -5,23 +5,18 @@
 <div th:replace="partials.html :: site-header"></div>
 
 <h1>All Trails</h1>
-
-<div th:each="trail : ${trails}">
-    <h1 th:text="${trail.getTrailName()}"></h1>
-    <button class="btn btn-primary mt-2"
-            th:value="${trail.getId()}"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseExample"
-            aria-expanded="false" aria-controls="collapseExample">More Info
-    </button>
-    <div class="collapse mt-3" id="collapseExample">
-        <p th:text="${trail.getTrailDescription()}"></p>
-        <p th:text="${trail.getTrailElevation()}"> ft</p>
-        <p th:text="${trail.getTrailDifficulty()}"></p>
+<div>
+    <div th:each="trail : ${trails}">
+        <div class="card mx-auto">
+            <h1 th:text="${trail.getTrailName()}"></h1>
+            <p th:text="${trail.getTrailDescription()}" th:value="${trail.getId()}"></p>
+            <p class="m-1" th:text="${trail.trailLength}"></p>
+            <p th:text="${trail.getTrailHeadLocation()}"></p>
+        </div>
     </div>
 
 </div>
+
 
 <div th:replace="partials.html :: plant-button"></div>
 <div th:replace="partials.html :: site-footer"></div>

@@ -1,6 +1,9 @@
-'use strict'
-
 "use strict";
+
+// $(document).ready(()=>{
+//     setTimeout(()=>{
+//         $('.loading-screen').fadeOut()}, 3000);
+// });
 
 //INIT MAPBOX
 mapboxgl.accessToken = mapBoxAPIkey;
@@ -24,6 +27,10 @@ function setupMap(center) {
             zoom: 11,
         });
 
+    map.on('load', () => {
+        $('.loading-screen').fadeOut()
+    });
+
     let nav = new mapboxgl.NavigationControl();
     map.addControl(nav, "bottom-right");
 
@@ -37,11 +44,15 @@ function setupMap(center) {
     map.addControl(geolocate, "bottom-right");
 
     //UNCOMMENT THIS FOR DIRECTION BOX TO DISPLAY IN UPPER LEFT HAND CORNER OF MAP
-    // let directions = new MapboxDirections({
-    //     accessToken: mapBoxAPIkey,
-    //     profile: 'mapbox/walking'
-    // });
-    // map.addControl(directions, "top-left");
+    let directions = new MapboxDirections({
+        accessToken: mapBoxAPIkey,
+        profile: 'mapbox/walking',
+        bbox: [-124.74291874132005, 25.101945677241105, -65.56472363838606, 48.98432947209429],
+        proximity: {
+            center
+        }
+    });
+    map.addControl(directions, "top-left");
 
     let geocoder = new MapboxGeocoder({
         accessToken: mapBoxAPIkey,
@@ -51,7 +62,7 @@ function setupMap(center) {
             center
         }
     });
-    map.addControl(geocoder, "top-right");
+    // map.addControl(geocoder, "top-right");
 }
 
 //KEVIN's MAPBOX CODE BELOW

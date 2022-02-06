@@ -11,56 +11,14 @@
 <div class="container">
 	<form th:action="@{/plants/delete}" th:method="post" th:object="${plant}">
 		<div th:each="plants: ${plants}">
-            <div class="card">
-            <h2 th:text="${plants.getPlantname()}" th:value="${plants.getId()}"></h2>
-            <input type="hidden" th:field="*{id}">
-            <img th:src="${plants.getimageUrl()}" alt="Plant Picture" class="plant-photo">
-            <p class="m-1" th:text="${plants.getPlantDescription()}" th:value="${plants.getId()}"></p>
-            <button type="submit" th:value="${plants.getId()}" class="btn btn-blue user-btn">Delete</button>
-        </div>
-        </div>
-<!--		<div class="card">-->
-<!--            <input type="hidden" th:field="*{id}">-->
-<!--            <img th:src="${plants.getimageUrl()}" alt="Plant Picture" class="plant-photo">-->
-<!--            <p>-->
-<!--                <button class="btn btn-primary mt-2" type="button" data-bs-toggle="collapse"-->
-<!--                        data-bs-target="#collapseExample"-->
-<!--                        aria-expanded="false" aria-controls="collapseExample" th:text="${plants.getPlantname()}" th:value="${plants.getId()}">-->
-<!--                </button>-->
-<!--            </p>-->
-<!--            <div class="collapse mt-3" id="collapseExample" th:text="${plants.getPlantDescription()}" th:value="${plants.getId()}">-->
-<!--                <div class="card card-body" style="width: 150px;">-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <input type="submit" value="Delete" name="plantId" th:value="${plants.getId()}"-->
-<!--                   class="btn btn-outline-dark">-->
-<!--&lt;!&ndash;            <a th:value="${plants.getId()}" href="#delete-box" class="btn btn-outline-dark">Delete</a>&ndash;&gt;-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</form>-->
-
-<!--<div id="delete-box">-->
-<!--    <div id="delete-window">-->
-<!--        <a class="btn-close btn-small btn-white"-->
-<!--           href="#"></a>-->
-<!--        <h1>🥺</h1>-->
-<!--        <h1>Are you sure?</h1>-->
-<!--        <p>This will remove all data saved to your account. This-->
-<!--            action cannot be undone. Are you sure you want to delete your account?</p>-->
-
-<!--        <form class="d-flex justify-content-between"-->
-<!--              id="delete-form"-->
-<!--              th:method="post"-->
-<!--              th:action="@{/plants/delete}"-->
-<!--              th:object="${plant}">-->
-<!--            <a class="btn-medium btn-blue user-btn"-->
-<!--               href="#">Nevermind!</a>-->
-<!--            <button class="btn-medium btn-red user-btn"-->
-<!--                   type="submit" th:value="${plant.getId()}" name="plantId">Yes, delete it.</button>-->
-<!--        </form>-->
-<!--    </div>-->
-<!--</div>-->
-
+			<div class="card">
+				<h2 th:text="${plants.getPlantname()}" th:value="${plants.getId()}"></h2>
+				<input type="hidden" th:field="*{id}">
+				<img th:src="${plants.getimageUrl()}" alt="Plant Picture" class="plant-photo">
+				<p class="m-1" th:text="${plants.getPlantDescription()}" th:value="${plants.getId()}"></p>
+				<button type="submit" name="plantId" th:value="${plants.getId()}" class="btn btn-blue user-btn">Delete</button>
+			</div>
+		</div>
 	</form>
 </div>
 <div class="spacer"></div>
