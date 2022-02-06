@@ -62,7 +62,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .logo i {
-    font-size: xx-large;
+    font-size: x-large;
     color: var(--light);
 }
 
@@ -77,6 +77,7 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
     color: var(--light);
     padding: .5em;
+    margin: 0 1em;
     transition-property: color, background-color, border-color;
     transition-duration: 0.15s, 0.15s, 0.15s;
     transition-timing-function: ease-in-out, ease-in-out, ease-in-out;
@@ -228,12 +229,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #map {
-    width: 90%;
+    width: 85%;
     height: 50em;
 
     border: 1px solid var(--gold);
     border-radius: 20px;
     box-shadow: 0 3px 5px rgba(0, 0, 0, .5);
+}
+
+#instructions {
+    margin: 1em;
+    padding: 1em;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: left;
 }
 
 .container {
@@ -385,7 +393,7 @@ footer {
 }
 
 .spacer {
-    height: 200px;
+    height: 3em;
 }
 
 /*START PROFILE PAGE STYLING*/
@@ -401,13 +409,14 @@ footer {
 }
 
 .plant-pic-btn {
+    z-index: 1000;
     height: 75px;
     width: 75px;
     margin: 1em;
 
     position: fixed;
-    left: .5em;
-    bottom: 3em;
+    right: .5em;
+    bottom: 1.5em;
 
     text-decoration: none;
     border-radius: 100px;
@@ -418,7 +427,7 @@ footer {
 
 .plant-pic-btn:hover {
     box-shadow: none;
-    background-color: var(--dark-teal);
+    background-color: var(--green);
     color: #fff;
 }
 
@@ -429,8 +438,8 @@ footer {
     margin: auto;
     position: absolute;
     bottom: 50%;
-    left: 50%;
-    transform: translate(-50%, 50%);
+    right: 50%;
+    transform: translate(50%, 50%);
 }
 
 .card-group {
@@ -456,7 +465,7 @@ footer {
 }
 
 .loading-screen {
-    z-index: 100;
+    z-index: 1001;
     height: 100vh;
     width: 100vw;
     display: flex;
