@@ -41,23 +41,22 @@
 				<li class="nav-item">
 					<a class="nav-link-css" th:href="@{/all-trails}">All Trails</a>
 				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link-css dropdown-toggle" th:href="@{#}" id="navbarDropdownMenuLink" role="button"
-					   data-bs-toggle="dropdown" aria-expanded="false">
-						Account
+				<li>
+					<a class="nav-link-css" th:href="@{/my-trails}">
+						<i class="fas fa-mountain"></i> My Trails
 					</a>
-					<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<li><a class="dropdown-item" th:href="@{/my-trails}">Saved Trails</a></li>
-						<li><a class="dropdown-item" th:href="@{/plants}">My Plants</a></li>
-						<hr>
-						<li><a class="dropdown-item" th:href="@{/profile}">Profile</a></li>
-						<li><a class="dropdown-item" th:href="@{/settings}">Settings</a></li>
-						<li>
-							<form th:action="@{/logout}" th:method="post">
-								<button class="dropdown-item">Logout</button>
-							</form>
-						</li>
-					</ul>
+				</li>
+				<li>
+					<a class="nav-link-css" th:href="@{/profile}">
+						<i class="fas fa-hiking"></i> Profile
+					</a>
+				</li>
+				<li>
+					<form th:action="@{/logout}" th:method="post">
+						<button class="dropdown-item nav-link-css">
+							<i class="fas fa-sign-out-alt"></i> Sign Out
+						</button>
+					</form>
 				</li>
 			</ul>
 		</div>
