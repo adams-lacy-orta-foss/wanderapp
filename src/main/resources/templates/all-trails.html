@@ -10,11 +10,10 @@
         <div class="card mx-auto">
             <h1 th:text="${trail.getTrailName()}"></h1>
             <p th:text="${trail.getTrailDescription()}" th:value="${trail.getId()}"></p>
-            <p class="m-1" th:text="${trail.trailLength}"></p>
+            <p class="m-1" th:text="${trail.trailLength} +  miles"></p>
             <p th:text="${trail.getTrailHeadLocation()}"></p>
         </div>
     </div>
-
 </div>
 
 
