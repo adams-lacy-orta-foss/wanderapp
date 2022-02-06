@@ -123,7 +123,7 @@ function setupMap(center) {
 
     map.on('load', () => {
         $('.loading-screen').fadeOut()
-
+        $('body').removeClass('no-scroll');
         // initial directions request
         getRoute(center);
 

@@ -28,6 +28,10 @@ body {
     background-attachment: fixed;
 }
 
+.no-scroll {
+    overflow: hidden;
+}
+
 nav {
     background-color: var(--dark-teal);
     color: #fff;
