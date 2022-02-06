@@ -237,6 +237,13 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 3px 5px rgba(0, 0, 0, .5);
 }
 
+#instructions {
+    margin: 1em;
+    padding: 1em;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: left;
+}
+
 .container {
     display: flex;
     justify-content: center;
@@ -386,7 +393,7 @@ footer {
 }
 
 .spacer {
-    height: 200px;
+    height: 3em;
 }
 
 /*START PROFILE PAGE STYLING*/
