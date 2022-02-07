@@ -5,7 +5,6 @@ document.getElementById('scanplant').onclick = function sendIdentification() {
             const reader = new FileReader();
             reader.onload = (event) => {
                 const res = event.target.result;
-                // console.log(res);
                 resolve(res);
             }
             reader.readAsDataURL(file)
@@ -13,8 +12,6 @@ document.getElementById('scanplant').onclick = function sendIdentification() {
     })
 
     Promise.all(promises).then((base64files) => {
-        // console.log(base64files)
-
         const data = {
             api_key: plantIDAPI,
             images: base64files,
@@ -41,13 +38,13 @@ document.getElementById('scanplant').onclick = function sendIdentification() {
         })
             .then(response => response.json())
             .then(data => {
-                document.getElementById("plant").append(
-                    "Your plant has successfully been scanned!"
-                )
                 document.getElementById("plantUrl").value=data.images[0].url
+                document.getElementById("plant").append(data.suggestions[0].plant_details.common_names[0]);
+                document.getElementById("plantpicture").src=data.images[0].url;
                 document.getElementById("plantName").value=data.suggestions[0].plant_details.common_names[0]
                 document.getElementById("plantDescription").value=data.suggestions[0].plant_details.wiki_description.value
                 $("#display").removeClass("d-none");
+                $("#plantcard").removeClass("d-none");
             })
             .catch((error) => {
                 console.error('Error:', error);
