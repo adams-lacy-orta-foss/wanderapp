@@ -127,6 +127,7 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
 }
 
+.btn,
 .btn:link,
 .btn:visited {
     text-decoration: none;
@@ -408,12 +409,11 @@ footer {
 }
 
 .account-details {
-    color: var(--light);
     width: 25em;
 }
 
 .account-value {
-    color: #fff;
+    color: var(--light-blue);
 }
 
 .plant-pic-btn {
