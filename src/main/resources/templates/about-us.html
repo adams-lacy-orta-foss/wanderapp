@@ -3,17 +3,14 @@
 <div th:replace="partials.html :: site-head"></div>
 <body>
 <div th:replace="partials.html :: site-header"></div>
+<div class="container flex-column">
 
 <h1>What is Wander?</h1>
-
-<div>
-	Wander is so cool. Leave a neat description about what this app is, does, why anyone would want to use it here. Also
-	put some cool pictures. Also some icons that fade in as you scroll. Lots and lots of copy here.
-</div>
+<p>Wander is so cool. Leave a neat description about what this app is, does, why anyone would want to use it here. Also
+	put some cool pictures. Also some icons that fade in as you scroll. Lots and lots of copy here.</p>
 
 <h1>The Squad</h1>
 
-<div class="container">
 	<div class="row">
 		<div class="col-sm-12 col-md-6 col-lg-3">
 			<div class="card mx-auto">
@@ -21,9 +18,7 @@
 				<img src="https://cdn.filestackcontent.com/73QTiV9Q1GdXSDtdtneR"
 				     alt="Joanna Foss" height="200" width="200" style="border-radius:50%" class="mx-auto"/>
 				<h4>Front End Engineer</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad delectus error ipsam laudantium
-					obcaecati
-					placeat repellendus, veniam. Cum dignissimos dolor error labore nulla quibusdam sequi.</p>
+				<p>I'm a full stack software engineer and USAF veteran (13N) who loves hiking, chess, and warm beverages. I grew up on the Mississippi Gulf Coast, but this crazy life brought me to San Antonio, TX. I wake up excited everyday to be a software engineer. Let me help you develop your next application.</p>
 				<div>
 					<a href="https://github.com/joanna-foss" style="color:var(--green-o); margin: 3px;"
 					   onmouseover="this.style.color='var(--brown)'" onmouseout="this.style.color='var(--green-o)'">
@@ -82,7 +77,7 @@
 		<div class="col-sm-12 col-md-6 col-lg-3">
 			<div class="card mx-auto">
 				<h2 class="card-name">Steven Lacy</h2>
-				<img src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHRlY2hub2xvZ3l8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60"
+				<img th:src="@{/img/steven.jpg}"
 				     alt="Steven Lacy" height="200" width="200" style="border-radius:50%" class="mx-auto"/>
 				<h4>Back End Engineer</h4>
 				<p>Software developer and Navy Veteran with experience in aviation logistics, leadership, and proven

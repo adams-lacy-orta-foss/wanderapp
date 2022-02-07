@@ -408,8 +408,12 @@ footer {
 }
 
 .account-details {
-    text-align: left;
-    margin-bottom: 1em;
+    color: var(--light);
+    width: 25em;
+}
+
+.account-value {
+    color: #fff;
 }
 
 .plant-pic-btn {
