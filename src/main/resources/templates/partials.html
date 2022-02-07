@@ -39,7 +39,7 @@
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link-css" href="/all-trails"><i class="fas fa-mountain"></i> All Trails</a>
+					<a class="nav-link-css" href="/my-trails"><i class="fas fa-mountain"></i> My Trails</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link-css" href="/profile">
@@ -47,7 +47,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<form action="/logout" th:method="post">
+					<form th:action="@{/logout}" th:method="post">
 						<button class="dropdown-item nav-link-css">
 							<i class="fas fa-sign-out-alt"></i> Logout
 						</button>

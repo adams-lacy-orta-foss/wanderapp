@@ -7,23 +7,24 @@
 
 <div class="my-feed-box">
 	<div class="my-feed-window">
-		<h1>HI, <span th:text="*{user.getFirstName().toUpperCase()}"></span>!</h1>
+		<h1>Hello, <span th:text="*{user.getFirstName().toUpperCase()}"></span>!</h1>
 		<img alt="Profile picture"
-			 class="profile-pic"
+			 class="profile-pic mb-3"
 			 th:src="${user.getProfile_img()}">
-		<div class="account-details">
-			<h3 class="m-5">
+		<div class="account-details card p-3">
+			<h2>
 				Account Details
-			</h3>
-			<p class="mx-auto">Name:
-				<span th:text="*{user.getFirstName()}"></span>
-				<span th:text="*{user.getLastName()}"></span>
+			</h2>
+			<p class="mx-auto">
+				Name:
+				<span class="account-value" th:text="*{user.getFirstName()}"></span>
+				<span class="account-value" th:text="*{user.getLastName()}"></span>
 			</p>
 			<p class="mx-auto">Username:
-				<span th:text="*{user.getUsername()}"></span>
+				<span class="account-value" th:text="*{user.getUsername()}"></span>
 			</p>
 			<p class="mx-auto">Email:
-				<span th:text="*{user.getEmail()}"></span>
+				<span class="account-value" th:text="*{user.getEmail()}"></span>
 			</p>
 
 			<div class="d-flex justify-content-between">
@@ -34,7 +35,7 @@
 			</div>
 		</div>
 
-		<h3>My Stuff</h3>
+		<h2>My Stuff</h2>
 		<a class="btn btn-blue user-btn"
 		   th:href="@{my-trails}">Saved Trails</a>
 		<a class="btn btn-green user-btn"

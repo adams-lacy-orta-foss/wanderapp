@@ -127,6 +127,7 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
 }
 
+.btn,
 .btn:link,
 .btn:visited {
     text-decoration: none;
@@ -408,8 +409,11 @@ footer {
 }
 
 .account-details {
-    text-align: left;
-    margin-bottom: 1em;
+    width: 25em;
+}
+
+.account-value {
+    color: var(--light-blue);
 }
 
 .plant-pic-btn {
@@ -494,6 +498,11 @@ footer {
     border-radius: 50%;
     -webkit-animation: 1s spin linear infinite;
     animation: 1s spin linear infinite;
+}
+
+.profile-account-details {
+    font-size: large;
+    margin-left: .5em;
 }
 
 @-webkit-keyframes spin {
