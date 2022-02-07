@@ -496,6 +496,11 @@ footer {
     animation: 1s spin linear infinite;
 }
 
+.profile-account-details {
+    font-size: large;
+    margin-left: .5em;
+}
+
 @-webkit-keyframes spin {
     from {
         -webkit-transform: rotate(0deg);

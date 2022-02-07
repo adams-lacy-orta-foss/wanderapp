@@ -11,11 +11,12 @@
 		<img alt="Profile picture"
 			 class="profile-pic"
 			 th:src="${user.getProfile_img()}">
-		<div class="account-details">
-			<h3 class="m-5">
+		<div class="account-details card m-3">
+			<h3 >
 				Account Details
 			</h3>
-			<p class="mx-auto">Name:
+			<p class="mx-auto">
+				Name:
 				<span th:text="*{user.getFirstName()}"></span>
 				<span th:text="*{user.getLastName()}"></span>
 			</p>
