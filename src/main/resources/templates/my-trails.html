@@ -11,7 +11,7 @@
             <h1 th:text="${trail.getTrailName()}"></h1>
             <p th:text="${trail.getTrailDescription()}" th:value="${trail.getId()}"></p>
             <p th:text="${trail.getTrailHeadLocation()}"></p>
-            <p class="m-1" th:text="${trail.trailLength}"></p>
+            <p class="m-1" th:text="${trail.trailLength} +' ' + mi"></p>
             <button type="submit" value="Delete" name="trailId" th:value="${trail.getId()}" class="btn btn-blue user-btn">Delete</button>
         </div>
     </div>
@@ -30,7 +30,8 @@
         </div>
         <div class="form-group">
             <label for="trailLength">Length:</label>
-            <input type="text" id="trailLength" class="form-control" th:field="*{trailLength}" placeholder="trail length">
+            <input type="number" id="trailLength" class="form-control" th:field="*{trailLength}"
+                   placeholder="trail length">
             <span th:if="${#fields.hasErrors('trailLength')}" th:errors="*{trailLength}"></span>
         </div>
         <div class="form-group">
