@@ -8,8 +8,8 @@
     <div id="plant" style="font-weight: bold; font-size: large; color: var(--light)" th:value="replace"></div>
     <img src="" id="plantpicture">
 </div>
-<form th:action="@{/plants}" th:method="post">
-    <input type="file" multiple class="btn btn-white user-btn" id="hiden-file">
+<form th:action="@{/plants}" th:method="post" class="d-flex flex-column mx-auto m-5 p-5">
+    <input type="file" multiple class="" id="hiden-file">
     <input id="plantUrl" name="plantUrl" type="hidden" th:value="replaceme">
     <input id="plantName" name="plantName" type="hidden" th:value="replacethis">
     <input id="plantDescription" name="plantDescription" type="hidden" th:value="replacealso">
