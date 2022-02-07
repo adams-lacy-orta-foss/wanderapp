@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="UTF-8"/>
-    <title th:text="'Ooops, ' + ${error}"></title>
-</head>
+<div th:replace="partials.html :: site-head"></div>
 <body>
-
+<div th:replace="partials.html :: site-header"></div>
 <th:block th:switch="${error}">
     <div th:case="'Not Found'">
         <h1>Page not found!!</h1>
@@ -18,6 +15,7 @@
 <p>Something broke :(</p>
 <h1>DESTRUCTION!!!!!!</h1>
 <button onclick="history.back()">Go Back!</button>
+<div th:replace="partials.html :: site-footer"></div>
 </iframe>
 </body>
 </html>

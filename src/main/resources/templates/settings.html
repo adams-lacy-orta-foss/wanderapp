@@ -10,41 +10,46 @@
 	<div class="my-feed-window">
 		<H1>Settings</H1>
 
-		<form id="image"
-			  method="post"
-			  th:action="@{/settings}"
-			  th:object="${user}"
-			class="d-flex flex-column justify-content-center text-left p-2">
-			<label name="img">Edit Profile Photo:</label>
-			<input id="img"
-				   name="img"
-				   th:value="img"
-				   type="hidden">
-			<button class=" btn btn-green"
-					id="picker"
-					type="button">Pick file
-			</button>
-			<br>
+		<div class="card">
+			<form id="image"
+				  method="post"
+				  th:action="@{/settings}"
+				  th:object="${user}"
+				  class="d-flex flex-column justify-content-center text-left p-2">
+				<label name="img">Edit Profile Photo:</label>
+				<input id="img"
+					   name="img"
+					   th:value="img"
+					   type="hidden">
+				<button class=" btn btn-green"
+						id="picker"
+						type="button">Pick file
+				</button>
+				<br>
 
-			<label name="FirstName">First Name:</label>
-			<input name="FirstName"
-				   th:value="${user.getFirstName()}">
+				<label name="FirstName">First Name:</label>
+				<input name="FirstName"
+					   th:value="${user.getFirstName()}">
 
-			<label name="LastName">Last Name:</label>
-			<input name="LastName"
-				   th:value="${user.getLastName()}">
+				<label name="LastName">Last Name:</label>
+				<input name="LastName"
+					   th:value="${user.getLastName()}">
 
-			<label name="Email">Email:</label>
-			<input name="Email"
-				   th:value="${user.getEmail()}"
-				   type="email">
+				<label name="Email">Email:</label>
+				<input name="Email"
+					   th:value="${user.getEmail()}"
+					   type="email">
 
-			<input name="id"
-				   th:value="${user.getId()}"
-				   type="hidden">
+				<input name="id"
+					   th:value="${user.getId()}"
+					   type="hidden">
 
-			<button type="submit" class="btn-green w-50 mt-3 p-2 ml-auto">Submit</button>
-		</form>
+				<br>
+				<button type="submit" class="btn btn-green">Submit</button>
+			</form>
+
+		</div>
+
 
 		<div class="spacer"></div>
 	</div>
