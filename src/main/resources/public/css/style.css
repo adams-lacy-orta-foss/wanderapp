@@ -538,6 +538,10 @@ footer {
     color: #fff;
 }
 
+#plantpicture {
+    width: 100%;
+}
+
 @-webkit-keyframes spin {
     from {
         -webkit-transform: rotate(0deg);
