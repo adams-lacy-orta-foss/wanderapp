@@ -483,8 +483,7 @@ footer {
     height: 1.75em;
 }
 .plant-photo {
-    height: 200px;
-    width: 200px;
+    width: 100%;
     margin: auto;
     padding: 0.5em;
     border-radius: 20px;
