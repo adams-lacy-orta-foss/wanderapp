@@ -102,8 +102,6 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: .1em;
     text-decoration: none;
     color: #fff;
-
-    margin: 0 1em;
 }
 
 .app-name:hover {
@@ -227,6 +225,10 @@ h1, h2, h3, h4, h5, h6 {
     margin: 1em;
 }
 
+.dropdown-item {
+    margin-left: -.1em;
+}
+
 #sign-up>div {
     margin-top: 1em;
     margin-bottom: 1em;
@@ -256,7 +258,6 @@ h1, h2, h3, h4, h5, h6 {
 
 footer {
     height: 85px;
-    width: 100vw;
 }
 
 /* LOGIN PAGE STYLING */
@@ -331,7 +332,11 @@ footer {
 #login-box,
 #signup-box,
 #delete-box,
-#change-password-box {
+#change-password-box,
+#hiking-box,
+#plants-box,
+#notes-box,
+#free-box {
     position: fixed;
     top: 0;
     left: 0;
@@ -350,7 +355,11 @@ footer {
 #login-box:not(:target),
 #signup-box:not(:target),
 #delete-box:not(:target),
-#change-password-box:not(:target) {
+#change-password-box:not(:target),
+#hiking-box:not(:target),
+#plants-box:not(:target),
+#notes-box:not(:target),
+#free-box:not(:target) {
     visibility: hidden;
     opacity: 0;
 }
@@ -358,7 +367,12 @@ footer {
 #login-window,
 #signup-window,
 #delete-window,
-#change-password-window {
+#change-password-window,
+#hiking-window,
+#plants-window,
+#notes-window,
+#free-window
+ {
     position: relative;
     padding: 4em 2em;
     background-color: #fff;
@@ -461,7 +475,7 @@ footer {
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.35);
     max-width: 20em;
-    padding: .2em;
+    padding: .5em;
     margin: .5em;
 }
 
@@ -503,6 +517,25 @@ footer {
 .profile-account-details {
     font-size: large;
     margin-left: .5em;
+}
+
+.about-modal {
+    width: 200px;
+    height: 200px;
+
+    border-radius: 7px;
+    margin: 1em;
+    background-color: rgba(0, 0, 0, .5);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-modal a {
+    text-decoration: none;
+    color: #fff;
 }
 
 @-webkit-keyframes spin {

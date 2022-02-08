@@ -4,13 +4,47 @@
 <body>
 <div th:replace="partials.html :: site-header"></div>
 <div class="container flex-column">
-
-<h1>What is Wander?</h1>
-<p>Wander is so cool. Leave a neat description about what this app is, does, why anyone would want to use it here. Also
-	put some cool pictures. Also some icons that fade in as you scroll. Lots and lots of copy here.</p>
-
-<h1>The Squad</h1>
-
+	
+	<h1>Wondering about Wander?</h1>
+	<h6>Tap the boxes below to learn more:</h6>
+	
+	<div class="row">
+		<div class="col-sm-12 col-md-6 col-lg-3 d-flex justify-content-center">
+			<div class="about-modal">
+				<a href="#hiking-box">
+					<i class="fas fa-hiking fa-3x"></i>
+					<h3>Hiking</h3>
+				</a>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-6 col-lg-3 d-flex justify-content-center">
+			<div class="about-modal">
+				<a href="#plants-box">
+					<i class="fas fa-leaf fa-3x"></i>
+					<h3>Plants</h3>
+				</a>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-6 col-lg-3 d-flex justify-content-center">
+			<div class="about-modal">
+				<a href="#notes-box">
+					<i class="far fa-sticky-note fa-3x"></i>
+					<h3>Notes</h3>
+				</a>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-6 col-lg-3 d-flex justify-content-center">
+			<div class="about-modal">
+				<a href="#free-box">
+					<i class="fas fa-mountain fa-3x"></i>
+					<h3>Free</h3>
+				</a>
+			</div>
+		</div>
+	</div>
+	
+	<h1>The Squad</h1>
+	
 	<div class="row">
 		<div class="col-sm-12 col-md-6 col-lg-3">
 			<div class="card mx-auto">
@@ -18,7 +52,10 @@
 				<img src="https://cdn.filestackcontent.com/73QTiV9Q1GdXSDtdtneR"
 				     alt="Joanna Foss" height="200" width="200" style="border-radius:50%" class="mx-auto"/>
 				<h4>Front End Engineer</h4>
-				<p>I'm a full stack software engineer and USAF veteran (13N) who loves hiking, chess, and warm beverages. I grew up on the Mississippi Gulf Coast, but this crazy life brought me to San Antonio, TX. I wake up excited everyday to be a software engineer. Let me help you develop your next application.</p>
+				<p>I'm a full stack software engineer and USAF veteran (13N) who loves hiking, chess, and warm
+					beverages. I grew up on the Mississippi Gulf Coast, but this crazy life brought me to San Antonio,
+					TX. I wake up excited everyday to be a software engineer. Let me help you develop your next
+					application.</p>
 				<div>
 					<a href="https://github.com/joanna-foss" style="color:var(--green-o); margin: 3px;"
 					   onmouseover="this.style.color='var(--brown)'" onmouseout="this.style.color='var(--green-o)'">
@@ -137,6 +174,60 @@
 		</div>
 	</div>
 </div>
+
+<!--POP UPS-->
+<div id="hiking-box">
+	<div id="hiking-window">
+		<a href="#" class="btn-close btn-small btn-white"></a>
+		<h1>
+			<i class="fas fa-hiking"></i>
+		</h1>
+		<h1>Take A Hike!</h1>
+		
+		<p>Explore around you immediately with our map. Simply search a destination and tap on the marker that appears
+			to see step-by-step walking directions below the map to your desired hiking spot.</p>
+	</div>
+</div>
+
+<div id="plants-box">
+	<div id="plants-window">
+		<a href="#" class="btn-close btn-small btn-white"></a>
+		<h1>
+			<i class="fas fa-leaf"></i>
+		</h1>
+		<h1>Learn About Plants!</h1>
+		
+		<p>See a cool plant or tree? Tap on the yellow button at the bottom of the page to take a photo of the plant.
+			You will get detailed information about the plant and if you like it, you can save it to your profile.</p>
+	</div>
+</div>
+
+<div id="notes-box">
+	<div id="notes-window">
+		<a href="#" class="btn-close btn-small btn-white"></a>
+		<h1>
+			<i class="far fa-sticky-note"></i>
+		</h1>
+		<h1>Log Trails!</h1>
+		
+		<p>Liked a trail? Save it to your account and add any notes you'd like to remember about your experience on that
+			trail.</p>
+	</div>
+</div>
+
+<div id="free-box">
+	<div id="free-window">
+		<a href="" class="btn-close btn-small btn-white"></a>
+		<h1>
+			<i class="fas fa-mountain"></i>
+		</h1>
+		<h1>Free Features!</h1>
+		
+		<p>All of our features are free and we don't bombard you with ads. Simply create an account with us and start
+			discovering! We will never share your data. Your information is safe with us. How wanderful!</p>
+	</div>
+</div>
+
 <div th:replace="partials.html :: site-footer"></div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"
