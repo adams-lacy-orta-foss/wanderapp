@@ -8,10 +8,12 @@
 <div>
     <div th:each="trail : ${trails}">
         <div class="card mx-auto">
+
             <h1 th:text="${trail.getSavedTrailName()}"></h1>
             <p th:text="${trail.getSavedTrailDescription()}" th:value="${trail.getId()}"></p>
             <p class="m-1" th:text="${trail.getSavedTrailLength()} +  miles"></p>
             <p th:text="${trail.getSavedTrailHeadLocation()}"></p>
+
         </div>
     </div>
 </div>

@@ -4,23 +4,26 @@
 <body>
 <div th:replace="partials.html :: site-header"></div>
 <h1>Plant Photo Upload</h1>
-<form th:action="@{/plants}" th:method="post">
-    <input type="file" multiple class="btn btn-white user-btn" id="hiden-file">
+<div class="card d-none mx-auto" id="plantcard">
+    <div id="plant" style="font-weight: bold; font-size: large; color: var(--light)" th:value="replace"></div>
+    <img src="" id="plantpicture">
+</div>
+<form th:action="@{/plants}" th:method="post" class="d-flex flex-column mx-auto m-5 p-5">
+    <input type="file" multiple class="" id="hiden-file">
     <input id="plantUrl" name="plantUrl" type="hidden" th:value="replaceme">
     <input id="plantName" name="plantName" type="hidden" th:value="replacethis">
     <input id="plantDescription" name="plantDescription" type="hidden" th:value="replacealso">
     <button id="scanplant" type="button" class="btn btn-white user-btn">Scan Plant</button>
-    <button id="display" class="btn btn-white user-btn d-none" type="submit" >Save to your Plants</button>
+    <button id="display" class="btn btn-white user-btn d-none" type="submit">Save to your Plants</button>
 </form>
 
-<div id="plant" style="font-weight: bold; font-size: large; color: var(--light)"></div>
 <div class="spacer"></div>
 <div th:replace="partials.html :: site-footer"></div>
 
 <script th:inline="javascript">
-	/*<![CDATA[*/
-	const plantIDAPI = /*[[${plantAPIKey}]]*/ '';
-	/*]]>*/
+    /*<![CDATA[*/
+    const plantIDAPI = /*[[${plantAPIKey}]]*/ '';
+    /*]]>*/
 </script>
 <script src="/js/plantID.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"
