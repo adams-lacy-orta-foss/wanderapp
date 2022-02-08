@@ -1,1 +1,3 @@
 [Come Wander with us!](https://hikewithwander.com)
+
+This full-stack mobile-friendly web application was created for hikers of all levels and plant lovers. Users who sign up as wanderers can see their location, get walking directions to a location, search and save trails/points of interest, and use a built-in plant identification feature. This feature allows a wanderer to analyze and save plant photos to discover interesting information about the captured plants. Technologies used: Java, Spring Boot, Thymeleaf, MySQL, HTML, CSS, JavaScript, jQuery, Fetch, Filestack API, Mapbox API, PlantID API, Version Control with Git.
