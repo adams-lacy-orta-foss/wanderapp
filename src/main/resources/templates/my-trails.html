@@ -27,26 +27,26 @@
         <div class="row form-group">
             <div class="col">
                 <label for="trailName">Name:</label>
-                <input type="text" id="trailName" class="form-control" th:field="*{trailName}" placeholder="Trail name">
+                <input type="text" id="trailName" class="form-control" th:field="*{trailName}" placeholder="Trail name" required>
                 <span th:if="${#fields.hasErrors('trailName')}" th:errors="*{trailName}"></span>
             </div>
         </div>
         <div class="form-group">
             <label for="trailLength">Length:</label>
-            <input type="text" id="trailLength" class="form-control" th:field="*{trailLength}" placeholder="trail length">
+            <input type="text" id="trailLength" class="form-control" th:field="*{trailLength}" placeholder="trail length" required>
             <span th:if="${#fields.hasErrors('trailLength')}" th:errors="*{trailLength}"></span>
         </div>
         <div class="form-group">
             <label for="traillocation">Location:</label>
             <input type="text" class="form-control" th:field="*{trailHeadLocation}" id="trailLocation"
-                   placeholder="trail head location">
+                   placeholder="trail head location" required>
             <span th:if="${#fields.hasErrors('trailHeadLocation')}" th:errors="*{trailHeadLocation}"></span>
         </div>
 
         <div class="form-group">
             <label for="trailNotes">Notes:</label>
             <textarea cols="40" rows="4" class="form-control" th:field="*{trailDescription}" id="trailNotes"
-                      placeholder="notes"></textarea>
+                      placeholder="notes" required></textarea>
             <span th:if="${#fields.hasErrors('trailDescription')}" th:errors="*{trailDescription}"></span>
         </div>
             <input type="submit" value="Submit" class="btn btn-white user-btn mx-auto">
