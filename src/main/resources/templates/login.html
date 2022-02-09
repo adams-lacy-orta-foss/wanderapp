@@ -1,77 +1,134 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+	  xmlns:th="http://www.thymeleaf.org">
 <div th:replace="partials.html :: site-head"></div>
 <body>
 
 <div class="welcome-box">
 	<div class="logo-box">
 		<div class="logo">
-			<a href="/about-us" class="about-us"><i class="fas fa-leaf"></i></a>
+			<a class="about-us"
+			   href="/about-us"><i class="fas fa-leaf"></i></a>
 		</div>
 	</div>
-	
+
 	<div class="header-box">
-		<h1 class="heading-text-main" id="wander">Wander</h1>
+		<h1 class="heading-text-main"
+			id="wander">Wander</h1>
 		<h2 class="heading-text-sub">into the wild.</h2>
 	</div>
-	
-	<a href="#login-box" id="login-btn" class="btn btn-white">Login</a>
+
+	<a class="btn btn-white"
+	   href="#login-box"
+	   id="login-btn">Login</a>
 	<div th:if="${param.error}">
 		Invalid Username and Password.
 	</div>
 	<div th:if="${param.logout}">
 		You have been logged out.
 	</div>
-	<a href="#signup-box" id="signup-btn" class="btn btn-green">Sign Up</a>
+	<a class="btn btn-green"
+	   href="#signup-box"
+	   id="signup-btn">Sign Up</a>
 
 </div>
 
 <div id="login-box">
 	<div id="login-window">
-		<a href="#" class="btn-close btn-small btn-white"></a>
+		<a class="btn-close btn-small btn-white"
+		   href="#"></a>
 		<h1>🥾</h1>
 		<h1>Hello Wanderer!</h1>
-		
-		<form th:action="@{/login}" method="post" class="d-flex flex-column" id="login-form">
-			<input class="border-0" id="username" name="username" type="text" placeholder="Username">
-			<input class="border-0" id="password" name="password" type="password" placeholder="Password">
+
+		<form class="d-flex flex-column"
+			  id="login-form"
+			  method="post"
+			  th:action="@{/login}">
+			<input class="border-0"
+				   id="username"
+				   name="username"
+				   placeholder="Username"
+				   type="text">
+			<input class="border-0"
+				   id="password"
+				   name="password"
+				   placeholder="Password"
+				   type="password">
 			<div></div>
-			<input class="border-0 btn btn-green" type="submit" value="Log In">
+			<input class="border-0 btn btn-green"
+				   type="submit"
+				   value="Log In">
 		</form>
 	</div>
 </div>
 
 <div id="signup-box">
 	<div id="signup-window">
-		<a href="#" class="btn-close btn-small btn-black-white"></a>
+		<a class="btn-close btn-small btn-black-white"
+		   href="#"></a>
 		<h1>👋</h1>
 		<h1>Welcome Wanderer!</h1>
-		
-		<form id="signup-form" class="d-flex flex-column" th:action="@{/sign-up}" th:method="post" th:object="${user}">
-			<input class="border-0" id="first-name" name="first-name" th:field="*{firstName}" type="text"
-			       placeholder="Enter first name">
-			<span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
-			
-			<input class="border-0" id="last-name" name="last-name" th:field="*{lastName}" type="text"
-			       placeholder="Enter last name">
-			<span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
-			
-			<input class="border-0" id="email" name="email" th:field="*{email}" type="text"
-			       placeholder="Enter valid email">
-			<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
-			<small id="emailInfo" class="form-text">We'll never share your email with anyone else.</small>
-			
-			<input class="border-0" id="signup-username" name="username" th:field="*{username}" type="text"
-			       placeholder="Choose username">
-			<span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
-			
-			<input class="border-0" id="signup-password" name="password" type="password" placeholder="Choose password">
-			
+
+		<form class="d-flex flex-column"
+			  id="signup-form"
+			  th:action="@{/sign-up}"
+			  th:method="post"
+			  th:object="${user}">
+			<input class="border-0"
+				   id="first-name"
+				   name="first-name"
+				   placeholder="Enter first name"
+				   required
+				   th:field="*{firstName}"
+				   type="text">
+			<span th:errors="*{firstName}"
+				  th:if="${#fields.hasErrors('firstName')}"></span>
+
+			<input class="border-0"
+				   id="last-name"
+				   name="last-name"
+				   placeholder="Enter last name"
+				   required
+				   th:field="*{lastName}"
+				   type="text">
+			<span th:errors="*{lastName}"
+				  th:if="${#fields.hasErrors('lastName')}"></span>
+
+			<input class="border-0"
+				   id="email"
+				   name="email"
+				   placeholder="Enter valid email"
+				   required
+				   th:field="*{email}"
+				   type="email">
+			<span th:errors="*{email}"
+				  th:if="${#fields.hasErrors('email')}"></span>
+			<small class="form-text"
+				   id="emailInfo">We'll never share your email with anyone else.</small>
+
+			<input class="border-0"
+				   id="signup-username"
+				   name="username"
+				   placeholder="Choose username"
+				   required
+				   th:field="*{username}"
+				   type="text">
+			<span th:errors="*{username}"
+				  th:if="${#fields.hasErrors('username')}"></span>
+
+			<input class="border-0"
+				   id="signup-password"
+				   name="password"
+				   placeholder="Choose password"
+				   type="password">
+
 			<div></div>
-			<input class="border-0 btn btn-green" type="submit" value="Sign Up">
+			<input class="border-0 btn btn-green"
+				   type="submit"
+				   value="Sign Up">
 		</form>
 	</div>
-	
+
 	<div th:replace="partials.html :: site-footer"></div>
 </div>
 
