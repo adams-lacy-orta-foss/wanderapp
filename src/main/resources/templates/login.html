@@ -100,7 +100,7 @@
 				   placeholder="Enter valid email"
 				   required
 				   th:field="*{email}"
-				   type="text">
+				   type="email">
 			<span th:errors="*{email}"
 				  th:if="${#fields.hasErrors('email')}"></span>
 			<small class="form-text"
