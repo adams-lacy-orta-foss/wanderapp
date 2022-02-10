@@ -355,8 +355,6 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    padding: 2em;
 }
 
 #login-box:not(:target),
@@ -381,7 +379,8 @@ footer {
 #free-window
  {
     position: relative;
-    padding: 4em 2em;
+    margin: 1em;
+    padding: 0 1em;
     background-color: #fff;
     color: #000;
 
@@ -403,7 +402,6 @@ footer {
 .field {
     border-color: rgba(0, 0, 0, 0.1);
     border-radius: 7px;
-    padding: 1.5px;
 }
 
 #emailInfo {
