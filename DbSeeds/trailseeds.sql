@@ -41,14 +41,12 @@ Twin Oaks crosses Sendero Balcones just after the two mile mark. A large sign is
 The final portion is a counterclockwise circle, with a slow climb up and back down to the finish. The tree canopy opens up a few times along the way. The increased sunlight encourages grass growth, which can obscure underlying rocks at times, so use caution. Twin Oaks ends at Black Hill Loop. From here, hikers can turn right to visit the furthest reaches of the park, or left to return to Sendero Balcones.'),
     ('Bear Grass Trail',
      4.0,
-    'San Antonio, TX'
-     'Nice little trail. Narrow in some areas. Clearly marked though.
-     Easy walk thru Crownridge Canyon Natural Area. Several plant reclamation areas throughout the park with small informative plaques.'),
+    'San Antonio, TX',
+     'Nice little trail. Narrow in some areas. Clearly marked though. Easy walk thru Crownridge Canyon Natural Area. Several plant reclamation areas throughout the park with small informative plaques.'),
     ('Red Oak Trail',
      4.2,
      'Dallas, TX',
-     'Nice little trail. Narrow in some areas. Clearly marked though.
-     You''ll see the marker for Bear Grass at the top of the Red Oak trail. It goes off the pavement into natural terrain. Steep in areas and muddy after rain.'),
+     'Nice little trail. Narrow in some areas. Clearly marked though. You''ll see the marker for Bear Grass at the top of the Red Oak trail. It goes off the pavement into natural terrain. Steep in areas and muddy after rain.'),
     ('Apache Creek Greenway Trail',
      3.5,
     'Houston, TX',
@@ -56,5 +54,4 @@ The final portion is a counterclockwise circle, with a slow climb up and back do
     ('Medina River Greenway Trail',
      4.4,
     'Austin, TX',
-     'This is a nice long greenway trail that starts at the golf course and has a varied terrain - lakes, fields, and the river.
-Accessibility: There are 2 designated accessible spaces in the paved parking lot off of Clubhouse Boulevard at the east end of the trail. Both of them are van-accessible with a striped access aisle. The trail surface is cement, smooth, and typically at least 6 feet wide. The most accessible portion of the trail is the first 3.5 miles out. The estimated grade is mostly gentle (5% or less) except for very steep (over 12%) uphill and downhill sections at about 4.0 through 12.0 miles when going west.  Wheelchair/mobility equipment or stroller users may need assistance in the steeper sections or to avoid them for safety. There are benches along the route for resting.');
+     'This is a nice long greenway trail that starts at the golf course and has a varied terrain - lakes, fields, and the river. Accessibility: There are 2 designated accessible spaces in the paved parking lot off of Clubhouse Boulevard at the east end of the trail. Both of them are van-accessible with a striped access aisle. The trail surface is cement, smooth, and typically at least 6 feet wide. The most accessible portion of the trail is the first 3.5 miles out. The estimated grade is mostly gentle (5% or less) except for very steep (over 12%) uphill and downhill sections at about 4.0 through 12.0 miles when going west.  Wheelchair/mobility equipment or stroller users may need assistance in the steeper sections or to avoid them for safety. There are benches along the route for resting.');
