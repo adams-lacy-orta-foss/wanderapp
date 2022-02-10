@@ -15,7 +15,7 @@
             <p th:text="${trail.getTrailHeadLocation()}"></p>
             <h5>Trail Length:</h5>
             <p class="m-1" th:text="${trail.trailLength} + ' ' + mi"></p>
-            <button type="submit" value="Delete" name="trailId" th:value="${trail.getId()}" class="btn btn-blue user-btn">Delete</button>
+            <button type="submit" value="Delete" name="trailId" th:value="${trail.getId()}" class="btn-small btn-red user-btn">Delete</button>
         </div>
     </div>
 </form>
