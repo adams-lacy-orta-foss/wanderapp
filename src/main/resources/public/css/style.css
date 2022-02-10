@@ -488,7 +488,6 @@ footer {
     display: flex;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.35);
-    width: 22em;
     padding: .5em;
     margin: .5em;
     border-radius: 7px;
