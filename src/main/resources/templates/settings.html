@@ -9,7 +9,7 @@
 <div class="my-feed-box">
 	<div class="my-feed-window">
 
-		<div class="account-details card p-3">
+		<div class="account-details card p-3 m-5">
 			<h1>Settings</h1>
 			<img alt="Profile picture"
 				     class="profile-pic mb-3 mx-auto"
@@ -23,7 +23,7 @@
 					   name="img"
 					   th:value="img"
 					   type="hidden"
-					   class="mb-1">
+					   class="field mb-1">
 				<button class="btn-small btn-blue user-btn"
 						id="picker"
 						type="button"
@@ -37,21 +37,21 @@
 				</label>
 				<input name="FirstName"
 					   th:value="${user.getFirstName()}"
-					   class="mb-1">
+					   class="field mb-1">
 
 				<label name="LastName">
 					Last Name:
 				</label>
 				<input name="LastName"
 					   th:value="${user.getLastName()}"
-					   class="mb-1">
+					   class="field mb-1">
 
 				<label name="username">
 					Username:
 				</label>
 				<input name="username"
 					   th:value="${user.getUsername()}"
-					   class="mb-1">
+					   class="field mb-1">
 
 				<label name="Email">
 					Email:
@@ -59,7 +59,7 @@
 				<input name="Email"
 					   th:value="${user.getEmail()}"
 					   type="email"
-					   class="mb-1">
+					   class="field mb-1">
 
 				<input name="id"
 					   th:value="${user.getId()}"
