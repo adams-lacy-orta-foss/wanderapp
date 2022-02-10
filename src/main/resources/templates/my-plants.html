@@ -4,19 +4,21 @@
 <body>
 <div th:replace="partials.html :: site-header"></div>
 
-<h1>My Plants</h1>
-<div class="d-flex justify-content-center">
-	<a th:href="@{/plants/upload}" class="btn btn-white user-btn">Upload</a>
-</div>
 <div class="container">
+	<h1>My Plants</h1>
+	
+	<div class="d-flex justify-content-center">
+		<a th:href="@{/plants/upload}" class="btn btn-white user-btn">Upload</a>
+	</div>
+	
 	<form th:action="@{/plants/delete}" th:method="post" th:object="${plant}">
-		<div th:each="plants: ${plants}">
+		<div th:each="plant: ${plants}">
 			<div class="card">
-				<h2 th:text="${plants.getPlantname()}" th:value="${plants.getId()}"></h2>
+				<h2 th:text="${plant.getPlantname()}" th:value="${plant.getId()}"></h2>
 				<input type="hidden" th:field="*{id}">
-				<img th:src="${plants.getimageUrl()}" alt="Plant Picture" class="plant-photo">
-				<p class="m-1" th:text="${plants.getPlantDescription()}" th:value="${plants.getId()}"></p>
-				<button type="submit" name="plantId" th:value="${plants.getId()}" class="btn-small btn-red user-btn">Delete</button>
+				<img th:src="${plant.getimageUrl()}" alt="Plant Picture" class="plant-photo">
+				<p class="m-1" th:text="${plant.getPlantDescription()}" th:value="${plant.getId()}"></p>
+				<button type="submit" name="plantId" th:value="${plant.getId()}" class="btn-small btn-red user-btn">Delete</button>
 			</div>
 		</div>
 	</form>
