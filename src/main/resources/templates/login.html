@@ -38,18 +38,18 @@
 		<a class="btn-close btn-small btn-white"
 		   href="#"></a>
 		<h1>🥾</h1>
-		<h1>Hello Wanderer!</h1>
+		<h1>Welcome back, Wanderer!</h1>
 
 		<form class="d-flex flex-column"
 			  id="login-form"
 			  method="post"
 			  th:action="@{/login}">
-			<input class="border-0"
+			<input class="field"
 				   id="username"
 				   name="username"
 				   placeholder="Username"
 				   type="text">
-			<input class="border-0"
+			<input class="field"
 				   id="password"
 				   name="password"
 				   placeholder="Password"
@@ -74,7 +74,7 @@
 			  th:action="@{/sign-up}"
 			  th:method="post"
 			  th:object="${user}">
-			<input class="border-0"
+			<input class="field"
 				   id="first-name"
 				   name="first-name"
 				   placeholder="Enter first name"
@@ -84,7 +84,7 @@
 			<span th:errors="*{firstName}"
 				  th:if="${#fields.hasErrors('firstName')}"></span>
 
-			<input class="border-0"
+			<input class="field"
 				   id="last-name"
 				   name="last-name"
 				   placeholder="Enter last name"
@@ -94,7 +94,7 @@
 			<span th:errors="*{lastName}"
 				  th:if="${#fields.hasErrors('lastName')}"></span>
 
-			<input class="border-0"
+			<input class="field"
 				   id="email"
 				   name="email"
 				   placeholder="Enter valid email"
@@ -106,7 +106,7 @@
 			<small class="form-text"
 				   id="emailInfo">We'll never share your email with anyone else.</small>
 
-			<input class="border-0"
+			<input class="field"
 				   id="signup-username"
 				   name="username"
 				   placeholder="Choose username"
@@ -116,7 +116,7 @@
 			<span th:errors="*{username}"
 				  th:if="${#fields.hasErrors('username')}"></span>
 
-			<input class="border-0"
+			<input class="field"
 				   id="signup-password"
 				   name="password"
 				   placeholder="Choose password"
@@ -128,8 +128,6 @@
 				   value="Sign Up">
 		</form>
 	</div>
-
-	<div th:replace="partials.html :: site-footer"></div>
 </div>
 
 <div th:replace="partials.html :: site-scripts"></div>
