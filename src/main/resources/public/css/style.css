@@ -53,7 +53,7 @@ nav {
 h1, h2, h3, h4, h5, h6 {
     font-family: Yeseva One, serif;
     letter-spacing: .5px;
-    margin: .75em 0;
+    margin: .25em 0;
 }
 
 .logo {
@@ -93,6 +93,10 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--gold);
     padding: .5em;
     transform: scale(1.2);
+}
+
+#wander {
+    padding-left: 15px;
 }
 
 .app-name {
@@ -135,7 +139,7 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 0.1em;
 
     display: block;
-    padding: 15px 40px;
+    padding: 10px 20px;
     border-radius: 100px;
     position: relative;
 }
@@ -221,8 +225,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .user-btn {
-    padding: .3em 1em;
-    margin: 1em;
+    padding: .2em .5em;
+    margin: .75em;
 }
 
 .dropdown-item {
@@ -380,13 +384,12 @@ footer {
  {
     position: relative;
     margin: 1em;
-    padding: 0 1em;
+    padding: 1em;
     background-color: #fff;
     color: #000;
 
     border-radius: 20px;
     max-width: 400px;
-    max-height: 95%;
 }
 
 #login-form > input,
@@ -394,7 +397,7 @@ footer {
 #delete-form > input,
 #delete-form > a,
 #password-form > input {
-    margin-top: .5em;
+    margin-top: .1em;
     margin-bottom: .5em;
     padding: .5em;
 }
@@ -435,7 +438,7 @@ footer {
 }
 
 .account-details {
-    width: 25em;
+    max-width: 25em;
 }
 
 .account-value {
