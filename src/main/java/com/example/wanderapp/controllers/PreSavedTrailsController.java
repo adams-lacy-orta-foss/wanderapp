@@ -20,5 +20,4 @@ public class PreSavedTrailsController {
         model.addAttribute("trails", preSavedTrailDao.findAll());
         return "all-trails";
     }
-
 }
