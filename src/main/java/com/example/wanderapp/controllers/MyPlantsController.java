@@ -35,9 +35,11 @@ public class MyPlantsController {
     public String viewPlants(Model model) {
         User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.findById(loginUser.getId());
+
         model.addAttribute("plant", new FavoritePlants());
         model.addAttribute("plants", user.getFavoritePlants());
         model.addAttribute("plantAPIKey", plantAPIKey);
+
         return "my-plants";
     }
 
@@ -45,11 +47,13 @@ public class MyPlantsController {
     public String uploadPlantPic(Model model) {
         User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.findById(loginUser.getId());
+
         model.addAttribute("plantUrl", new FavoritePlants());
         model.addAttribute("plantName", new FavoritePlants());
         model.addAttribute("plantDescription", new FavoritePlants());
         model.addAttribute("userPlant", user.getFavoritePlants());
         model.addAttribute("plantAPIKey", plantAPIKey);
+
         return "upload-plant-pic";
     }
 
@@ -57,18 +61,22 @@ public class MyPlantsController {
     public String savePlants(@RequestParam(name="plantUrl") String plantUrl, @RequestParam(name="plantName") String plantName, @RequestParam(name="plantDescription") String plantDescription, Model model, @ModelAttribute FavoritePlants favoritePlants, @ModelAttribute String plantAPIKey) {
         User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.findById(loginUser.getId());
+
         List<FavoritePlants> favoritePlant = user.getFavoritePlants();
+
         model.addAttribute("plantUrl", plantUrl);
         model.addAttribute("plantName", plantName);
         model.addAttribute("plantDescription", plantDescription);
         model.addAttribute("plantAPIKey", plantAPIKey);
-//        System.out.println("plantUrl = " + plantUrl);
+
         favoritePlants.setimageUrl(plantUrl);
         favoritePlants.setPlantname(plantName);
         favoritePlants.setPlantDescription(plantDescription);
         favoritePlant.add(favoritePlants);
+
         user.setFavoritePlants(favoritePlant);
         userDao.save(user);
+
         return "redirect:/plants";
     }
 
@@ -76,10 +84,13 @@ public class MyPlantsController {
     public String deletePlant(Long plantId) {
         User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.findById(loginUser.getId());
+
         List<FavoritePlants> plantList = user.getFavoritePlants();
         plantList.remove(plantsdao.getById(plantId));
+
         user.setFavoritePlants(plantList);
         userDao.save(user);
+
         return "redirect:/plants";
     }
 }
