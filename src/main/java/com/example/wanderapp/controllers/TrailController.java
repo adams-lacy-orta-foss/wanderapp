@@ -29,8 +29,10 @@ public class TrailController {
     public String trailIndex(Model model) {
         User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.findById(loginUser.getId());
+
         model.addAttribute("trails", user.getTrails());
         model.addAttribute("trail", new Trail());
+
         return "my-trails";
     }
 
@@ -38,10 +40,13 @@ public class TrailController {
     public String saveTrails(@ModelAttribute Trail trail) {
         User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.findById(loginUser.getId());
+
         List<Trail> trailList = user.getTrails();
         trailList.add(trail);
+
         user.setTrails(trailList);
         userDao.save(user);
+
         return "redirect:/my-trails";
     }
 
@@ -49,12 +54,13 @@ public class TrailController {
     public String deleteTrail(Long trailId) {
         User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.findById(loginUser.getId());
+
         List<Trail> trailList = user.getTrails();
-        System.out.println(trailList);
         trailList.remove(trailDao.getById(trailId));
+
         user.setTrails(trailList);
         userDao.save(user);
+
         return "redirect:/my-trails";
     }
-
 }

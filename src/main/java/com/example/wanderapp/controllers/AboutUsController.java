@@ -19,10 +19,6 @@ public class AboutUsController {
 
     @GetMapping("/about-us")
     public String aboutUs(Model model) {
-//        User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User user = userDao.findById(loginUser.getId());
-//        model.addAttribute("user", user.getBio());
         return "about-us";
-
     }
 }
